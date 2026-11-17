@@ -1,0 +1,733 @@
+{
+  "query": "robotics",
+  "matched_concept": "robotics",
+  "forms_checked": [
+    "robotics"
+  ],
+  "backend": "local",
+  "source": {
+    "schema_version": 1,
+    "source_name": "ConceptNet 5.7 assertions",
+    "source_url": "https://github.com/commonsense/conceptnet5/wiki/Downloads",
+    "source_sha256": "accd65fe94038584295574ddc26e1500c1919c8c4532bf771811cafd0948af7e",
+    "source_file": "conceptnet-assertions-5.7.0.csv.gz",
+    "rows_scanned": 34074917,
+    "edges_indexed": 2653040,
+    "language": "en",
+    "relations": [
+      "/r/DerivedFrom",
+      "/r/FormOf",
+      "/r/HasA",
+      "/r/IsA",
+      "/r/PartOf",
+      "/r/RelatedTo",
+      "/r/Synonym"
+    ],
+    "min_weight": 1
+  },
+  "diagnostics": [
+    "ConceptNet online unavailable: HTTP Error 502: Bad Gateway"
+  ],
+  "edges": [
+    {
+      "assertion": "/a/[/r/IsA/,/c/en/animatronics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]",
+      "relation": "/r/IsA",
+      "subject": "animatronics",
+      "object": "robotics",
+      "subject_uri": "/c/en/animatronics/n/wn/cognition",
+      "object_uri": "/c/en/robotics/n/wn/cognition",
+      "weight": 2.0,
+      "source_line": 17121149,
+      "metadata": {
+        "dataset": "/d/wordnet/3.1",
+        "license": "cc:by/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wordnet/rdf/3.1"
+          }
+        ],
+        "surfaceEnd": "robotics",
+        "surfaceStart": "animatronics",
+        "surfaceText": "[[animatronics]] is a type of [[robotics]]",
+        "weight": 2.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/IsA/,/c/en/robotics/n/wn/cognition/,/c/en/artificial_intelligence/n/wn/cognition/]",
+      "relation": "/r/IsA",
+      "subject": "robotics",
+      "object": "artificial intelligence",
+      "subject_uri": "/c/en/robotics/n/wn/cognition",
+      "object_uri": "/c/en/artificial_intelligence/n/wn/cognition",
+      "weight": 2.0,
+      "source_line": 17289831,
+      "metadata": {
+        "dataset": "/d/wordnet/3.1",
+        "license": "cc:by/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wordnet/rdf/3.1"
+          }
+        ],
+        "surfaceEnd": "artificial intelligence",
+        "surfaceStart": "robotics",
+        "surfaceText": "[[robotics]] is a type of [[artificial intelligence]]",
+        "weight": 2.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/IsA/,/c/en/telerobotics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]",
+      "relation": "/r/IsA",
+      "subject": "telerobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/telerobotics/n/wn/cognition",
+      "object_uri": "/c/en/robotics/n/wn/cognition",
+      "weight": 2.0,
+      "source_line": 17318189,
+      "metadata": {
+        "dataset": "/d/wordnet/3.1",
+        "license": "cc:by/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wordnet/rdf/3.1"
+          }
+        ],
+        "surfaceEnd": "robotics",
+        "surfaceStart": "telerobotics",
+        "surfaceText": "[[telerobotics]] is a type of [[robotics]]",
+        "weight": 2.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/biorobotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "biorobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/biorobotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 592978,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/microbotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "microbotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/microbotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 727645,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/microrobotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "microrobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/microrobotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 728896,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/nanorobotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "nanorobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/nanorobotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 740622,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/neurorobotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "neurorobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/neurorobotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 743750,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/ics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "robotics",
+      "object": "ics",
+      "subject_uri": "/c/en/robotics",
+      "object_uri": "/c/en/ics",
+      "weight": 1.0,
+      "source_line": 807320,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/robot/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "robotics",
+      "object": "robot",
+      "subject_uri": "/c/en/robotics",
+      "object_uri": "/c/en/robot",
+      "weight": 1.0,
+      "source_line": 807321,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/robot/n/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "robotics",
+      "object": "robot",
+      "subject_uri": "/c/en/robotics",
+      "object_uri": "/c/en/robot/n",
+      "weight": 1.0,
+      "source_line": 807322,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/sociorobotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "sociorobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/sociorobotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 826720,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/DerivedFrom/,/c/en/telerobotics/,/c/en/robotics/]",
+      "relation": "/r/DerivedFrom",
+      "subject": "telerobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/telerobotics",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 846942,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/animatronics/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "animatronics",
+      "object": "robotics",
+      "subject_uri": "/c/en/animatronics/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 18807991,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/kinodynamic/a/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "kinodynamic",
+      "object": "robotics",
+      "subject_uri": "/c/en/kinodynamic/a",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 19600858,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/mechatronics_engineering/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "mechatronics engineering",
+      "object": "robotics",
+      "subject_uri": "/c/en/mechatronics_engineering",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 19703401,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/mecomtronics/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "mecomtronics",
+      "object": "robotics",
+      "subject_uri": "/c/en/mecomtronics/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 19703505,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/microrobotics/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "microrobotics",
+      "object": "robotics",
+      "subject_uri": "/c/en/microrobotics/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 19726673,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robot/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robot",
+      "object": "robotics",
+      "subject_uri": "/c/en/robot/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20105265,
+      "metadata": {
+        "dataset": "/d/wiktionary/fr",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/fr",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/roboteer/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "roboteer",
+      "object": "robotics",
+      "subject_uri": "/c/en/roboteer/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20105294,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotic/a/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotic",
+      "object": "robotics",
+      "subject_uri": "/c/en/robotic/a",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20105301,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/roboticist/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "roboticist",
+      "object": "robotics",
+      "subject_uri": "/c/en/roboticist/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20105311,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/application/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "application",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/application",
+      "weight": 1.0,
+      "source_line": 20105315,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/artificial_intelligence/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "artificial intelligence",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/artificial_intelligence",
+      "weight": 1.0,
+      "source_line": 20105316,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/design/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "design",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/design",
+      "weight": 1.0,
+      "source_line": 20105317,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/manufacture/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "manufacture",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/manufacture",
+      "weight": 1.0,
+      "source_line": 20105318,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/robot/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "robot",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/robot",
+      "weight": 1.0,
+      "source_line": 20105319,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/science/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "science",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/science",
+      "weight": 1.0,
+      "source_line": 20105320,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/technology/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "technology",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/technology",
+      "weight": 1.0,
+      "source_line": 20105321,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/three_laws_of_robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotics",
+      "object": "three laws of robotics",
+      "subject_uri": "/c/en/robotics/n",
+      "object_uri": "/c/en/three_laws_of_robotics",
+      "weight": 1.0,
+      "source_line": 20105322,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/robotry/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "robotry",
+      "object": "robotics",
+      "subject_uri": "/c/en/robotry/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20105360,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/taxel/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "taxel",
+      "object": "robotics",
+      "subject_uri": "/c/en/taxel/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20326935,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    },
+    {
+      "assertion": "/a/[/r/RelatedTo/,/c/en/urbiscript/n/,/c/en/robotics/]",
+      "relation": "/r/RelatedTo",
+      "subject": "urbiscript",
+      "object": "robotics",
+      "subject_uri": "/c/en/urbiscript/n",
+      "object_uri": "/c/en/robotics",
+      "weight": 1.0,
+      "source_line": 20445881,
+      "metadata": {
+        "dataset": "/d/wiktionary/en",
+        "license": "cc:by-sa/4.0",
+        "sources": [
+          {
+            "contributor": "/s/resource/wiktionary/en",
+            "process": "/s/process/wikiparsec/2"
+          }
+        ],
+        "weight": 1.0
+      }
+    }
+  ],
+  "scope": "up to 1000 edges per endpoint; permitted positive relations, English"
+}

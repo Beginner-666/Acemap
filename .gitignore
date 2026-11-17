@@ -1,0 +1,35 @@
+# Reports, coursework documents, and previous iterations
+/report/
+/pilot_project.md
+/pilot_project_en.md
+/_obsolete*/
+
+# Downloaded corpus and rebuildable local database
+/data/raw/
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.db
+*.part
+
+# Python, editor, and machine-local files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files and ad-hoc search outputs
+/tests/work_*/
+/tmp*/
+/results/new_search.json
+/results/search_results.json
+/results/replay.json
+/results/dynamic_queries_replay.json
+/results/dynamic_validation.md

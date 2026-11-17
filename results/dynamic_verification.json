@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "byte_identical": true,
+  "network_forbidden": true,
+  "index_bytes": 1963692032,
+  "queries": [
+    {
+      "query": "robotics",
+      "backend": "local",
+      "matched_concept": "robotics",
+      "enhancement_applied": true,
+      "expansion_terms": [
+        "animatronics",
+        "artificial intelligence",
+        "telerobotics"
+      ],
+      "baseline_unique": 10,
+      "enhanced_unique": 40,
+      "additional_unique": 30,
+      "failed_requests": 0,
+      "diagnostics": [
+        "ConceptNet online unavailable: HTTP Error 502: Bad Gateway"
+      ]
+    },
+    {
+      "query": "artificial intelligence",
+      "backend": "local",
+      "matched_concept": "artificial intelligence",
+      "enhancement_applied": true,
+      "expansion_terms": [
+        "ai",
+        "computer science",
+        "computer vision"
+      ],
+      "baseline_unique": 10,
+      "enhanced_unique": 40,
+      "additional_unique": 30,
+      "failed_requests": 0,
+      "diagnostics": []
+    },
+    {
+      "query": "embodied ai",
+      "backend": "local",
+      "matched_concept": null,
+      "enhancement_applied": false,
+      "expansion_terms": [],
+      "baseline_unique": 10,
+      "enhanced_unique": 10,
+      "additional_unique": 0,
+      "failed_requests": 0,
+      "diagnostics": []
+    }
+  ],
+  "sha256": "cd64eecfe46e42417901456506d062ee55bf02b6378b7406df67052acb976bf3"
+}

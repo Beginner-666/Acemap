@@ -28,6 +28,15 @@ def test_directory():
 
 
 class SearchTests(unittest.TestCase):
+    def test_json_output_uses_portable_lf_newlines(self):
+        with test_directory() as root:
+            target = root / "snapshot.json"
+            app.write_json(target, {"value": "first\nsecond"})
+            raw = target.read_bytes()
+            self.assertNotIn(b"\r\n", raw)
+            self.assertTrue(raw.endswith(b"\n"))
+            self.assertEqual(app.read_json(target), {"value": "first\nsecond"})
+
     def test_online_neighbors_preserve_original_edge(self):
         with test_directory() as root:
             args = argparse.Namespace(index=root / "missing.sqlite", conceptnet_cache=root,

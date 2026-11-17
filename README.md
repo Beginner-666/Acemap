@@ -14,7 +14,7 @@
 - `data/acemap_cache/`：正式实验引用的 Acemap 请求参数和原始响应。
 - `results/dynamic_queries.json`：真实示例结果。
 - `results/dynamic_verification.json`：保存的核验统计。
-- `tests/`：九项回归测试。
+- `tests/`：十项回归测试，包含跨平台 JSON 换行一致性检查。
 
 ## 快速验证（无需完整图谱、无需联网）
 
@@ -61,7 +61,7 @@ python -B -m unittest discover -s tests -v
 
 核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。
 
-2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致，九项测试通过。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
+2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。当前十项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
 
 ## 数据来源
 

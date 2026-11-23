@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "migration": "graph-id-v1",
+  "index": "data/conceptnet_en.sqlite",
+  "graph_id": "g-82e3382c2a25fee7",
+  "existing": false,
+  "applied": true
+}

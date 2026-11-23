@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 from .acemap_client import AcemapClient
-from .conceptnet_provider import ConceptNet
+from .conceptnet_provider import ConceptNet, SNAPSHOT_SCOPE
 from .constants import ENDPOINT
 from .edges import rank_neighbors
 from .jsonio import write_json
-from .records import identity
+from .rankers import rrf_merge
 from .text import normalize
+from .versions import OUTPUT_SCHEMA_V2
 
 
 def load_queries(args):
@@ -26,42 +27,31 @@ def search_one(client, query, size, expansion=None):
     """Search the original term and its expansions, then fuse by weighted RRF."""
     expansion = expansion or []
     terms = [query] + [item["term"] for item in expansion]
-    merged = {}
+    term_results = []
     requests = []
-    baseline_ids = set()
     for term_index, term in enumerate(terms):
         try:
             records, cache_name = client.search(term, size)
         except (ValueError, OSError) as exc:
+            term_results.append({"term": term, "is_original": term_index == 0,
+                                 "status": "failed", "records": [],
+                                 "cache_file": None, "error": str(exc)})
             requests.append({"term": term, "status": "failed", "error": str(exc)})
             continue
+        term_results.append({"term": term, "is_original": term_index == 0,
+                             "status": "ok", "records": records,
+                             "cache_file": cache_name, "error": None})
         requests.append({"term": term, "status": "ok", "count": len(records),
                          "cache_file": cache_name})
-        seen_in_query = set()
-        for rank, record in enumerate(records, 1):
-            key = identity(record)
-            if key in seen_in_query:
-                continue
-            seen_in_query.add(key)
-            if term_index == 0:
-                baseline_ids.add(key)
-            if key not in merged:
-                merged[key] = {"key": key, "paper": record, "fusion_score": 0.0, "matches": []}
-            item = merged[key]
-            # Weighted reciprocal rank fusion; original query receives more weight.
-            item["fusion_score"] += (1.0 if term_index == 0 else 0.5) / (60 + rank)
-            item["matches"].append({"term": term, "rank": rank, "is_original": term_index == 0})
-    failed = sum(item["status"] == "failed" for item in requests)
-    ranked = sorted(merged.values(), key=lambda item: (-item["fusion_score"], item["key"]))
+    ranked, metrics = rrf_merge(query, term_results)
+    failed = metrics["failed_requests"]
     status = "ok" if failed == 0 else ("failed" if requests[0]["status"] == "failed" else "partial")
     return {
         "query": query, "status": status,
         "enhancement_applied": bool(expansion), "expansions": expansion,
         "warning": None if expansion else "查询词没有图谱邻居，本次仅执行原始搜索",
         "requests": requests,
-        "metrics": {"baseline_unique": len(baseline_ids), "enhanced_unique": len(merged),
-                    "additional_unique": len(set(merged) - baseline_ids),
-                    "failed_requests": failed},
+        "metrics": metrics,
         "results": ranked,
     }
 
@@ -83,8 +73,11 @@ def run_search(args):
         try:
             snapshot = provider.neighbors(query)
         except (ValueError, OSError) as error:
-            snapshot = {"query": query, "matched_concept": None, "backend": "none",
-                        "edges": [], "diagnostics": [str(error)]}
+            # Failure paths must still emit a complete v2 snapshot object.
+            snapshot = {"query": query, "matched_concept": None,
+                        "forms_checked": [query], "backend": "none",
+                        "source": None, "diagnostics": [str(error)],
+                        "edges": [], "scope": SNAPSHOT_SCOPE}
         matched = snapshot["matched_concept"]
         expansion = (rank_neighbors(snapshot["edges"], matched, args.max_expansions)
                      if matched else [])
@@ -97,7 +90,7 @@ def run_search(args):
         results.append(row)
         print(f"{query}: kg={snapshot['backend']}; concept={matched}; "
               f"expansions={[i['term'] for i in expansion]}; {row['status']}", flush=True)
-    output = {"schema_version": 2, "domain": "query-time English ConceptNet", "endpoint": ENDPOINT,
+    output = {"schema_version": OUTPUT_SCHEMA_V2, "domain": "query-time English ConceptNet", "endpoint": ENDPOINT,
               "settings": {"knowledge": args.knowledge, "size_per_term": args.size,
                            "max_expansions": args.max_expansions,
                            "lexical_forms": "ai -> artificial intelligence; exact phrases only",

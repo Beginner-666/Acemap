@@ -13,19 +13,32 @@
   - `records.py`：Acemap 响应结构解析与论文去重键。
   - `acemap_client.py`：Acemap 请求、重试与响应缓存。
   - `conceptnet_index.py`：通用英文 SQLite 索引构建（动态图谱机制）。
+  - `graph_index.py`：图谱清单、`graph_id`、读取与结构校验契约。
   - `conceptnet_provider.py`：在线/本地 ConceptNet 邻居查询与快照缓存。
+  - `cache_migration.py`：ConceptNet 快照缓存键迁移、幂等重跑与回滚。
+  - `rankers.py`：Ranker 协议及冻结的 baseline/RRF 实现。
+  - `config.py`：排序配置的严格加载与校验。
+  - `paper_features.py`：论文年份、DOI、作者、机构、主题等特征提取。
+  - `evaluation.py`：评估查询、qrels 与评估配置加载器。
+  - `verification.py`：v2/v3 输出校验与离线字节回放。
+  - `versions.py`：协议版本常量与规范化哈希。
   - `search.py`：查询扩展、加权倒数排名融合与结果组装。
   - `cli.py`：命令行解析与入口。
 - `acemap_search.py`：兼容启动器，转发至 `src.cli`，保留 `build-index`/`search` 的原有调用方式。
 - `verify_results.py`：核对正式结果及图谱依据，禁止联网后重放并逐字节比较。
+- `docs/interface_protocol.md`：v2/v3 输出、Ranker、缓存、图谱索引与评估接口协议。
 - `config/dynamic_queries.txt`：三组人工智能领域示例查询。
+- `config/ranking.json`：排序权重与融合参数。
+- `config/evaluation.json`：评估 K 值、指标与时间切分。
 - `data/raw/`：自行下载的 ConceptNet 原始文件，不纳入版本控制。
 - `data/conceptnet_en.sqlite`：本地构建的可复用索引，不纳入版本控制。
 - `data/conceptnet_cache/`：正式查询实际使用的图谱关系与来源快照。
 - `data/acemap_cache/`：正式实验引用的 Acemap 请求参数和原始响应。
 - `results/dynamic_queries.json`：真实示例结果。
 - `results/dynamic_verification.json`：保存的核验统计。
-- `tests/`：十一项回归测试，包含跨平台 JSON 换行一致性与动态图谱入口检查。
+- `results/migrations/`：缓存键与图谱元数据迁移清单。
+- `scripts/m0_migrate.py`：M0 数据迁移命令（dry-run / apply / rollback）。
+- `tests/`：42 项回归测试，包含输出协议、失败路径、Ranker 等价性、缓存迁移、图谱校验与跨平台 JSON 换行检查。
 
 ## 快速验证（无需完整图谱、无需联网）
 
@@ -39,6 +52,20 @@ python -B -m unittest discover -s tests -v
 ```
 
 核验脚本使用仓库中的两类真实快照，禁止 ConceptNet 和 Acemap 网络调用，生成 `results/dynamic_queries_replay.json` 并与原始结果逐字节比较。该重放文件由程序生成，不纳入版本控制。
+
+## 接口协议与 M0 迁移
+
+v2/v3 输出字段、Ranker 接口、ConceptNet 快照缓存键、图谱索引契约与评估输入格式见 [`docs/interface_protocol.md`](docs/interface_protocol.md)。v2 黄金文件 `results/dynamic_queries.json` 已冻结；v3 字段已定义但尚未生成。
+
+缓存键与图谱元数据迁移：
+
+```bash
+python scripts/m0_migrate.py cache-key --dry-run
+python scripts/m0_migrate.py cache-key --apply
+python scripts/m0_migrate.py graph-id --apply
+```
+
+迁移清单写入 `results/migrations/`，`cache-key --rollback` 可恢复旧文件名。
 
 ## 运行
 
@@ -72,7 +99,7 @@ python -B -m unittest discover -s tests -v
 
 核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。
 
-2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。重构后重新核验，通过与原结果逐字节比较；当前十一项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
+2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；当前 42 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
 
 ## 数据来源
 

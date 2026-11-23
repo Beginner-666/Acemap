@@ -11,8 +11,10 @@ from pathlib import Path
 import sqlite3
 import time
 
+from .graph_index import derive_graph_id
 from .jsonio import digest
 from .text import concept
+from .versions import INDEX_SCHEMA_VERSION
 
 
 # The dynamic pipeline only traverses general-purpose, positively weighted
@@ -70,12 +72,15 @@ def build_index(source, target):
         print("Building neighbor indexes...", flush=True)
         db.execute("CREATE INDEX by_subject ON edges(subject, weight DESC, assertion)")
         db.execute("CREATE INDEX by_object ON edges(object, weight DESC, assertion)")
-        metadata = {"schema_version": 1, "source_name": "ConceptNet 5.7 assertions",
+        metadata = {"schema_version": INDEX_SCHEMA_VERSION, "source_name": "ConceptNet 5.7 assertions",
                     "source_url": "https://github.com/commonsense/conceptnet5/wiki/Downloads",
                     "source_sha256": digest(source), "source_file": source.name,
                     "rows_scanned": rows, "edges_indexed": accepted,
                     "language": "en", "relations": sorted(RELATIONS), "min_weight": 1}
         db.execute("INSERT INTO metadata VALUES (?,?)", ("manifest", json.dumps(metadata)))
+        # Keep graph_id in a separate metadata row: the local backend embeds
+        # the manifest in v2 snapshots, so the manifest shape is frozen.
+        db.execute("INSERT INTO metadata VALUES (?,?)", ("graph_id", derive_graph_id(metadata)))
         db.commit()
     staging.replace(target)
     print(f"Index ready: {accepted:,} edges; {time.monotonic()-started:.1f}s; {target}")

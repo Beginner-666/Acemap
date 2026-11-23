@@ -48,12 +48,19 @@ def extract_records(payload):
     return normalized
 
 
+DOI_PREFIX = re.compile(r"^(https?://(dx\.)?doi\.org/|doi:\s*)", flags=re.I)
+
+
+def normalize_doi(value):
+    """Strip DOI resolver prefixes and normalize casing/underscores."""
+    return normalize(DOI_PREFIX.sub("", str(value)))
+
+
 def identity(record):
     """Build a deduplication key: DOI, then known IDs, then normalized title."""
     doi = record.get("doi")
     if doi:
-        doi = re.sub(r"^(https?://(dx\.)?doi\.org/|doi:\s*)", "", str(doi), flags=re.I)
-        return "doi:" + normalize(doi)
+        return "doi:" + normalize_doi(doi)
     for key in ("id", "work_id", "paper_id", "paperId", "workId"):
         if record.get(key) is not None:
             return key + ":" + str(record[key])

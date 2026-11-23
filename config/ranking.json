@@ -1,0 +1,35 @@
+{
+  "fusion": {
+    "k": 60,
+    "original_weight": 1.0,
+    "expansion_weight": 0.5
+  },
+  "weights": {
+    "acemap": 0.45,
+    "graph": 0.25,
+    "text": 0.2,
+    "freshness": 0.1,
+    "personalization": 0.0
+  },
+  "graph": {
+    "max_path_length": 1,
+    "relation_whitelist": [
+      "/r/IsA",
+      "/r/PartOf",
+      "/r/HasA",
+      "/r/RelatedTo",
+      "/r/Synonym",
+      "/r/DerivedFrom",
+      "/r/FormOf"
+    ],
+    "degree_cap": null,
+    "min_edge_weight": 1
+  },
+  "freshness": {
+    "half_life_years": 5.0,
+    "enabled_by_default": false
+  },
+  "personalization": {
+    "alpha": 0.0
+  }
+}

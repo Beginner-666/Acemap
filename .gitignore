@@ -33,3 +33,5 @@ Thumbs.db
 /results/replay.json
 /results/dynamic_queries_replay.json
 /results/dynamic_validation.md
+
+/data/conceptnet_cache

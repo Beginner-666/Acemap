@@ -10,12 +10,16 @@ from pathlib import Path
 import sqlite3
 from urllib.parse import quote
 
-from . import net
+from . import graph_index, net
 from .conceptnet_index import RELATIONS
 from .constants import USER_AGENT
 from .edges import edge_order
 from .jsonio import read_json, write_json
 from .text import concept, normalize
+from .versions import (CONCEPTNET_ONLINE_SOURCE_ID, MISSING_GRAPH_ID,
+                       SNAPSHOT_KEY_SCHEMA)
+
+SNAPSHOT_SCOPE = "up to 1000 edges per endpoint; permitted positive relations, English"
 
 
 def concept_forms(query):
@@ -42,17 +46,56 @@ class ConceptNet:
         self.refresh = refresh
         self.cache_only = cache_only
         self.online_failed = False
+        self._graph_id = None
+
+    def _load_graph_id(self):
+        """Derive the local graph id lazily; online modes never need the index."""
+        if self._graph_id is None:
+            if not self.index.exists():
+                self._graph_id = MISSING_GRAPH_ID
+            else:
+                try:
+                    with closing(sqlite3.connect(
+                            self.index.resolve().as_uri() + "?mode=ro", uri=True)) as db:
+                        self._graph_id = graph_index.read_graph_id(db)
+                except (sqlite3.Error, ValueError, KeyError, OSError):
+                    # Cache lookup keeps working; the local read path will
+                    # surface the concrete index error if it is actually used.
+                    self._graph_id = MISSING_GRAPH_ID
+        return self._graph_id
+
+    def source_id(self, backend):
+        """Return the cache source identifier for a successful backend."""
+        if backend == "online":
+            return CONCEPTNET_ONLINE_SOURCE_ID
+        return "local:" + self._load_graph_id()
+
+    def _cache_key(self, term, source_id):
+        return hashlib.sha256(
+            f"v{SNAPSHOT_KEY_SCHEMA}\0{self.knowledge}\0{source_id}\0{term}".encode()
+        ).hexdigest()
+
+    def _snapshot_candidates(self, term):
+        """Return lookup candidates in priority order (online before local)."""
+        source_ids = []
+        if self.knowledge in ("auto", "online"):
+            source_ids.append(CONCEPTNET_ONLINE_SOURCE_ID)
+        if self.knowledge in ("auto", "local"):
+            source_ids.append("local:" + self._load_graph_id())
+        return [(source_id, self.cache_dir / (self._cache_key(term, source_id) + ".json"))
+                for source_id in source_ids]
 
     def neighbors(self, term):
-        key = hashlib.sha256((self.knowledge + "\0" + term).encode()).hexdigest()
-        snapshot_path = self.cache_dir / (key + ".json")
-        if snapshot_path.exists() and not self.refresh:
-            snapshot = read_json(snapshot_path)
-            if snapshot["query"] != term:
-                raise ValueError("ConceptNet cache query mismatch")
-            return snapshot
+        candidates = self._snapshot_candidates(term)
+        if not self.refresh:
+            for _, snapshot_path in candidates:
+                if snapshot_path.exists():
+                    snapshot = read_json(snapshot_path)
+                    if snapshot["query"] != term:
+                        raise ValueError("ConceptNet cache query mismatch")
+                    return snapshot
         if self.cache_only:
-            raise ValueError(f"Missing ConceptNet replay snapshot: {snapshot_path}")
+            raise ValueError(f"Missing ConceptNet replay snapshot: {candidates[0][1]}")
         diagnostics = []
         edges = []
         matched = None
@@ -84,17 +127,10 @@ class ConceptNet:
                     self.online_failed = True
             if not edges and self.knowledge in ("auto", "local"):
                 if self.index.exists():
-                    with closing(sqlite3.connect(self.index.resolve().as_uri() + "?mode=ro", uri=True)) as db:
-                        manifest = json.loads(db.execute(
-                            "SELECT value FROM metadata WHERE key='manifest'").fetchone()[0])
-                        # Separate indexed endpoint queries avoid a full-table OR scan.
-                        records = []
-                        for column in ("subject", "object"):
-                            records += db.execute(
-                                f"SELECT evidence FROM edges WHERE {column}=? "
-                                "ORDER BY weight DESC, assertion LIMIT 1000", (form,)).fetchall()
-                        edges = list({edge["assertion"]: edge for (raw,) in records
-                                      for edge in [json.loads(raw)]}.values())
+                    with closing(sqlite3.connect(
+                            self.index.resolve().as_uri() + "?mode=ro", uri=True)) as db:
+                        manifest = graph_index.read_manifest(db)
+                        edges = graph_index.edges_for_term(db, form, 1000)
                     backend, source = "local", manifest
                 else:
                     diagnostics.append(f"Local index missing: {self.index}; run build-index once")
@@ -104,8 +140,10 @@ class ConceptNet:
         snapshot = {"query": term, "matched_concept": matched, "forms_checked": forms,
                     "backend": backend, "source": source, "diagnostics": diagnostics,
                     "edges": sorted(edges, key=edge_order),
-                    "scope": "up to 1000 edges per endpoint; permitted positive relations, English"}
+                    "scope": SNAPSHOT_SCOPE}
         # Failed service calls are not permanent negative cache entries.
         if backend != "none":
+            source_id = self.source_id(backend)
+            snapshot_path = self.cache_dir / (self._cache_key(term, source_id) + ".json")
             write_json(snapshot_path, snapshot)
         return snapshot

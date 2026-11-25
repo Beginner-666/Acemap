@@ -16,7 +16,9 @@
   - `graph_index.py`：图谱清单、`graph_id`、读取与结构校验契约。
   - `conceptnet_provider.py`：在线/本地 ConceptNet 邻居查询与快照缓存。
   - `cache_migration.py`：ConceptNet 快照缓存键迁移、幂等重跑与回滚。
-  - `rankers.py`：Ranker 协议及冻结的 baseline/RRF 实现。
+  - `rankers.py`：Ranker 协议及冻结的 baseline/RRF/graph_rerank 实现。
+  - `query_understanding.py`：v3 查询意图拆解与扩展候选过滤（`qu-v1`）。
+  - `multihop.py`：可选的一跳作者/机构扩展与 `multihop-v1` 文档。
   - `config.py`：排序配置的严格加载与校验。
   - `paper_features.py`：论文年份、DOI、作者、机构、主题等特征提取。
   - `evaluation.py`：评估查询、qrels 与评估配置加载器。
@@ -29,16 +31,19 @@
 - `docs/interface_protocol.md`：v2/v3 输出、Ranker、缓存、图谱索引与评估接口协议。
 - `config/dynamic_queries.txt`：三组人工智能领域示例查询。
 - `config/ranking.json`：排序权重与融合参数。
+- `config/multihop.json`：多跳权重、种子上限与单跳请求数。
 - `config/evaluation.json`：评估 K 值、指标与时间切分。
 - `data/raw/`：自行下载的 ConceptNet 原始文件，不纳入版本控制。
 - `data/conceptnet_en.sqlite`：本地构建的可复用索引，不纳入版本控制。
 - `data/conceptnet_cache/`：正式查询实际使用的图谱关系与来源快照。
 - `data/acemap_cache/`：正式实验引用的 Acemap 请求参数和原始响应。
-- `results/dynamic_queries.json`：真实示例结果。
-- `results/dynamic_verification.json`：保存的核验统计。
+- `results/dynamic_queries.json`：冻结的 v2 真实示例结果。
+- `results/dynamic_queries_v3.json`：冻结的阶段一 v3 `graph_rerank` 结果。
+- `results/dynamic_queries_multihop.json`：可选多跳扩展结果（`multihop-v1`）。
+- `results/dynamic_verification.json` / `dynamic_verification_v3.json`：保存的核验统计。
 - `results/migrations/`：缓存键与图谱元数据迁移清单。
 - `scripts/m0_migrate.py`：M0 数据迁移命令（dry-run / apply / rollback）。
-- `tests/`：42 项回归测试，包含输出协议、失败路径、Ranker 等价性、缓存迁移、图谱校验与跨平台 JSON 换行检查。
+- `tests/`：57 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、缓存迁移、图谱校验与跨平台 JSON 换行检查。
 
 ## 快速验证（无需完整图谱、无需联网）
 
@@ -55,7 +60,7 @@ python -B -m unittest discover -s tests -v
 
 ## 接口协议与 M0 迁移
 
-v2/v3 输出字段、Ranker 接口、ConceptNet 快照缓存键、图谱索引契约与评估输入格式见 [`docs/interface_protocol.md`](docs/interface_protocol.md)。v2 黄金文件 `results/dynamic_queries.json` 已冻结；v3 字段已定义但尚未生成。
+v2/v3 输出字段、Ranker 接口、ConceptNet 快照缓存键、图谱索引契约与评估输入格式见 [`docs/interface_protocol.md`](docs/interface_protocol.md)。v2 黄金文件 `results/dynamic_queries.json` 已冻结；v3 黄金文件 `results/dynamic_queries_v3.json` 已生成并冻结，多跳使用独立的 `multihop-v1` 文档。
 
 缓存键与图谱元数据迁移：
 
@@ -76,6 +81,21 @@ python .\acemap_search.py search --query "artificial intelligence"
 python .\acemap_search.py search --queries .\config\dynamic_queries.txt --output .\results\new_search.json
 ```
 
+默认命令仍是冻结的 v2 输出；阶段一新增能力全部通过显式开关启用：
+
+```powershell
+# v3：查询理解 + 图谱/文本/时间重排
+python .\acemap_search.py search --queries .\config\dynamic_queries.txt `
+  --schema-version 3 --ranker graph_rerank --cache-only `
+  --output .\results\dynamic_queries_v3.json
+
+# 多跳：仅对首轮结果做一跳作者/机构扩展，独立输出
+python .\acemap_search.py multihop --results .\results\dynamic_queries_v3.json `
+  --output .\results\dynamic_queries_multihop.json --cache-only
+```
+
+关闭阶段一能力：省略 `--schema-version 3` 即回到 v2；`--ranker baseline` 只按 Acemap 原顺序打分；不执行 `multihop` 子命令即完全关闭多跳。v3 的 `baseline`/`rrf` 仅使用原词或原 RRF 分数，`graph_rerank` 使用 `config/ranking.json` 的权重，并把完整配置内联到输出。
+
 `acemap_search.py` 只是兼容入口，`python -m src ...` 与上述命令等价。默认 `--knowledge auto` 优先查询 ConceptNet 在线 API，不可用时回退本地索引。`--knowledge local` 只用本地索引，`--knowledge online` 只用在线服务。`--cache-only` 禁止联网并要求已有 ConceptNet 邻居快照和论文缓存；`--refresh` 会覆盖对应查询缓存，保留正式实验时应使用另一缓存目录。
 
 索引不存在时，从原始文件一次构建：
@@ -94,12 +114,13 @@ python .\acemap_search.py build-index --assertions .\data\raw\conceptnet-asserti
 
 ```powershell
 python .\verify_results.py
+python .\verify_results.py --results .\results\dynamic_queries_v3.json
 python -B -m unittest discover -s tests -v
 ```
 
-核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。
+核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。v3 校验还会用文档内联的 `ranker_config` 重算 `config_hash` 和每个 `score`，并逐字节回放 `results/dynamic_queries_v3.json`。
 
-2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；当前 42 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
+2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；阶段一实现后 v2 复核仍逐字节一致，当前 57 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
 
 ## 数据来源
 

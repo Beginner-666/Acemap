@@ -13,7 +13,9 @@ The pipeline is intentionally split by responsibility:
 - ``graph_index``: graph manifest, graph_id, read and validation contract.
 - ``conceptnet_provider``: online/local ConceptNet neighbor lookup.
 - ``cache_migration``: snapshot cache-key migration plan/apply/rollback.
-- ``rankers``: ranker protocol plus frozen baseline/RRF implementations.
+- ``rankers``: ranker protocol plus frozen baseline/RRF/graph_rerank implementations.
+- ``query_understanding``: v3 intent parsing and filtered expansion candidates.
+- ``multihop``: opt-in one-hop author/institution expansion (``multihop-v1``).
 - ``config``: strict ranking configuration loading.
 - ``paper_features``: read-only, fault-tolerant paper feature extraction.
 - ``evaluation``: evaluation query, qrels, and config loaders.

@@ -24,7 +24,24 @@ class AcemapClient:
         self.refresh = refresh
 
     def search(self, keyword, size):
+        return self._search_params(
+            {"keyword": keyword, "order": "desc", "page": 1, "size": size})
+
+    def search_filtered(self, keyword, size, author_ids=None, institution_ids=None):
+        """Search with Acemap author/institution filters (phase-one multi-hop).
+
+        ``author_ids`` and ``institution_ids`` are the raw Acemap identifiers
+        found in first-round paper authorships.  The original response and
+        request parameters are cached exactly like an ordinary search.
+        """
         params = {"keyword": keyword, "order": "desc", "page": 1, "size": size}
+        if author_ids:
+            params["author_ids"] = ",".join(sorted(dict.fromkeys(author_ids)))
+        if institution_ids:
+            params["institution_ids"] = ",".join(sorted(dict.fromkeys(institution_ids)))
+        return self._search_params(params)
+
+    def _search_params(self, params):
         url = ENDPOINT + "?" + urlencode(params)
         key = hashlib.sha256(url.encode("utf-8")).hexdigest()
         path = self.cache_dir / f"{key}.json"

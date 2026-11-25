@@ -438,6 +438,10 @@ def validate_v3_document(doc):
     _keys(doc, TOP_KEYS, "document")
     if doc["schema_version"] != OUTPUT_SCHEMA_V3:
         raise ValueError("Expected search output schema version 3")
+    if doc["domain"] != "query-time English ConceptNet":
+        raise ValueError("v3 domain is frozen")
+    if doc["endpoint"] != constants.ENDPOINT:
+        raise ValueError("v3 endpoint does not match the client")
     settings = _validate_settings(doc, 3)
     if not isinstance(settings["ranker_config"], dict):
         raise ValueError("settings.ranker_config must be an object")
@@ -508,8 +512,48 @@ def verify_v2(args, original):
 
 
 def verify_v3(args, original):
+    """Validate and replay v3 using only the inline ranker configuration."""
     validate_v3_document(original)
-    raise ValueError("v3 replay is not implemented yet; schema validation passed")
+    expected = _expected_queries(args.queries)
+    if [row["query"] for row in original["searches"]] != expected:
+        raise ValueError("Results do not cover the configured queries")
+    settings = original["settings"]
+    replay_path = args.results.with_name(args.results.stem + "_replay.json")
+    replay_args = argparse.Namespace(
+        knowledge=settings["knowledge"], index=args.index,
+        conceptnet_cache=args.conceptnet_cache, cache=args.cache,
+        output=replay_path, query=None, queries=args.queries,
+        max_expansions=settings["max_expansions"], size=settings["size_per_term"],
+        timeout=20, retries=0, cache_only=True, refresh=False,
+        schema_version=3, ranker=settings["ranker"],
+        ranking_config=None, ranking_config_data=settings["ranker_config"],
+    )
+    with patch("src.net.urlopen", side_effect=AssertionError("network forbidden")):
+        if search.run_search(replay_args) != 0:
+            raise ValueError("v3 replay failed")
+    if args.results.read_bytes() != replay_path.read_bytes():
+        raise ValueError("v3 replay is not byte-identical")
+    report = {
+        "passed": True, "byte_identical": True, "network_forbidden": True,
+        "ranker": settings["ranker"],
+        "ranker_version": settings["ranker_version"],
+        "graph_version": settings["graph_version"],
+        "config_hash": settings["config_hash"],
+        "index_bytes": args.index.stat().st_size if args.index.exists() else None,
+        "queries": [{
+            "query": row["query"], "backend": row["conceptnet"]["backend"],
+            "matched_concept": row["conceptnet"]["matched_concept"],
+            "enhancement_applied": row["enhancement_applied"],
+            "expansion_terms": [item["term"] for item in row["expansions"]],
+            **row["metrics"],
+            "diagnostics": row["conceptnet"]["diagnostics"],
+        } for row in original["searches"]],
+        "sha256": jsonio.digest(args.results),
+    }
+    jsonio.write_json(args.results.with_name("dynamic_verification_v3.json"), report)
+    print("Verification passed: v3 schema checked; inline config replayed; "
+          "both networks forbidden; replay byte-identical.")
+    return 0
 
 
 def build_parser():

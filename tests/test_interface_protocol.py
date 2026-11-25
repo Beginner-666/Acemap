@@ -242,6 +242,19 @@ class ProtocolValidationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             verification.validate_v3_document(document)
 
+    def test_v3_golden_replays_byte_identical(self):
+        results = constants.ROOT / "results/dynamic_queries_v3.json"
+        args = argparse.Namespace(
+            results=results, queries=constants.ROOT / "config/dynamic_queries.txt",
+            cache=constants.DEFAULT_ACEAMP_CACHE,
+            conceptnet_cache=constants.DEFAULT_CONCEPTNET_CACHE,
+            index=constants.DEFAULT_INDEX)
+        document = jsonio.read_json(results)
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(verification.verify_v3(args, document), 0)
+        self.assertTrue(results.with_name(
+            results.stem + "_replay.json").exists())
+
 
 class RankerTests(unittest.TestCase):
     def test_rrf_merge_matches_explicit_formula(self):

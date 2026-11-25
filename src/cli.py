@@ -10,6 +10,7 @@ import sys
 
 from . import constants
 from .conceptnet_index import build_index
+from .rankers import RANKER_VERSIONS
 from .search import run_search
 
 
@@ -38,9 +39,30 @@ def build_parser():
     search.add_argument("--size", type=int, default=10)
     search.add_argument("--timeout", type=float, default=20)
     search.add_argument("--retries", type=int, default=2)
+    search.add_argument("--schema-version", type=int, choices=(2, 3), default=2,
+                        help="2: 冻结的原有输出；3: 可选的重排输出")
+    search.add_argument("--ranker", choices=tuple(RANKER_VERSIONS),
+                        help="schema 3 使用的排序器；省略时等价于 rrf")
+    search.add_argument("--ranking-config", type=Path,
+                        default=constants.ROOT / "config" / "ranking.json")
     mode = search.add_mutually_exclusive_group()
     mode.add_argument("--cache-only", action="store_true", help="只读取已有响应，禁止联网")
     mode.add_argument("--refresh", action="store_true", help="重新请求并覆盖相同请求的缓存")
+
+    multihop = commands.add_parser(
+        "multihop", help="对首轮搜索结果做可关闭的一跳作者/机构扩展")
+    multihop.add_argument("--results", type=Path,
+                          default=constants.ROOT / "results" / "dynamic_queries_v3.json")
+    multihop.add_argument("--output", type=Path,
+                          default=constants.ROOT / "results" / "dynamic_queries_multihop.json")
+    multihop.add_argument("--config", type=Path,
+                          default=constants.ROOT / "config" / "multihop.json")
+    multihop.add_argument("--cache", type=Path, default=constants.DEFAULT_ACEAMP_CACHE)
+    multihop.add_argument("--timeout", type=float, default=20)
+    multihop.add_argument("--retries", type=int, default=2)
+    multihop.add_argument("--cache-only", action="store_true", help="只读取已有响应，禁止联网")
+    multihop.add_argument("--refresh", action="store_true", help="重新请求并覆盖相同请求的缓存")
+    multihop.set_defaults(command="multihop")
     return parser
 
 
@@ -51,10 +73,18 @@ def main(argv=None):
         if (args.max_expansions < 1 or not 1 <= args.size <= 100 or args.retries < 0
                 or not math.isfinite(args.timeout) or args.timeout <= 0):
             parser.error("扩展数至少为 1，size 为 1–100，重试次数非负，timeout 为正有限数")
+        if args.schema_version == 2 and args.ranker is not None:
+            parser.error("--ranker 仅用于 --schema-version 3；schema 2 输出保持冻结")
+    elif args.command == "multihop":
+        if (args.retries < 0 or not math.isfinite(args.timeout) or args.timeout <= 0):
+            parser.error("重试次数非负，timeout 为正有限数")
     try:
         if args.command == "build-index":
             build_index(args.assertions, args.output)
             return 0
+        if args.command == "multihop":
+            from .multihop import run_multihop
+            return run_multihop(args)
         return run_search(args)
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
         print(f"操作失败：{exc}", file=sys.stderr)

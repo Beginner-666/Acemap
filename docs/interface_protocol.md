@@ -1,7 +1,7 @@
 # Acemap 搜索接口协议
 
 - 协议版本：`1`
-- 状态：冻结（v2 已实现；v3 已实现并生成黄金文件；M0 接口与迁移已实现；阶段一搜索重排与多跳已实现，评估标注数据待补充）
+- 状态：冻结（v2 已实现；v3 已实现并生成黄金文件；M0 接口与迁移已实现；阶段一搜索重排、多跳和评估链路已实现；qrels 为规则辅助草稿，待人工复核）
 - 适用分支：`feature/verify`
 - 本文是输出、验证、缓存、图谱索引、排序器、特征、评估之间接口的**规范性说明**。实现代码与本文冲突时，v2 以现有代码和黄金文件为准并应立即修正文档；v3 以本文为准，首次实现时不得自行改字段。
 
@@ -52,9 +52,9 @@
 | `RANKER_PROTOCOL_VERSION` | `1` | Ranker 接口形状 | 已实现（baseline/rrf/graph_rerank） |
 | `QUERY_UNDERSTANDING_VERSION` | `"qu-v1"` | v3 查询理解与扩展筛选 | 已实现（规则版） |
 | `RECORD_FEATURE_VERSION` | `1` | 论文特征层 | 已实现 |
-| `VERIFIER_VERSION` | `3` | 验证器行为 | 已实现（v2 回放 + v3 校验与回放） |
+| `VERIFIER_VERSION` | `4` | 验证器行为 | 已实现（v2 回放 + v3 有效查询校验与回放） |
 
-`PROTOCOL_VERSION = 1` 覆盖本文全部接口。任何字段名、类型、必填性、排序规则、哈希公式的变化都必须提升 `PROTOCOL_VERSION`，并同步修改文档、验证器和测试。
+`PROTOCOL_VERSION = 2` 覆盖本文全部接口。任何字段名、类型、必填性、排序规则、哈希公式的变化都必须提升 `PROTOCOL_VERSION`，并同步修改文档、验证器和测试。版本 2 增加了 `qu-v1` 有效检索词语义和 graph_rerank 的显式年份硬过滤；这些变化不改变 v2 输出字节。
 
 ---
 
@@ -286,7 +286,7 @@ v3 是**新文档**，不得把 v2 黄金文件升级为 v3。v3 首次生成时
     "max_path_length": 1,
     "relation_whitelist": ["/r/IsA", "/r/PartOf", "/r/HasA", "/r/RelatedTo",
                            "/r/Synonym", "/r/DerivedFrom", "/r/FormOf"],
-    "degree_cap": null,
+    "degree_cap": 500,
     "min_edge_weight": 1
   },
   "freshness": {
@@ -395,13 +395,14 @@ Ranker 约束：
 - `requests`、`status`、`warning` 语义同 v2。
 - Ranker 计算失败必须显式记录：在行级 `warning` 中写明原因；不得输出伪造分数。
 - `graph_rerank` 在无图谱证据时仍必须输出结果，`graph = 0`，并保留 `acemap/text/freshness` 分量。
+- `baseline` 不发起扩展请求；当 `expansions` 为空时，行级 `warning` 固定为 `"baseline ranker: original-term search only"`。
 - 未知 `ranker` 名称必须在 CLI 参数校验阶段失败，不得回退到默认 ranker。
 
 ### 4.8 v3 黄金文件
 
 | 文件 | 状态 | sha256 |
 | --- | --- | --- |
-| `results/dynamic_queries_v3.json` | 已生成并冻结；`graph_rerank` | `ececf52af63961471cf6fb39540bff400388957ec96962bb8b819d97fde6b8d0` |
+| `results/dynamic_queries_v3.json` | 已生成并冻结；`graph_rerank` | `e740614aac9a15add203a9e100c7c40ddbdec91250a06a41e42a4b0d9208a19e` |
 | `results/dynamic_verification_v3.json` | 验证报告；不得覆盖 v2 报告 | 可重新生成 |
 
 v3 首次生成时必须同时满足：
@@ -414,15 +415,16 @@ v3 首次生成时必须同时满足：
 
 ### 4.9 v3 查询理解（`qu-v1`）
 
-`qu-v1` 只用于 `graph_rerank`。`baseline` 与 `rrf` 仍使用 v2 的 `edges.rank_neighbors`，因此 `rrf-v1` 在相同查询上与 v2 的扩展词和结果顺序完全一致，可作为纯排序对照。v2 路径不受任何影响。
+`qu-v1` 只用于 `graph_rerank`。`baseline` 只搜索原词，不发起扩展请求；`rrf` 仍使用 v2 的 `edges.rank_neighbors`，因此 `rrf-v1` 在相同查询上与 v2 的扩展词和结果顺序完全一致，可作为纯排序对照。v2 路径不受任何影响。
 
 `graph_rerank` 在构造扩展词前固定执行以下纯规则步骤：
 
 1. `text.normalize` 保持不变，`query` 字段仍写入该结果；查询理解只在内部保留 `normalize_query` 形式（大小写、下划线、连字符、空白归一）。
 2. `parse_intent` 拆出 `topic`、`time_filter`（`"recent"`、`{start, end}` 或 `null`）与 `task`。拆解失败时 `topic = query`、`time_filter = null`，不得阻塞原始搜索。
-3. 扩展候选来自 ConceptNet 一跳边，按边权重降序、关系优先级（Synonym、FormOf、DerivedFrom、IsA、PartOf、HasA、RelatedTo）、稳定边键排序。
-4. 过滤单字符词、停用词组成的词、`GENERIC_TERMS`、查询自身的形态重复（如 `artificial intelligences`）、低于 `graph.min_edge_weight` 的边、`relation_whitelist` 之外的边；`graph.degree_cap` 非空时过滤高度节点。
-5. 候选数量不超过 `max_expansions`。`evidence` 保留完整边（关系、权重、两端 URI、assertion），路径长度固定为 1。
+3. `graph_rerank` 使用 `topic` 作为**有效检索词**：ConceptNet 快照 `conceptnet.query`、`requests[0].term` 和 `matches[].is_original` 均对应 `topic`；行字段 `query` 仍保留完整规范化查询。`baseline` 与 `rrf` 的有效检索词就是 `query`。
+4. 扩展候选来自 ConceptNet 一跳边，按边权重降序、关系优先级（Synonym、FormOf、DerivedFrom、IsA、PartOf、HasA、RelatedTo）、稳定边键排序。
+5. 过滤单字符词、停用词组成的词、`GENERIC_TERMS`、查询自身的形态重复（如 `artificial intelligences`）、低于 `graph.min_edge_weight` 的边、`relation_whitelist` 之外的边；`graph.degree_cap` 非空时按本地索引的全局度数过滤高度节点。
+6. 候选数量不超过 `max_expansions`。`evidence` 保留完整边（关系、权重、两端 URI、assertion），路径长度固定为 1。
 
 `qu-v1` 的规则版本由代码固定；修改规则必须提升该版本并新增 v3 黄金文件，不得改写已冻结的 `results/dynamic_queries_v3.json`。
 
@@ -436,14 +438,14 @@ python -m src multihop --results results/dynamic_queries_v3.json \
 ```
 
 - 输入：任意通过 §3/§4 校验的 v2 或 v3 文档；输出 `schema_version: "multihop-v1"`。
-- 触发：首轮结果非空且首条分数 ≥ `min_seed_score`；否则该查询 `status = "skipped"`。
+- 触发：首轮结果非空且首条分数 ≥ `min_seed_score`；否则该查询 `status = "skipped"`。`config/multihop.json` 默认 `min_seed_score = 0.65`，该值在 40 条评估查询的 graph_rerank 首条分数分布上校准；降低该值可让更多查询触发。
 - 种子：首轮前 `seed_limit` 条结果中的作者/机构 ID，最多 `max_authors` 位作者与 `max_institutions` 个机构，按种子名次权重排序。
 - 请求：复用 Acemap work search，附加 `author_ids` 或 `institution_ids` 过滤；成功/失败请求均写入 `requests[]`。
 - 合并：`base_score` 保留首轮分数；`multihop_score = Σ hop_weight * (1/(k+seed_rank)) * (1/(k+hop_rank))`；`score = base_score + multihop_score`。`hop_weight` 默认 `0.25`，低于原词权重。`first_round` 标记是否来自首轮结果，`from_multihop` 标记是否至少被一条多跳路径命中。
 - 路径：每条多跳来源写入 `sources[]`，包含 `query`、`term`、`seed_key`、`seed_title`、`node`（作者/机构）、`paper_key`、`rank`、`score`。
 - 确定性：输出不写当前时间、随机数或绝对路径；`source.sha256` 绑定输入文档；相同缓存与配置必须逐字节一致。
 - 失败：单个请求失败不删除首轮结果，状态记为 `partial`/`failed`；全部失败时仍输出首轮结果。
-- 黄金文件：`results/dynamic_queries_multihop.json`（sha256 `566b56993196d30399e15f19fd1025f75cf1d56f8b4152d4899595d590d651b9`），由 `config/dynamic_queries.txt` 的 v3 结果生成；缓存齐全时 `--cache-only` 可逐字节复现。
+- 黄金文件：`results/dynamic_queries_multihop.json`（sha256 `5fdc214ad6a4dacd9a95e7da3d9fa120d548de7c72c83d79247c334f21a5019a`），由 `config/dynamic_queries.txt` 的 v3 结果生成；缓存齐全时 `--cache-only` 可逐字节复现。当前默认阈值下 `robotics`、`artificial intelligence` 触发，`embodied ai` 因首条分数低于阈值而跳过。
 
 ---
 
@@ -489,7 +491,7 @@ class Ranker(Protocol):
 
 | `name` | `version` | 规则 |
 | --- | --- | --- |
-| `baseline` | `baseline-v1` | 仅使用原词结果；保留 Acemap 顺序；`acemap = (1 / (60 + rank)) / max_i(1 / (60 + rank_i))`，其余分量 0；`score == acemap` |
+| `baseline` | `baseline-v1` | 只搜索原词且不发起扩展请求；保留 Acemap 顺序；`acemap = (1 / (60 + rank)) / max_i(1 / (60 + rank_i))`，其余分量 0；`score == acemap` |
 | `rrf` | `rrf-v1` | 复用 v2 的扩展选择与 `fusion_score`（k=60，原词 1.0，扩展 0.5）；`acemap = fusion_score / max(fusion_score)`（最大值为 0 时取 0）；其余分量 0；`score == acemap`；结果顺序必须与 v2 一致 |
 | `graph_rerank` | `graph-rerank-v1` | 使用 §4.2 配置与 §4.5 公式；归一化见下 |
 
@@ -497,12 +499,12 @@ class Ranker(Protocol):
 
 `graph-rerank-v1` 冻结的归一化：
 
-- `acemap`：与 `rrf-v1` 相同的 `fusion_score / max(fusion_score)`；最大值为 0 时取 0。
+- `acemap`：原词 Acemap 名次的 `1 / (k + rank)`，按本次候选集中最大原词倒数名次归一化；扩展词独有的结果取 0。该分量保留 baseline 的高精度先验，与 `rrf-v1` 的融合分数不同。
 - `graph`：候选扩展边中，`weight / max(expansion edge weight)`；只有扩展词出现在该论文的标题、摘要、关键词、Concepts、Topics 或 `matches` 中时才计分；无匹配为 0。
-- `text`：BM25（`k1=1.5`、`b=0.75`）；文档为标题（重复 3 次）、摘要、关键词（各重复 2 次）、Concepts 名称（各重复 2 次）、Topics 名称；查询词为 `topic` 与全部扩展词的分词；结果按本次候选集最大 BM25 分数归一化，最大值为 0 时取 0。
-- `freshness`：仅当 `time_filter != null` 或 `freshness.enabled_by_default == true` 时启用；参考年为候选集最大年份；`0.5 ** ((reference_year - year) / half_life_years)`；明确年份区间内的年份取 1，区间外按到最近边界的距离衰减；缺失年份取 0。
+- `text`：BM25（`k1=1.5`、`b=0.75`）；文档为标题（重复 3 次）、摘要、关键词（各重复 2 次）、Concepts 名称（各重复 2 次）、Topics 名称；查询词仅为 `topic` 的分词，不加入扩展词，避免噪声扩展词自我强化；结果按本次候选集最大 BM25 分数归一化，最大值为 0 时取 0。
+- `freshness`：仅当 `time_filter != null` 或 `freshness.enabled_by_default == true` 时启用；参考年为候选集最大年份；`0.5 ** ((reference_year - year) / half_life_years)`。显式 `{start, end}` 年份区间同时是**硬过滤**：年份在区间外的结果不进入排序；缺失年份保留。`"recent"` 只做指数衰减，不硬过滤。
 - `personalization`：`graph-rerank-v1` 无用户画像输入，固定为 0。
-- `graph_paths[]` 仅记录路径长度 1 的扩展边；`nodes = [query, term]`，`relations = [edge.relation]`，`assertions = [edge.assertion]`；`score` 与 `graph` 使用同一归一化。
+- `graph_paths[]` 仅记录路径长度 1 的扩展边；`nodes = [topic, term]`，`relations = [edge.relation]`，`assertions = [edge.assertion]`；`score` 与 `graph` 使用同一归一化。
 - 排序：`(-score, key)`；`score` 为 §4.5 加权和，浮点比较误差 ≤ 1e-9。
 
 ---
@@ -710,6 +712,7 @@ CREATE INDEX by_object  ON edges(object, weight DESC, assertion);
 {
   "k_values": [5, 10],
   "metrics": ["precision", "recall", "ndcg", "mrr"],
+  "relevance_threshold": 1,
   "seed": 0,
   "splits": {"type": "time", "test_after": "2025-01-01"}
 }
@@ -717,6 +720,44 @@ CREATE INDEX by_object  ON edges(object, weight DESC, assertion);
 
 - 时间切分必须使用论文/行为的真实时间字段，禁止用未来数据构造过去画像。
 - 固定查询集、固定 qrels、固定随机种子；任何变更提升评估配置版本。
+- `relevance_threshold` 是二值相关性阈值，取 1、2 或 3；nDCG 使用完整分级 gain。
+
+### 9.4 指标与报告
+
+`src/evaluation.py` 实现 `precision@k`、`recall@k`、`nDCG@k`、`MRR@k`。未标注文档按 0 计；每个查询必须至少有一个 `grade >= relevance_threshold` 的文档，否则评估显式失败。报告写入 `results/evaluation_report.json`：
+
+```json
+{
+  "schema_version": "evaluation-v1",
+  "config": {},
+  "queries": {"count": 40, "file": "...", "sha256": "..."},
+  "qrels": {"file": "...", "sha256": "...", "labels": 1735,
+            "relevance_threshold": 1, "provenance": "ai-assisted rubric; human review pending"},
+  "rankers": {
+    "baseline": {"metrics": {"ndcg@10": 0.0, "recall@10": 0.0}, "per_query": []},
+    "rrf": {"metrics": {}, "per_query": []},
+    "graph_rerank": {"metrics": {}, "per_query": []}
+  },
+  "comparison": {
+    "graph_rerank": {"ndcg@10": {"baseline": 0.0, "ranker": 0.0, "delta": 0.0}}
+  }
+}
+```
+
+命令：
+
+```bash
+python -m src evaluate --queries config/evaluation_queries.json \
+  --qrels config/qrels.json --config config/evaluation.json \
+  --results baseline=results/eval_baseline.json \
+  --results rrf=results/eval_rrf.json \
+  --results graph_rerank=results/eval_graph_rerank.json \
+  --qrels-provenance "ai-assisted rubric; human review pending"
+```
+
+- `--results` 可重复；必须包含 `baseline` 与 `graph_rerank`。
+- 报告只使用文档内联的 `settings` 与实际结果，不读取 `config/ranking.json`。
+- qrels 当前为规则辅助草稿，报告中必须保留 provenance；人工复核后应更新 provenance 并重新冻结。
 
 ---
 
@@ -745,7 +786,7 @@ CREATE INDEX by_object  ON edges(object, weight DESC, assertion);
 1. 校验 §4.1–§4.6 的全部字段、类型、顺序与范围。
 2. 用文档内联 `ranker_config` 重算 `config_hash`。
 3. 校验 `score` 与分量加权和（ε ≤ 1e-9）。
-4. 校验 `matched_terms ⊆ query ∪ expansions`。
+4. 校验 `matched_terms ⊆ 有效检索词 ∪ expansions`；`graph_rerank` 的有效检索词是 `parse_intent(query).topic`，`baseline/rrf` 是完整 `query`。
 5. 校验每个 `graph_paths[].assertions` 能在该查询 `conceptnet.edges` 或声明的 `graph_version` 中解析。
 6. 校验 `matched_authors/institutions` 能在 `paper` 中找到。
 7. 用对应 `ranker_version` 的实现重放；旧版本实现不得删除。
@@ -755,6 +796,7 @@ CREATE INDEX by_object  ON edges(object, weight DESC, assertion);
 
 - 重放参数从文档内联 `settings` 读取，禁止用当前 `config/ranking.json` 替代内联 `ranker_config`。
 - 重放同样禁止两个网络入口；`knowledge`、`size_per_term`、`max_expansions` 来自文档。
+- 重放会重新执行 `qu-v1`，因此 `graph_rerank` 的 `conceptnet.query`、请求首项和 `matches[].is_original` 必须与有效检索词一致；`searches[].query` 仍与完整查询一致。
 - 当前 v3 黄金文件使用 `graph_rerank`，回放命令：
 
 ```bash
@@ -842,7 +884,7 @@ sha256sum results/dynamic_queries.json results/dynamic_queries_v3.json
 | 快照缓存键 v2 | 冻结公式 | 已实现并完成迁移 | 迁移 + 回放 |
 | 图谱索引读取 | 冻结 | 已实现 | 校验器测试 |
 | 论文特征 | 冻结字段 | 已实现 | 单测 |
-| 评估/qrels | 冻结字段 | 加载器已实现；标注数据待补充 | 加载器测试 |
+| 评估/qrels | 冻结字段 | 已实现（指标 + `evaluate` + 40 条查询） | 指标单测 + 报告回放；qrels 待人工复核 |
 
 ---
 

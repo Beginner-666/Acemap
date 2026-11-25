@@ -5,7 +5,7 @@
   "ranker": "graph_rerank",
   "ranker_version": "graph-rerank-v1",
   "graph_version": "g-82e3382c2a25fee7",
-  "config_hash": "sha256:33cee4aeef73d2c439e0c50cabe3aae176b1e64053b3e3d3a24f8b87eeca531c",
+  "config_hash": "sha256:7d5617531664bab2ad38c03f2380401e1afba5f9589f5090bac4da94b502a22a",
   "index_bytes": 1963692032,
   "queries": [
     {
@@ -22,9 +22,7 @@
       "enhanced_unique": 40,
       "additional_unique": 30,
       "failed_requests": 0,
-      "diagnostics": [
-        "ConceptNet online unavailable: HTTP Error 502: Bad Gateway"
-      ]
+      "diagnostics": []
     },
     {
       "query": "artificial intelligence",
@@ -55,5 +53,5 @@
       "diagnostics": []
     }
   ],
-  "sha256": "ececf52af63961471cf6fb39540bff400388957ec96962bb8b819d97fde6b8d0"
+  "sha256": "e740614aac9a15add203a9e100c7c40ddbdec91250a06a41e42a4b0d9208a19e"
 }

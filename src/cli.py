@@ -63,6 +63,23 @@ def build_parser():
     multihop.add_argument("--cache-only", action="store_true", help="只读取已有响应，禁止联网")
     multihop.add_argument("--refresh", action="store_true", help="重新请求并覆盖相同请求的缓存")
     multihop.set_defaults(command="multihop")
+
+    evaluate = commands.add_parser(
+        "evaluate", help="用固定查询集与人工 qrels 比较 baseline/rrf/graph_rerank")
+    evaluate.add_argument("--queries", type=Path,
+                          default=constants.ROOT / "config" / "evaluation_queries.json")
+    evaluate.add_argument("--qrels", type=Path,
+                          default=constants.ROOT / "config" / "qrels.json")
+    evaluate.add_argument("--config", type=Path,
+                          default=constants.ROOT / "config" / "evaluation.json")
+    evaluate.add_argument("--results", action="append", metavar="NAME=PATH",
+                          help="可重复；默认 baseline/eval_baseline.json、rrf/eval_rrf.json、graph_rerank/eval_graph_rerank.json")
+    evaluate.add_argument("--qrels-provenance",
+                          default="ai-assisted rubric; human review pending",
+                          help="写入报告的标注来源说明，例如 human 或 ai-assisted")
+    evaluate.add_argument("--output", type=Path,
+                          default=constants.ROOT / "results" / "evaluation_report.json")
+    evaluate.set_defaults(command="evaluate")
     return parser
 
 
@@ -85,6 +102,9 @@ def main(argv=None):
         if args.command == "multihop":
             from .multihop import run_multihop
             return run_multihop(args)
+        if args.command == "evaluate":
+            from .evaluation import run_evaluation
+            return run_evaluation(args)
         return run_search(args)
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
         print(f"操作失败：{exc}", file=sys.stderr)

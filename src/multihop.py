@@ -33,7 +33,7 @@ DEFAULT_CONFIG = {
     "max_institutions": 2,
     "seed_limit": 5,
     "size_per_hop": 10,
-    "min_seed_score": 0.0,
+    "min_seed_score": 0.65,
     "k": 60,
 }
 

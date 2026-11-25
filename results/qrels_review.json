@@ -1,0 +1,6353 @@
+{
+  "queries": [
+    {
+      "id": "q001",
+      "text": "robotics",
+      "topic": "robotics",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 16,
+      "candidates": [
+        {
+          "key": "doi:10.1016/j.tibtech.2013.03.002",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Soft robotics: a bioinspired evolution in robotics",
+          "year": 2013,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1177/0278364913491297",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Vision meets robotics: The KITTI dataset",
+          "year": 2013,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1002/anie.201800907",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Soft Robotics",
+          "year": 2018,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1017/9781316661239",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Modern Robotics",
+          "year": 2017,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1145/504729.504754",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Probabilistic robotics",
+          "year": 2002,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.mtphys.2020.100258",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Hydrogel soft robotics",
+          "year": 2020,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1038/s41928-018-0024-1",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Untethered soft robotics",
+          "year": 2018,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1038/s41578-018-0022-y",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Biomedical applications of soft robotics",
+          "year": 2018,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-319-32552-1",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Springer Handbook of Robotics",
+          "year": 2016,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1007/978-1-84628-642-1",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Robotics",
+          "year": 2008,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q002",
+      "text": "artificial intelligence",
+      "topic": "artificial intelligence",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 28,
+      "candidates": [
+        {
+          "key": "doi:10.1038/s41568-018-0016-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial intelligence in radiology",
+          "year": 2018,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1038/s41551-018-0305-z",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial intelligence in healthcare",
+          "year": 2018,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1177/1094670517752459",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial Intelligence in Service",
+          "year": 2018,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1126/scirobotics.aay7120",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "XAI—Explainable artificial intelligence",
+          "year": 2019,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/access.2020.2988510",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial Intelligence in Education: A Review",
+          "year": 2020,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1631/fitee.1700813",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial intelligence and statistics",
+          "year": 2018,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.7861/futurehosp.6-2-94",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The potential for artificial intelligence in healthcare",
+          "year": 2019,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.metabol.2017.01.011",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial intelligence in medicine",
+          "year": 2017,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1177/0008125619864925",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Brief History of Artificial Intelligence: On the Past, Present, and Future of Artificial Intelligence",
+          "year": 2019,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/0004-3702(96)00007-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Artificial intelligence: A modern approach",
+          "year": 1996,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q003",
+      "text": "machine learning",
+      "topic": "machine learning",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 42,
+      "candidates": [
+        {
+          "key": "doi:10.1038/s42254-021-00314-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Physics-informed machine learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1007/s12525-021-00475-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning and deep learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/3298981",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Federated Machine Learning",
+          "year": 2019,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 3,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1038/nature23474",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Quantum machine learning",
+          "year": 2017,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1056/nejmra1814259",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning in Medicine",
+          "year": 2019,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1126/science.aaa8415",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning: Trends, perspectives, and prospects",
+          "year": 2015,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1007/978-981-15-1967-3",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Machine Learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2019.00224",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Joint Discriminative and Generative Learning for Person Re-Identification",
+          "year": 2019,
+          "ranks": {
+            "rrf": 23,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.7551/mitpress/3206.001.0001",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Gaussian Processes for Machine Learning",
+          "year": 2005,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "id:ZEE4OTdFQjdDQUE",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "UCI Machine Learning Repository",
+          "year": 2007,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.21275/art20203995",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning Algorithms - A Review",
+          "year": 2020,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "q004",
+      "text": "deep learning",
+      "topic": "deep learning",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 37,
+      "candidates": [
+        {
+          "key": "doi:10.1007/s12525-021-00475-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning and deep learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1038/nature14539",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Deep learning",
+          "year": 2015,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2016.90",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Deep Residual Learning for Image Recognition",
+          "year": 2016,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1145/2976749.2978318",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning with Differential Privacy",
+          "year": 2016,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1016/j.engappai.2022.105151",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Ensemble deep learning: A review",
+          "year": 2022,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2017.195",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+          "year": 2017,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.1912.01703",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "year": 2019,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1145/3439950",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning for Anomaly Detection",
+          "year": 2021,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1186/s40537-019-0197-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on Image Data Augmentation for Deep Learning",
+          "year": 2019,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/j.neunet.2014.09.003",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning in neural networks: An overview",
+          "year": 2014,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "q005",
+      "text": "neural networks",
+      "topic": "neural networks",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 20,
+      "candidates": [
+        {
+          "key": "doi:10.1109/cvpr.2018.00813",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Non-local Neural Networks",
+          "year": 2018,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1016/j.neunet.2014.09.003",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning in neural networks: An overview",
+          "year": 2014,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1145/3065386",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "ImageNet classification with deep convolutional neural networks",
+          "year": 2017,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "id:ZDk4REFEN0M3N0c",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+          "year": 2012,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.patcog.2017.10.013",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent advances in convolutional neural networks",
+          "year": 2017,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1609/aaai.v33i01.33013558",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Hypergraph Neural Networks",
+          "year": 2019,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1073/pnas.1611835114",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Overcoming catastrophic forgetting in neural networks",
+          "year": 2017,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/78.650093",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Bidirectional recurrent neural networks",
+          "year": 1997,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2017.634",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Aggregated Residual Transformations for Deep Neural Networks",
+          "year": 2017,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.1905.11946",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks",
+          "year": 2019,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "q006",
+      "text": "computer vision",
+      "topic": "computer vision",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 30,
+      "candidates": [
+        {
+          "key": "doi:10.1109/cvpr.2016.308",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Rethinking the Inception Architecture for Computer Vision",
+          "year": 2016,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-030-34372-9",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Computer Vision",
+          "year": 2022,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1007/s41095-022-0271-y",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Attention mechanisms in computer vision: A survey",
+          "year": 2022,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1038/s41746-020-00376-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning-enabled medical computer vision",
+          "year": 2021,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/iccv.1995.466933",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of IEEE International Conference on Computer Vision",
+          "year": 1995,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr40276.2018",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+          "year": 2018,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1155/2018/7068349",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning for Computer Vision: A Brief Review",
+          "year": 2018,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 9,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.1993",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of IEEE Conference on Computer Vision and Pattern Recognition",
+          "year": 1993,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1017/cbo9780511811685",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Multiple View Geometry in Computer Vision",
+          "year": 2004,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/iccv19984.2013",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2013 IEEE International Conference on Computer Vision",
+          "year": 2013,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q007",
+      "text": "natural language processing",
+      "topic": "natural language processing",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 29,
+      "candidates": [
+        {
+          "key": "doi:10.1145/3458754",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing",
+          "year": 2021,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/2020.emnlp-demos.6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Transformers: State-of-the-Art Natural Language Processing",
+          "year": 2020,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1007/978-81-322-3972-7 19",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Natural Language Processing",
+          "year": 2020,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1136/amiajnl-2011-000464",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural language processing: an introduction",
+          "year": 2011,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1126/science.aaa8685",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Advances in natural language processing",
+          "year": 2015,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/tnnls.2020.3019893",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Attention in Natural Language Processing",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.1910.03771",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "HuggingFace's Transformers: State-of-the-art Natural Language Processing",
+          "year": 2019,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.3115/v1/p14-5010",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The Stanford CoreNLP Natural Language Processing Toolkit",
+          "year": 2014,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "id:ZDhDOThEOUQ5OEc",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural Language Processing with Python",
+          "year": 2009,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1007/s11042-022-13428-4",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural language processing: state of the art, current trends and challenges",
+          "year": 2022,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "q008",
+      "text": "data mining",
+      "topic": "data mining",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 31,
+      "candidates": [
+        {
+          "key": "doi:10.1007/978-3-319-10247-4",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Data Preprocessing in Data Mining",
+          "year": 2014,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.5860/choice.49-3305",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Data mining: concepts and techniques",
+          "year": 2012,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/2743025",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Trajectory Data Mining",
+          "year": 2015,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-319-14142-8",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Data Mining",
+          "year": 2015,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1145/1656274.1656278",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The WEKA data mining software",
+          "year": 2009,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1111/j.1467-985x.2010.00646 6.x",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction",
+          "year": 2010,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1007/s10115-007-0114-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Top 10 algorithms in data mining",
+          "year": 2007,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1145/507338.507355",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Data mining",
+          "year": 2002,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/c2009-0-19715-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Data Mining: Practical Machine Learning Tools and Techniques",
+          "year": 2011,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1016/j.eswa.2020.114060",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning and data mining in manufacturing",
+          "year": 2020,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q009",
+      "text": "information retrieval",
+      "topic": "information retrieval",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 16,
+      "candidates": [
+        {
+          "key": "doi:10.1017/cbo9780511809071",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Introduction to Information Retrieval",
+          "year": 2008,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/293347.293350",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Private information retrieval",
+          "year": 1998,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.5860/choice.46-2715",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Introduction to information retrieval",
+          "year": 2009,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "id:ZDhERDdBRzdBN0U",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Modern Information Retrieval",
+          "year": 1999,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/0306-4573(83)90062-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Introduction to modern information retrieval",
+          "year": 1983,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1561/1500000016",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Learning to Rank for Information Retrieval",
+          "year": 2007,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.2112.09118",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Unsupervised Dense Information Retrieval with Contrastive Learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-031-23080-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Neural Approaches to Conversational Information Retrieval",
+          "year": 2023,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-030-99736-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Advances in Information Retrieval",
+          "year": 2022,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1002/asi.21234",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Introduction to Information Retrieval",
+          "year": 2009,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q010",
+      "text": "speech recognition",
+      "topic": "speech recognition",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 33,
+      "candidates": [
+        {
+          "key": "doi:10.1109/icassp.2013.6638947",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Speech recognition with deep recurrent neural networks",
+          "year": 2013,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.21437/interspeech.2020-3015",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Conformer: Convolution-augmented Transformer for Speech Recognition",
+          "year": 2020,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.2212.04356",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+          "year": 2022,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.21437/interspeech.2019-1873",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "wav2vec: Unsupervised Pre-Training for Speech Recognition",
+          "year": 2019,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.21437/interspeech.2019-2680",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition",
+          "year": 2019,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/taslp.2014.2339736",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Convolutional Neural Networks for Speech Recognition",
+          "year": 2014,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/tpami.2018.2889052",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Audio-Visual Speech Recognition",
+          "year": 2018,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1073/pnas.1915768117",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Racial disparities in automated speech recognition",
+          "year": 2020,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.1804.03209",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition",
+          "year": 2018,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1007/s11042-020-10073-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Automatic speech recognition: a survey",
+          "year": 2020,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 11
+          }
+        },
+        {
+          "key": "doi:10.1109/icict50816.2021.9358735",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "CNN based Optical Character Recognition and Applications",
+          "year": 2021,
+          "ranks": {
+            "rrf": 38,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q011",
+      "text": "autonomous vehicles",
+      "topic": "autonomous vehicles",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 20,
+      "candidates": [
+        {
+          "key": "doi:10.1016/j.trc.2017.01.010",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "User preferences regarding autonomous vehicles",
+          "year": 2017,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2015.7298925",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Object scene flow for autonomous vehicles",
+          "year": 2015,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1073/pnas.1820676116",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Social behavior for autonomous vehicles",
+          "year": 2019,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1146/annurev-control-060117-105157",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Planning and Decision-Making for Autonomous Vehicles",
+          "year": 2018,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1155/2020/8867757",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Safety of Autonomous Vehicles",
+          "year": 2020,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1016/j.trc.2016.06.015",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Preferences for shared autonomous vehicles",
+          "year": 2016,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1126/science.aaf2654",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The social dilemma of autonomous vehicles",
+          "year": 2016,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-319-67361-5 40",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles",
+          "year": 2017,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.3390/electronics11142162",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Review on Autonomous Vehicles: Progress, Methods and Challenges",
+          "year": 2022,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.3390/s21062140",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Sensor and Sensor Fusion Technology in Autonomous Vehicles: A Review",
+          "year": 2021,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q012",
+      "text": "cybersecurity",
+      "topic": "cybersecurity",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 13,
+      "candidates": [
+        {
+          "key": "doi:10.1093/rfs/hhac024",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Cybersecurity Risk",
+          "year": 2022,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1016/j.vehcom.2019.100214",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Cybersecurity challenges in vehicular communications",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1109/jiot.2022.3150363",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent Advances on Federated Learning for Cybersecurity and Cybersecurity for Federated Learning for Internet of Things",
+          "year": 2022,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1016/j.ijinfomgt.2018.10.017",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Investigating the impact of cybersecurity policy awareness on employees’ cybersecurity behavior",
+          "year": 2018,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.22215/timreview/835",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Defining Cybersecurity",
+          "year": 2014,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cose.2024.103845",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Strategic cybersecurity",
+          "year": 2024,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/access.2018.2836950",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning and Deep Learning Methods for Cybersecurity",
+          "year": 2018,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cose.2022.102754",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The role of national cybersecurity strategies on the improvement of cybersecurity education",
+          "year": 2022,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.18254/s207054760029045-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "National Cybersecurity Strategy 2023",
+          "year": 2023,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1016/j.heliyon.2017.e00346",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Human factors in cybersecurity; examining the link between Internet addiction, impulsivity, attitudes towards cybersecurity, and risky cybersecurity behaviours",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q013",
+      "text": "cloud computing",
+      "topic": "cloud computing",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 49,
+      "candidates": [
+        {
+          "key": "doi:10.1007/978-3-030-34957-8 7",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Cloud Computing",
+          "year": 2020,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 5,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.6028/nist.sp.800-145",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The NIST definition of cloud computing",
+          "year": 2011,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/1721654.1721672",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A view of cloud computing",
+          "year": 2010,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.48161/qaj.v1n2a36",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IoT and Cloud Computing Issues, Challenges and Opportunities: A Review",
+          "year": 2021,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.rcim.2011.07.002",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "From cloud computing to cloud manufacturing",
+          "year": 2011,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 3,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/comst.2020.2989392",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain Meets Cloud Computing: A Survey",
+          "year": 2020,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 4,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.26599/bdma.2021.9020016",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Big data with cloud computing: Discussions and challenges",
+          "year": 2022,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1016/j.dss.2010.12.006",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Cloud computing — The business perspective",
+          "year": 2010,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "id:ZDlBQkQ3OEVCRkE",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "To Cloudify or Not to Cloudify",
+          "year": 2014,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/j.autcon.2020.103441",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Cloud computing in construction industry: Use cases, benefits and challenges",
+          "year": 2020,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 11
+          }
+        },
+        {
+          "key": "doi:10.1007/978-1-4614-6856-1 1",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Data Cloudification",
+          "year": 2013,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1016/j.future.2016.11.031",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Secure integration of IoT and Cloud Computing",
+          "year": 2016,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "q014",
+      "text": "internet of things",
+      "topic": "internet of things",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 22,
+      "candidates": [
+        {
+          "key": "doi:10.1016/j.comnet.2010.05.010",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The Internet of Things: A survey",
+          "year": 2010,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1007/s10796-014-9492-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The internet of things: a survey",
+          "year": 2014,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1109/jiot.2014.2306328",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Internet of Things for Smart Cities",
+          "year": 2014,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/jiot.2019.2920987",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain for Internet of Things: A Survey",
+          "year": 2019,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/tii.2014.2300753",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Internet of Things in Industries: A Survey",
+          "year": 2014,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/jiot.6488907",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IEEE Internet of Things Journal",
+          "year": 2023,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.4236/jcc.2015.35021",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Internet of Things (IoT): A Literature Review",
+          "year": 2015,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/tii.2018.2852491",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Industrial Internet of Things: Challenges, Opportunities, and Directions",
+          "year": 2018,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/comst.2021.3075439",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Federated Learning for Internet of Things: A Comprehensive Survey",
+          "year": 2021,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/access.2016.2566339",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchains and Smart Contracts for the Internet of Things",
+          "year": 2016,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q015",
+      "text": "blockchain",
+      "topic": "blockchain",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 37,
+      "candidates": [
+        {
+          "key": "doi:10.1007/s12599-017-0467-3",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Blockchain",
+          "year": 2017,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/tkde.2017.2781227",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Untangling Blockchain: A Data Processing View of Blockchain Systems",
+          "year": 2018,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.3390/fi14110341",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain Technology: Benefits, Challenges, Applications, and Integration of Blockchain Technology with Cloud Computing",
+          "year": 2022,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.6028/nist.ir.8202",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain technology overview",
+          "year": 2018,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1145/3316481",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Security and Privacy on Blockchain",
+          "year": 2019,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1016/j.future.2023.02.008",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain for the metaverse: A Review",
+          "year": 2023,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "id:ZEZHQTlBQkVGRQ",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain: Blueprint for a New Economy",
+          "year": 2015,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "id:ZDlDRUZCRURHREY",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The Truth about Blockchain",
+          "year": 2017,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1109/icicv50876.2021.9388478",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Block-chain Technology for Food supply chains",
+          "year": 2021,
+          "ranks": {
+            "rrf": 33,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1093/rfs/hhz007",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain Disruption and Smart Contracts",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 16
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cosrev.2020.100275",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Integrating blockchain technology into the energy sector — from theory of blockchain to research and application of energy blockchain",
+          "year": 2020,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 17
+          }
+        },
+        {
+          "key": "doi:10.1109/icmtma52658.2021.00083",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Overview of Block Chain Cross Chain Technology",
+          "year": 2021,
+          "ranks": {
+            "rrf": 28,
+            "graph_rerank": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "q016",
+      "text": "quantum computing",
+      "topic": "quantum computing",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 26,
+      "candidates": [
+        {
+          "key": "doi:10.1021/acs.chemrev.8b00803",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Quantum Chemistry in the Age of Quantum Computing",
+          "year": 2019,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.22331/q-2020-09-21-327",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Quantum computing with neutral atoms",
+          "year": 2020,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1063/1.5088164",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Trapped-ion quantum computing: Progress and challenges",
+          "year": 2019,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.3389/fphy.2020.589504",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Qudits and High-Dimensional Quantum Computing",
+          "year": 2020,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1038/s42254-023-00603-1",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Quantum computing for finance",
+          "year": 2023,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cosrev.2018.11.002",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey on quantum computing technology",
+          "year": 2019,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1038/s41586-023-06096-3",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Evidence for the utility of quantum computing before fault tolerance",
+          "year": 2023,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1007/s12525-022-00570-y",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Quantum computing",
+          "year": 2022,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.5281/zenodo.2562111",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Qiskit: An Open-source Framework for Quantum Computing",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.17226/25196",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Quantum Computing",
+          "year": 2018,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q017",
+      "text": "bioinformatics",
+      "topic": "bioinformatics",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 17,
+      "candidates": [
+        {
+          "key": "doi:10.1038/s41587-021-01108-x",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Nanopore sequencing technology, bioinformatics and applications",
+          "year": 2021,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1093/bib/bbw068",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning in bioinformatics",
+          "year": 2016,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1038/s41587-020-0439-x",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The nf-core framework for community-curated bioinformatics pipelines",
+          "year": 2020,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1007/s41666-020-00082-4",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Federated Learning for Healthcare Informatics",
+          "year": 2020,
+          "ranks": {
+            "rrf": 4,
+            "graph_rerank": 30
+          }
+        },
+        {
+          "key": "doi:10.1093/bioinformatics/bts091",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Unipro UGENE: a unified bioinformatics toolkit",
+          "year": 2012,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 5,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-319-28549-8",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Focus on Bio-Image Informatics",
+          "year": 2016,
+          "ranks": {
+            "rrf": 17,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1093/bioinformatics/bts480",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Snakemake—a scalable bioinformatics workflow engine",
+          "year": 2012,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 7,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1002/imt2.36",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Sangerbox: A comprehensive, interaction‐friendly clinical bioinformatics analysis platform",
+          "year": 2022,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 8,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/tii.9424",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "IEEE Transactions on Industrial Informatics",
+          "year": 2023,
+          "ranks": {
+            "rrf": 6,
+            "graph_rerank": 35
+          }
+        },
+        {
+          "key": "doi:10.1038/nprot.2008.211",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Systematic and integrative analysis of large gene lists using DAVID bioinformatics resources",
+          "year": 2008,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 10,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1002/cpbi.108",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Protein Sequence Analysis Using the MPI Bioinformatics Toolkit",
+          "year": 2020,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 11,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1038/s12276-018-0071-8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Single-cell RNA sequencing technologies and bioinformatics pipelines",
+          "year": 2018,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 12,
+            "graph_rerank": 12
+          }
+        },
+        {
+          "key": "doi:10.1109/jbhi.2016.2636665",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Deep Learning for Health Informatics",
+          "year": 2016,
+          "ranks": {
+            "rrf": 9,
+            "graph_rerank": 27
+          }
+        },
+        {
+          "key": "doi:10.1007/s00521-023-09366-3",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "The deep learning applications in IoT-based bio- and medical informatics: a systematic literature review",
+          "year": 2024,
+          "ranks": {
+            "rrf": 19,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1093/bib/bbab108",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Venn diagrams in bioinformatics",
+          "year": 2021,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 13,
+            "graph_rerank": 13
+          }
+        }
+      ]
+    },
+    {
+      "id": "q018",
+      "text": "medical imaging",
+      "topic": "medical imaging",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 24,
+      "candidates": [
+        {
+          "key": "doi:10.1109/tmi.42",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IEEE Transactions on Medical Imaging",
+          "year": 2023,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1148/radiol.2020192224",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Preparing Medical Imaging Data for Machine Learning",
+          "year": 2020,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1016/j.media.2023.102802",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Transformers in medical imaging: A survey",
+          "year": 2023,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1148/rg.2017160130",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning for Medical Imaging",
+          "year": 2017,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.media.2019.101552",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Generative adversarial network in medical imaging: A review",
+          "year": 2019,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1038/nrclinonc.2017.141",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Radiomics: the bridge between medical imaging and personalized medicine",
+          "year": 2017,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.14245/ns.1938396.198",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning in Medical Imaging",
+          "year": 2019,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1186/s13244-020-00887-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Radiomics in medical imaging—“how-to” guide and critical reflection",
+          "year": 2020,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1007/s12194-017-0406-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Overview of deep learning in medical imaging",
+          "year": 2017,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.3348/kjr.2017.18.4.570",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning in Medical Imaging: General Overview",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "q019",
+      "text": "human computer interaction",
+      "topic": "human computer interaction",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 30,
+      "candidates": [
+        {
+          "key": "doi:10.3390/app122211457",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning for Intelligent Human–Computer Interaction",
+          "year": 2022,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "id:ZEE3QjdCRTlFOUc",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the ACM on Human-Computer Interaction",
+          "year": 2018,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "id:ZDlEODhBREdBRUM",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Interaction Design: Beyond Human-Computer Interaction.",
+          "year": 2011,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1109/79.911197",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Emotion recognition in human-computer interaction",
+          "year": 2001,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.trf.2018.07.020",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Interaction between pedestrians and automated vehicles: A Wizard of Oz experiment",
+          "year": 2018,
+          "ranks": {
+            "rrf": 11,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1007/s00521-021-06012-8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning-based facial emotion recognition for human–computer interaction applications",
+          "year": 2021,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1145/2907069",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Research contributions in human-computer interaction",
+          "year": 2016,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1101/2023.01.12.23284468",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Influence of AI-based decision support on shared decision making in hemodialysis: a Wizard of Oz experiment",
+          "year": 2023,
+          "ranks": {
+            "rrf": 23,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1201/9780203736166",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The Psychology of Human-Computer Interaction",
+          "year": 2018,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1080/07370024.2020.1724790",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "User Representations in Human-Computer Interaction",
+          "year": 2020,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 11
+          }
+        },
+        {
+          "key": "doi:10.1016/b978-0-444-70536-5.50047-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Research Methods in Human-Computer Interaction",
+          "year": 1988,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 13
+          }
+        },
+        {
+          "key": "doi:10.1145/1514095.1514115",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts; generic short title cap",
+          "title": "The oz of wizard",
+          "year": 2009,
+          "ranks": {
+            "rrf": 25,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1021/acsami.2c17904",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Ultrastretchable, Self-Healing Conductive Hydrogel-Based Triboelectric Nanogenerators for Human–Computer Interaction",
+          "year": 2023,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "q020",
+      "text": "software engineering",
+      "topic": "software engineering",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 38,
+      "candidates": [
+        {
+          "key": "doi:10.1007/978-3-642-29044-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Experimentation in Software Engineering",
+          "year": 2012,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.14236/ewic/ease2008.8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Systematic Mapping Studies in Software Engineering",
+          "year": 2008,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/icse-seip.2019.00042",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Software Engineering for Machine Learning: A Case Study",
+          "year": 2019,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/0141-1195(83)90118-3",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Software engineering: A practitioner's approach",
+          "year": 1983,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.infsof.2008.09.009",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Systematic literature reviews in software engineering – A systematic literature review",
+          "year": 2008,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1145/2601248.2601268",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Guidelines for snowballing in systematic literature studies and a replication in software engineering",
+          "year": 2014,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1145/3487043",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Software Engineering for AI-Based Systems: A Survey",
+          "year": 2022,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.infsof.2015.03.007",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Guidelines for conducting systematic mapping studies in software engineering: An update",
+          "year": 2015,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 11
+          }
+        },
+        {
+          "key": "doi:10.1145/3510003",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 44th International Conference on Software Engineering",
+          "year": 2022,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1145/3241743",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The ABC of Software Engineering Research",
+          "year": 2018,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1088/1742-6596/1969/1/012046",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "A Systematic Review on Extreme Programming",
+          "year": 2021,
+          "ranks": {
+            "rrf": 17,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q021",
+      "text": "operating systems",
+      "topic": "operating systems",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 22,
+      "candidates": [
+        {
+          "key": "doi:10.7551/mitpress/10869.001.0001",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Urban Operating Systems",
+          "year": 2020,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "id:ZDhHOERFN0dFRTg",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Modern Operating Systems",
+          "year": 1992,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1145/2818302",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 8th Workshop on Programming Languages and Operating Systems",
+          "year": 2015,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1007/s10776-020-00483-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IoT Ecosystem: A Survey on Devices, Gateways, Operating Systems, Middleware and Communication",
+          "year": 2020,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/tcss.2023.3252679",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "ChatGPT for Computational Social Systems: From Conversational Applications to Human-Oriented Operating Systems",
+          "year": 2023,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1145/3132747",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 26th Symposium on Operating Systems Principles",
+          "year": 2017,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "id:ZDlHOEI5N0dBOUc",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 10th USENIX conference on Operating Systems Design and Implementation",
+          "year": 2012,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "id:ZDlHODlHOEY3REY",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 12th USENIX conference on Operating Systems Design and Implementation",
+          "year": 2016,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/sp.2015.45",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Controlled-Channel Attacks: Deterministic Side Channels for Untrusted Operating Systems",
+          "year": 2015,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.2310.08560",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "MemGPT: Towards LLMs as Operating Systems",
+          "year": 2023,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q022",
+      "text": "programming languages",
+      "topic": "programming languages",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 32,
+      "candidates": [
+        {
+          "key": "doi:10.1038/s42254-020-00245-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Quantum programming languages",
+          "year": 2020,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.2006.03511",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Unsupervised Translation of Programming Languages",
+          "year": 2020,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.scico.2021.102609",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Ranking programming languages by energy efficiency",
+          "year": 2021,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/2818302",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 8th Workshop on Programming Languages and Operating Systems",
+          "year": 2015,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "id:ZDhDQ0VDRDhCOTk",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Types and Programming Languages",
+          "year": 2002,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/2020.findings-emnlp.139",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "CodeBERT: A Pre-Trained Model for Programming and Natural Languages",
+          "year": 2020,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/mc.1983.1654471",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Direct Manipulation: A Step Beyond Programming Languages",
+          "year": 1983,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1145/3533767.3534219",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "CIRCLE: continual repair across programming languages",
+          "year": 2022,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1561/2500000031",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Behavioral Types in Programming Languages",
+          "year": 2016,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1017/cbo9781316576892",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Practical Foundations for Programming Languages",
+          "year": 2016,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q023",
+      "text": "computer graphics",
+      "topic": "computer graphics",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 54,
+      "candidates": [
+        {
+          "key": "doi:10.1111/(issn)1467-8659",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Computer Graphics Forum",
+          "year": 2021,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1145/357290.357293",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Reflectance Model for Computer Graphics",
+          "year": 1982,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1111/1467-8659.00652",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "COMPUTER GRAPHICS forum",
+          "year": 2003,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/tvcg.2945",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IEEE Transactions on Visualization and Computer Graphics",
+          "year": 2023,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.3233/jifs-189003",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The application of computer graphics processing in visual communication design",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-031-23161-2",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Encyclopedia of Computer Graphics and Games",
+          "year": 2024,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1201/9781315266008",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Fluid Simulation for Computer Graphics",
+          "year": 2015,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.5860/choice.51-2713",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Computer graphics: principles and practice",
+          "year": 2013,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1201/9781315372198",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Fundamentals of Computer Graphics",
+          "year": 2018,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1111/cgf.13310",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Inverse Kinematics Techniques in Computer Graphics: A Survey",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q024",
+      "text": "virtual reality",
+      "topic": "virtual reality",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 33,
+      "candidates": [
+        {
+          "key": "doi:10.1007/s12599-020-00658-9",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Virtual Reality",
+          "year": 2020,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1038/s41377-021-00658-8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Augmented reality and virtual reality displays: emerging technologies and future perspectives",
+          "year": 2021,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 2,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1016/j.apergo.2017.12.016",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Virtual reality sickness questionnaire (VRSQ): Motion sickness measurement index in a virtual reality environment",
+          "year": 2018,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 4,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1037/edu0000241",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Learning science in immersive virtual reality.",
+          "year": 2018,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 8,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1162/105474603322955950",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Virtual Reality Technology",
+          "year": 2003,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.3991/ijet.v14i03.9289",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Augmented Reality and Virtual Reality in Education. Myth or Reality?",
+          "year": 2019,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.3389/frobt.2016.00074",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Enhancing Our Lives with Immersive Virtual Reality",
+          "year": 2016,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 6,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1016/j.ssaho.2023.100532",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Analyzing augmented reality (AR) and virtual reality (VR) recent development in education",
+          "year": 2023,
+          "ranks": {
+            "rrf": 7,
+            "graph_rerank": 14
+          }
+        },
+        {
+          "key": "doi:10.1111/j.1460-2466.1992.tb00812.x",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Defining Virtual Reality: Dimensions Determining Telepresence",
+          "year": 1992,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.3390/encyclopedia2010031",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts; generic short title cap",
+          "title": "Metaverse",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1162/pres a 00124",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The Sense of Embodiment in Virtual Reality",
+          "year": 2012,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1002/14651858.cd008349.pub4",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Virtual reality for stroke rehabilitation",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 11,
+            "graph_rerank": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "q025",
+      "text": "augmented reality",
+      "topic": "augmented reality",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 36,
+      "candidates": [
+        {
+          "key": "doi:10.1162/pres.1997.6.4.355",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey of Augmented Reality",
+          "year": 1997,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1038/s41377-021-00658-8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Augmented reality and virtual reality displays: emerging technologies and future perspectives",
+          "year": 2021,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.3390/computers11020028",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "An Overview of Augmented Reality",
+          "year": 2022,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.3991/ijet.v14i03.9289",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Augmented Reality and Virtual Reality in Education. Myth or Reality?",
+          "year": 2019,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1088/1742-6596/1237/2/022082",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "An overview of augmented reality technology",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/38.963459",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent advances in augmented reality",
+          "year": 2001,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1561/1100000049",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey of Augmented Reality",
+          "year": 2015,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1109/tvcg.2016.2543720",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Towards Pervasive Augmented Reality: Context-Awareness in Augmented Reality",
+          "year": 2016,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.xcrm.2021.100348",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Virtual and augmented reality for biomedical applications",
+          "year": 2021,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1007/978-1-4614-0064-6 1",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Augmented Reality: An Overview",
+          "year": 2011,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "q026",
+      "text": "pattern recognition",
+      "topic": "pattern recognition",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 17,
+      "candidates": [
+        {
+          "key": "doi:10.1016/j.cell.2010.01.022",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Pattern Recognition Receptors and Inflammation",
+          "year": 2010,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1038/s41392-021-00687-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Pattern recognition receptors in health and diseases",
+          "year": 2021,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1007/978-0-387-45528-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Pattern Recognition and Machine Learning",
+          "year": 2006,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr40276.2018",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+          "year": 2018,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1093/oso/9780198538493.001.0001",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Neural Networks for Pattern Recognition",
+          "year": 1995,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1108/03684920710743466",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Pattern Recognition and Machine Learning",
+          "year": 2007,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.1993",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of IEEE Conference on Computer Vision and Pattern Recognition",
+          "year": 1993,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.1993.341010",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of IEEE Conference on Computer Vision and Pattern Recognition",
+          "year": 1993,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr14067.2009",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2009 IEEE Conference on Computer Vision and Pattern Recognition",
+          "year": 2009,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1198/tech.2007.s518",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Pattern Recognition and Machine Learning",
+          "year": 2007,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "q027",
+      "text": "data science",
+      "topic": "data science",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 57,
+      "candidates": [
+        {
+          "key": "doi:10.1038/s41587-019-0209-9",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2",
+          "year": 2019,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.7551/mitpress/11140.001.0001",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Data Science",
+          "year": 2018,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1201/9780429459016",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Spatial Data Science",
+          "year": 2023,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1017/9781009089517",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Data-Driven Science and Engineering",
+          "year": 2022,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1561/2200000073",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Computational Optimal Transport: With Applications to Data Science",
+          "year": 2019,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1145/3076253",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Data Science",
+          "year": 2017,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1186/s13059-020-1926-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Eleven grand challenges in single-cell data science",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1186/s40537-020-00318-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Cybersecurity data science: an overview from machine learning perspective",
+          "year": 2020,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1017/9781108380690",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Data-Driven Science and Engineering",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1080/10618600.2017.1384734",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "50 Years of Data Science",
+          "year": 2017,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "q028",
+      "text": "big data",
+      "topic": "big data",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 49,
+      "candidates": [
+        {
+          "key": "doi:10.1109/bigdata55660.2022",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 IEEE International Conference on Big Data (Big Data)",
+          "year": 2022,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/bigdata50022.2020",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2020 IEEE International Conference on Big Data (Big Data)",
+          "year": 2020,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1109/bigdata44402.2018",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2018 IEEE International Conference on Big Data (Big Data)",
+          "year": 2018,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1186/s40537-020-00369-8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "CatBoost for big data: an interdisciplinary review",
+          "year": 2020,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1080/1369118x.2012.678878",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "CRITICAL QUESTIONS FOR BIG DATA",
+          "year": 2012,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.2307/41703503",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Business Intelligence and Analytics: From Big Data to Big Impact",
+          "year": 2012,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/bigdata47090.2019",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2019 IEEE International Conference on Big Data (Big Data)",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1186/s40537-019-0217-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Big data in healthcare: management, analysis and future prospects",
+          "year": 2019,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/bigdata38862.2016",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2016 IEEE International Conference on Big Data (Big Data)",
+          "year": 2016,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1016/j.agsy.2017.01.023",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Big Data in Smart Farming – A review",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 13
+          }
+        },
+        {
+          "key": "doi:10.3390/bdcc6040132",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "An Overview of Data Warehouse and Data Lake in Modern Enterprise Data Management",
+          "year": 2022,
+          "ranks": {
+            "rrf": 16,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q029",
+      "text": "information security",
+      "topic": "information security",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 45,
+      "candidates": [
+        {
+          "key": "doi:10.1016/j.cose.2013.04.004",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "From information security to cyber security",
+          "year": 2013,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.2307/25750690",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Information Security Policy Compliance: An Empirical Study of Rationality-Based Beliefs and Information Security Awareness",
+          "year": 2010,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.3403/030468519",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Information security, cybersecurity and privacy protection. Information security management systems. Requirements",
+          "year": 2023,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.ipm.2021.102744",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IS professionals’ information security behaviors in Chinese IT organizations for information security protection",
+          "year": 2021,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "id:ZDhFQjlGOEFFOUU",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Principles of Information Security",
+          "year": 2002,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.25300/misq/2018/13853",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Toward a Unified Model of Information Security Policy Compliance",
+          "year": 2018,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.chb.2016.11.065",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Individual differences and Information Security Awareness",
+          "year": 2016,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.3403/30390395",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Information security, cybersecurity and privacy protection. Information security controls",
+          "year": 2022,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.3390/encyclopedia1030050",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Information Security Risk Assessment",
+          "year": 2021,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/iconat57137.2023.10080332",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Technologies for Comprehensive Information Security in the IoT",
+          "year": 2023,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q030",
+      "text": "computer architecture",
+      "topic": "computer architecture",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "research"
+      },
+      "positive": 43,
+      "candidates": [
+        {
+          "key": "doi:10.1109/cvpr.2016.308",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Rethinking the Inception Architecture for Computer Vision",
+          "year": 2016,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1145/3282307",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A new golden age for computer architecture",
+          "year": 2019,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2,
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.3390/electronics10202470",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "CNN Variants for Computer Vision: History, Architecture, Application, Challenges and Future Scope",
+          "year": 2021,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/0026-2692(93)90111-q",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Computer architecture: a quantitative approach",
+          "year": 1993,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1145/3494523",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey of Machine Learning for Computer Architecture and Systems",
+          "year": 2022,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1103/physreva.89.022317",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Large-scale modular quantum-computer architecture with atomic memory and photonic interconnects",
+          "year": 2014,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9,
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/isca52012.2021",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture (ISCA)",
+          "year": 2021,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "id:ZDhDQ0NHOENFQkE",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Computer Architecture: A Quantitative Approach",
+          "year": 1989,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6,
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1145/3307650",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 46th International Symposium on Computer Architecture",
+          "year": 2019,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7,
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/hpca51647.2021",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA)",
+          "year": 2021,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10,
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q031",
+      "text": "recent research on robotics",
+      "topic": "robotics",
+      "qualifiers": {
+        "time_filter": "recent",
+        "task": "research"
+      },
+      "positive": 23,
+      "candidates": [
+        {
+          "key": "doi:10.1016/j.tibtech.2013.03.002",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Soft robotics: a bioinspired evolution in robotics",
+          "year": 2013,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1080/01691864.2017.1365009",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning in robotics: a review of recent research",
+          "year": 2017,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1002/anie.201800907",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Soft Robotics",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1080/01691864.2021.1978861",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent research and development activities on space robotics and AI",
+          "year": 2021,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.copsyc.2020.01.003",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A review of recent research in social robotics",
+          "year": 2020,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1016/j.mtphys.2020.100258",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Hydrogel soft robotics",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1177/0278364913491297",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Vision meets robotics: The KITTI dataset",
+          "year": 2013,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.3390/robotics11040075",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey on Recent Advances in Social Robotics",
+          "year": 2022,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1017/9781316661239",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Modern Robotics",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.2174/0929867327666200713184138",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Recent Research on Flavonoids and their Biomedical Applications",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.jma.2017.09.001",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Recent research and developments on wrought magnesium alloys",
+          "year": 2017,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1038/s41928-018-0024-1",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Untethered soft robotics",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.annals.2020.102883",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A review of research into automation in tourism: Launching the Annals of Tourism Research Curated Collection on Artificial Intelligence and Robotics in Tourism",
+          "year": 2020,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1038/s41578-018-0022-y",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Biomedical applications of soft robotics",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-319-32552-1",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Springer Handbook of Robotics",
+          "year": 2016,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/tase.2014.2376492",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey of Research on Cloud Robotics and Automation",
+          "year": 2015,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/j.rser.2014.11.023",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "A review on hybrid nanofluids: Recent research, development and applications",
+          "year": 2014,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1145/504729.504754",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Probabilistic robotics",
+          "year": 2002,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1007/978-1-84628-642-1",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Robotics",
+          "year": 2008,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1109/tro.2024.3463504",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A New Wave in Robotics: Survey on Recent mmWave Radar Applications in Robotics",
+          "year": 2024,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q032",
+      "text": "recent papers on machine learning",
+      "topic": "machine learning",
+      "qualifiers": {
+        "time_filter": "recent",
+        "task": "papers"
+      },
+      "positive": 45,
+      "candidates": [
+        {
+          "key": "doi:10.1038/s41524-017-0056-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning in materials informatics: recent applications and prospects",
+          "year": 2017,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1038/s42254-021-00314-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Physics-informed machine learning",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1007/s12525-021-00475-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning and deep learning",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1038/s41524-019-0221-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent advances and applications of machine learning in solid-state materials science",
+          "year": 2019,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1145/3298981",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Federated Machine Learning",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/3457607",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey on Bias and Fairness in Machine Learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1007/978-981-15-1967-3",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Machine Learning",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1021/acscatal.9b04186",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning for Catalysis Informatics: Recent Applications and Prospects",
+          "year": 2019,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1056/nejmra1814259",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning in Medicine",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "id:ZDlHOEFEREZGQUE",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 25th international conference on Machine learning",
+          "year": 2008,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1038/nature23474",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Quantum machine learning",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1145/1273496",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 24th international conference on Machine learning",
+          "year": 2007,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.neucom.2020.07.061",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "On hyperparameter optimization of machine learning algorithms: Theory and practice",
+          "year": 2020,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2019.00224",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Joint Discriminative and Generative Learning for Person Re-Identification",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1007/s11069-022-05423-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning and landslide studies: recent advances and applications",
+          "year": 2022,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.21275/art20203995",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning Algorithms - A Review",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1126/science.aaa8415",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning: Trends, perspectives, and prospects",
+          "year": 2015,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.38094/jastt20165",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Classification Based on Decision Tree Algorithm for Machine Learning",
+          "year": 2021,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1371/journal.pone.0169748",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "SoilGrids250m: Global gridded soil information based on machine learning",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.3390/brainsci13010134",
+          "grade": 1,
+          "reason": "partial topic-token overlap",
+          "title": "Modulating Brain Activity with Invasive Brain–Computer Interface: A Narrative Review",
+          "year": 2023,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q033",
+      "text": "2020-2024 research on computer vision",
+      "topic": "computer vision",
+      "qualifiers": {
+        "time_filter": "2020-2024",
+        "task": "research"
+      },
+      "positive": 17,
+      "candidates": [
+        {
+          "key": "doi:10.1007/s41095-022-0271-y",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Attention mechanisms in computer vision: A survey",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr42600.2020",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+          "year": 2020,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1038/s41746-020-00376-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning-enabled medical computer vision",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr52733.2024",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+          "year": 2024,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-030-34372-9",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Computer Vision",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/wacv45572.2020",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2020 IEEE Winter Conference on Applications of Computer Vision (WACV)",
+          "year": 2020,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2016.308",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Rethinking the Inception Architecture for Computer Vision",
+          "year": 2016,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/wacv57701.2024",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2024 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
+          "year": 2024,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr40276.2018",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/cvprw50498.2020",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cosrev.2023.100553",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on GANs for computer vision: Recent research, analysis and taxonomy",
+          "year": 2023,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1155/2018/7068349",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Deep Learning for Computer Vision: A Brief Review",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.1993",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Proceedings of IEEE Conference on Computer Vision and Pattern Recognition",
+          "year": 1993,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/cvprw63382.2024",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)",
+          "year": 2024,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1017/cbo9780511811685",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Multiple View Geometry in Computer Vision",
+          "year": 2004,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/cvidl51233.2020.00030",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Research on Image Processing Technology of Computer Vision Algorithm",
+          "year": 2020,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/iccv19984.2013",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "2013 IEEE International Conference on Computer Vision",
+          "year": 2013,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/iscv49265.2020",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2020 International Conference on Intelligent Systems and Computer Vision (ISCV)",
+          "year": 2020,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/cvidl51233.2020",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2020 International Conference on Computer Vision, Image and Deep Learning (CVIDL)",
+          "year": 2020,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.1109/iccv.1995.466933",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Proceedings of IEEE International Conference on Computer Vision",
+          "year": 1995,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q034",
+      "text": "latest review on natural language processing",
+      "topic": "natural language processing",
+      "qualifiers": {
+        "time_filter": "recent",
+        "task": "review"
+      },
+      "positive": 39,
+      "candidates": [
+        {
+          "key": "doi:10.1109/mci.2018.2840738",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent Trends in Deep Learning Based Natural Language Processing [Review Article]",
+          "year": 2018,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1145/3458754",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1136/amiajnl-2011-000464",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural language processing: an introduction",
+          "year": 2011,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/2021.emnlp-main",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing",
+          "year": 2021,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.tacc.2021.02.007",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural language processing in medicine: A review",
+          "year": 2021,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1126/science.aaa8685",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Advances in natural language processing",
+          "year": 2015,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/tnnls.2020.3019893",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Attention in Natural Language Processing",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/d19-1",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap; non-survey cap for review intent",
+          "title": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+          "year": 2019,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1007/978-81-322-3972-7 19",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap; non-survey cap for review intent",
+          "title": "Natural Language Processing",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1080/23270012.2020.1756939",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural language processing (NLP) in management research: A literature review",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1007/s11042-022-13428-4",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Natural language processing: state of the art, current trends and challenges",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.2196/15708",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning and Natural Language Processing in Mental Health: Systematic Review",
+          "year": 2020,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1038/s41746-022-00589-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Natural language processing applied to mental illness detection: a narrative review",
+          "year": 2022,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/2020.emnlp-demos.6",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Transformers: State-of-the-Art Natural Language Processing",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/d18-1",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap; non-survey cap for review intent",
+          "title": "Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing",
+          "year": 2018,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.1910.03771",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "HuggingFace's Transformers: State-of-the-art Natural Language Processing",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/2022.emnlp-main",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing",
+          "year": 2022,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "id:ZDhDOThEOUQ5OEc",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Natural Language Processing with Python",
+          "year": 2009,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/p19-1159",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Mitigating Gender Bias in Natural Language Processing: Literature Review",
+          "year": 2019,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.3115/v1/p14-5010",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "The Stanford CoreNLP Natural Language Processing Toolkit",
+          "year": 2014,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q035",
+      "text": "since 2022 papers on cybersecurity",
+      "topic": "cybersecurity",
+      "qualifiers": {
+        "time_filter": "since 2022",
+        "task": "papers"
+      },
+      "positive": 11,
+      "candidates": [
+        {
+          "key": "doi:10.1093/rfs/hhac024",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Cybersecurity Risk",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/icaic53980.2022",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 1st International Conference on AI in Cybersecurity (ICAIC)",
+          "year": 2022,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/jiot.2022.3150363",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent Advances on Federated Learning for Cybersecurity and Cybersecurity for Federated Learning for Internet of Things",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1145/3573074.3573095",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Report on the 3rd International Workshop on Engineering and Cybersecurity of Critical Systems (EnCyCriS - 2022)",
+          "year": 2023,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cose.2024.103845",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Strategic cybersecurity",
+          "year": 2024,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1186/s10195-023-00709-3",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Scientometric analysis of highly cited papers on avascular necrosis of the femoral head from 1991 to 2022",
+          "year": 2023,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cose.2022.102754",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The role of national cybersecurity strategies on the improvement of cybersecurity education",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.scitotenv.2023.168597",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Bibliometric analysis of papers on antibiotic resistance genes in aquatic environments on a global scale from 2012 to 2022: Evidence from universality, development and harmfulness",
+          "year": 2023,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.vehcom.2019.100214",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Cybersecurity challenges in vehicular communications",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.2807/1560-7917.es.2024.29.7.2400059",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Gonorrhoea on the rise in Denmark since 2022: distinct clones drive increase in heterosexual individuals",
+          "year": 2024,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1002/cre2.832",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Bibliometric analysis and visualization of top papers in dentistry from 2012 to 2022 based on essential science indicators",
+          "year": 2024,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.ijinfomgt.2018.10.017",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Investigating the impact of cybersecurity policy awareness on employees’ cybersecurity behavior",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.18254/s207054760029045-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "National Cybersecurity Strategy 2023",
+          "year": 2023,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.3389/fcell.2022.1070516",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Bibliometric analysis of scientific papers on extracellular vesicles in kidney disease published between 1999 and 2022",
+          "year": 2023,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1089/space.2024.0015",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Survey of Space Professionals’ Perception of Satellite Cybersecurity from 2012 to 2022: Decision-Makers’ Thoughts on Satellite Cybersecurity Evolving",
+          "year": 2024,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/access.2018.2836950",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Machine Learning and Deep Learning Methods for Cybersecurity",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1109/ccci55352.2022",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 International Conference on Communications, Computing, Cybersecurity, and Informatics (CCCI)",
+          "year": 2022,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.22215/timreview/835",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Defining Cybersecurity",
+          "year": 2014,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1016/j.heliyon.2017.e00346",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Human factors in cybersecurity; examining the link between Internet addiction, impulsivity, attitudes towards cybersecurity, and risky cybersecurity behaviours",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.21552/edpl/2022/1/15",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "European Union ∙ Commission Delegated Regulation (EU) 2022/30 Supplementing Directive 2014/53/EU on Radio Equipment: Strengthening Cybersecurity, Privacy and Personal Data Protection of Wireless Devices",
+          "year": 2022,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q036",
+      "text": "recent research on medical imaging",
+      "topic": "medical imaging",
+      "qualifiers": {
+        "time_filter": "recent",
+        "task": "research"
+      },
+      "positive": 30,
+      "candidates": [
+        {
+          "key": "doi:10.1109/tmi.42",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "IEEE Transactions on Medical Imaging",
+          "year": 2023,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1148/radiol.2020192224",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Preparing Medical Imaging Data for Machine Learning",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1259/bjro.20190031",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The role of artificial intelligence in medical imaging research",
+          "year": 2019,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.media.2023.102802",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Transformers in medical imaging: A survey",
+          "year": 2023,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.18653/v1/p18-1240",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "On the Automatic Generation of Medical Imaging Reports",
+          "year": 2018,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/trpms.2018.2890359",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning-Based Image Segmentation on Multimodal Medical Imaging",
+          "year": 2019,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1148/rg.2017160130",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine Learning for Medical Imaging",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.media.2019.101552",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Generative adversarial network in medical imaging: A review",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.2174/0929867327666200713184138",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Recent Research on Flavonoids and their Biomedical Applications",
+          "year": 2020,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.14245/ns.1938396.198",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning in Medical Imaging",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.3348/kjr.2018.0479",
+          "grade": 2,
+          "reason": "all topic tokens in abstract/keywords/concepts",
+          "title": "Recent Issues on Body Composition Imaging for Sarcopenia Evaluation",
+          "year": 2019,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1016/j.jma.2017.09.001",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Recent research and developments on wrought magnesium alloys",
+          "year": 2017,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1038/nrclinonc.2017.141",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Radiomics: the bridge between medical imaging and personalized medicine",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1016/j.rser.2014.11.023",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "A review on hybrid nanofluids: Recent research, development and applications",
+          "year": 2014,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1186/s13244-020-00887-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Radiomics in medical imaging—“how-to” guide and critical reflection",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1038/s42256-021-00337-8",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "End-to-end privacy preserving deep learning on multi-institutional medical imaging",
+          "year": 2021,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1148/radiol.2021203692",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Deep Learning–based Angiogram Generation Model for Cerebral Angiography without Misregistration Artifacts",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1016/j.zemedi.2018.11.002",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "An overview of deep learning in medical imaging focusing on MRI",
+          "year": 2018,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.3348/kjr.2017.18.4.570",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning in Medical Imaging: General Overview",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q037",
+      "text": "survey on data mining",
+      "topic": "data mining",
+      "qualifiers": {
+        "time_filter": null,
+        "task": "survey"
+      },
+      "positive": 41,
+      "candidates": [
+        {
+          "key": "doi:10.1007/978-3-319-10247-4",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Data Preprocessing in Data Mining",
+          "year": 2014,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.14257/ijbsbt.2013.5.5.25",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on Data Mining approaches for Healthcare",
+          "year": 2013,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1145/2743025",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Trajectory Data Mining",
+          "year": 2015,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1145/3073559",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey on Malware Detection Using Data Mining Techniques",
+          "year": 2017,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.15623/ijret.2014.0308029",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A COMPREHENSIVE SURVEY ON DATA MINING",
+          "year": 2014,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.5860/choice.49-3305",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Data mining: concepts and techniques",
+          "year": 2012,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1007/978-3-319-14142-8",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap; non-survey cap for review intent",
+          "title": "Data Mining",
+          "year": 2015,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.procs.2015.08.220",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Survey on Anomaly Detection using Data Mining Techniques",
+          "year": 2015,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1145/1656274.1656278",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "The WEKA data mining software",
+          "year": 2009,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.14419/ijet.v7i2.7.10933",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Literature Survey on Data Mining Approach to Effectively Handle Cancer Treatment",
+          "year": 2018,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1007/s40200-021-00884-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on data mining techniques used in medicine",
+          "year": 2021,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1111/j.1467-985x.2010.00646 6.x",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction",
+          "year": 2010,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1002/eng2.12482",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on educational data mining methods used for predicting students' performance",
+          "year": 2021,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1007/s10115-007-0114-2",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Top 10 algorithms in data mining",
+          "year": 2007,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1002/widm.1443",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on federated learning in data mining",
+          "year": 2021,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1145/507338.507355",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap; non-survey cap for review intent",
+          "title": "Data mining",
+          "year": 2002,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/c2009-0-19715-5",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Data Mining: Practical Machine Learning Tools and Techniques",
+          "year": 2011,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/cspc.2017.8305851",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on data mining classification algorithms",
+          "year": 2017,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1007/s00500-017-2918-7",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on data mining techniques in recommender systems",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.1016/j.eswa.2020.114060",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Machine learning and data mining in manufacturing",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q038",
+      "text": "recent research on deep learning",
+      "topic": "deep learning",
+      "qualifiers": {
+        "time_filter": "recent",
+        "task": "research"
+      },
+      "positive": 41,
+      "candidates": [
+        {
+          "key": "doi:10.1007/s12525-021-00475-2",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Machine learning and deep learning",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1007/s42979-021-00815-1",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning: A Comprehensive Overview on Techniques, Taxonomy, Applications and Research Directions",
+          "year": 2021,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1016/j.engappai.2022.105151",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Ensemble deep learning: A review",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1109/msp.2017.2738401",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Deep Multimodal Learning: A Survey on Recent Advances and Trends",
+          "year": 2017,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.neucom.2020.01.085",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent advances in deep learning for object detection",
+          "year": 2020,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/3439950",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning for Anomaly Detection",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2016.90",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Deep Residual Learning for Image Recognition",
+          "year": 2016,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1186/s40537-019-0197-0",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on Image Data Augmentation for Deep Learning",
+          "year": 2019,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4,
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/mci.2018.2840738",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent Trends in Deep Learning Based Natural Language Processing [Review Article]",
+          "year": 2018,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.48550/arxiv.1912.01703",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1038/s41524-022-00734-6",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent advances and applications of deep learning methods in materials science",
+          "year": 2022,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1145/2976749.2978318",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep Learning with Differential Privacy",
+          "year": 2016,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1007/s13042-020-01096-5",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Recent advances in deep learning",
+          "year": 2020,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/cvpr.2017.195",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Xception: Deep Learning with Depthwise Separable Convolutions",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.3390/technologies11020040",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "A Review of Deep Transfer Learning and Recent Advancements",
+          "year": 2023,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/j.neunet.2014.09.003",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning in neural networks: An overview",
+          "year": 2014,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1080/01691864.2017.1365009",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Deep learning in robotics: a review of recent research",
+          "year": 2017,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1016/j.media.2017.07.005",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A survey on deep learning in medical image analysis",
+          "year": 2017,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.1038/nature14539",
+          "grade": 2,
+          "reason": "topic phrase in title; generic short title cap",
+          "title": "Deep learning",
+          "year": 2015,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q039",
+      "text": "2018-2022 papers on blockchain",
+      "topic": "blockchain",
+      "qualifiers": {
+        "time_filter": "2018-2022",
+        "task": "papers"
+      },
+      "positive": 24,
+      "candidates": [
+        {
+          "key": "doi:10.1109/icbc54727.2022",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 IEEE International Conference on Blockchain and Cryptocurrency (ICBC)",
+          "year": 2022,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1
+          }
+        },
+        {
+          "key": "doi:10.1109/tkde.2017.2781227",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Untangling Blockchain: A Data Processing View of Blockchain Systems",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "doi:10.1016/j.athoracsur.2022.11.023",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "The Society of Thoracic Surgeons Intermacs 2022 Annual Report: Focus on the 2018 Heart Transplant Allocation System",
+          "year": 2022,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "doi:10.3390/fi14110341",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain Technology: Benefits, Challenges, Applications, and Integration of Blockchain Technology with Cloud Computing",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1016/j.ejmech.2023.115476",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Highlights on U.S. FDA-approved fluorinated drugs over the past five years (2018–2022)",
+          "year": 2023,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.1145/3316481",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Security and Privacy on Blockchain",
+          "year": 2019,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1109/blockchain55522.2022",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 IEEE International Conference on Blockchain (Blockchain)",
+          "year": 2022,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "id:ZEZHQTlBQkVGRQ",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Blockchain: Blueprint for a New Economy",
+          "year": 2015,
+          "ranks": {
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.1016/j.cie.2018.10.008",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "An overview on recent profile monitoring papers (2008–2018) based on conceptual classification scheme",
+          "year": 2018,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/icicv50876.2021.9388478",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Block-chain Technology for Food supply chains",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.1109/icibt52874.2022",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 International Conference on IoT and Blockchain Technology (ICIBT)",
+          "year": 2022,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.6028/nist.ir.8202",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Blockchain technology overview",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1007/s12599-017-0467-3",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Blockchain",
+          "year": 2017,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/blockchain55522.2022.00001",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2022 IEEE International Conference on Blockchain Blockchain 2022",
+          "year": 2022,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1109/icmtma52658.2021.00083",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Overview of Block Chain Cross Chain Technology",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "id:ZDlHRzhBRDk4Qzg",
+          "grade": 0,
+          "reason": "no topic-token overlap",
+          "title": "Brookings Papers on Economic Activity: Fall 2018",
+          "year": 2019,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1016/j.future.2023.02.008",
+          "grade": 0,
+          "reason": "outside explicit time filter",
+          "title": "Blockchain for the metaverse: A Review",
+          "year": 2023,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/cvcbt44203.2018",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "2018 Crypto Valley Conference on Blockchain Technology (CVCBT)",
+          "year": 2018,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1145/3211933.3211939",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts",
+          "title": "Block-Supply Chain",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        },
+        {
+          "key": "doi:10.1145/3532640",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "The 2022 4th International Conference on Blockchain Technology",
+          "year": 2022,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q040",
+      "text": "recent review on human computer interaction",
+      "topic": "human computer interaction",
+      "qualifiers": {
+        "time_filter": "recent",
+        "task": "review"
+      },
+      "positive": 39,
+      "candidates": [
+        {
+          "key": "doi:10.3390/app122211457",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Deep Learning for Intelligent Human–Computer Interaction",
+          "year": 2022,
+          "ranks": {
+            "graph_rerank": 1
+          }
+        },
+        {
+          "key": "id:ZEE3QjdCRTlFOUc",
+          "grade": 1,
+          "reason": "topic phrase in title; venue/proceedings cap",
+          "title": "Proceedings of the ACM on Human-Computer Interaction",
+          "year": 2018,
+          "ranks": {
+            "baseline": 1,
+            "rrf": 1,
+            "graph_rerank": 4
+          }
+        },
+        {
+          "key": "doi:10.23956/ijarcsse.v8i4.630",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Review Paper on Human Computer Interaction",
+          "year": 2018,
+          "ranks": {
+            "baseline": 2,
+            "rrf": 2
+          }
+        },
+        {
+          "key": "id:ZDlEODhBREdBRUM",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Interaction Design: Beyond Human-Computer Interaction.",
+          "year": 2011,
+          "ranks": {
+            "graph_rerank": 2
+          }
+        },
+        {
+          "key": "doi:10.1101/2023.01.12.23284468",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts; non-survey cap for review intent",
+          "title": "Influence of AI-based decision support on shared decision making in hemodialysis: a Wizard of Oz experiment",
+          "year": 2023,
+          "ranks": {
+            "graph_rerank": 3
+          }
+        },
+        {
+          "key": "doi:10.1142/s0219622019300052",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Review on Human-Computer Interaction and Intelligent Robots",
+          "year": 2019,
+          "ranks": {
+            "baseline": 3,
+            "rrf": 3
+          }
+        },
+        {
+          "key": "doi:10.17705/1jais.00724",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "On the Design of and Interaction with Conversational Agents: An Organizing and Assessing Review of Human-Computer Interaction Research",
+          "year": 2022,
+          "ranks": {
+            "baseline": 4,
+            "rrf": 4
+          }
+        },
+        {
+          "key": "doi:10.1007/s00521-021-06012-8",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Deep learning-based facial emotion recognition for human–computer interaction applications",
+          "year": 2021,
+          "ranks": {
+            "graph_rerank": 5
+          }
+        },
+        {
+          "key": "doi:10.3390/rs13030527",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Hand Gestures Recognition Using Radar Sensors for Human-Computer-Interaction: A Review",
+          "year": 2021,
+          "ranks": {
+            "baseline": 5,
+            "rrf": 5
+          }
+        },
+        {
+          "key": "doi:10.1016/j.trf.2018.07.020",
+          "grade": 2,
+          "reason": "topic phrase in abstract/keywords/concepts; non-survey cap for review intent",
+          "title": "Interaction between pedestrians and automated vehicles: A Wizard of Oz experiment",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 6
+          }
+        },
+        {
+          "key": "doi:10.1049/iet-cvi.2017.0052",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Review of constraints on vision‐based gesture recognition for human–computer interaction",
+          "year": 2017,
+          "ranks": {
+            "baseline": 6,
+            "rrf": 6
+          }
+        },
+        {
+          "key": "doi:10.1021/acsami.2c17904",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Ultrastretchable, Self-Healing Conductive Hydrogel-Based Triboelectric Nanogenerators for Human–Computer Interaction",
+          "year": 2023,
+          "ranks": {
+            "graph_rerank": 7
+          }
+        },
+        {
+          "key": "doi:10.1145/3582272",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Survey on Measuring Cognitive Workload in Human-Computer Interaction",
+          "year": 2023,
+          "ranks": {
+            "baseline": 7,
+            "rrf": 7
+          }
+        },
+        {
+          "key": "doi:10.1080/07370024.2020.1724790",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "User Representations in Human-Computer Interaction",
+          "year": 2020,
+          "ranks": {
+            "graph_rerank": 8
+          }
+        },
+        {
+          "key": "doi:10.3390/electronics11101579",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "Human-Computer Interaction in Customer Service: The Experience with AI Chatbots—A Systematic Literature Review",
+          "year": 2022,
+          "ranks": {
+            "baseline": 8,
+            "rrf": 8
+          }
+        },
+        {
+          "key": "doi:10.1007/s40747-023-01173-6",
+          "grade": 3,
+          "reason": "all topic tokens in title",
+          "title": "Computer vision-based hand gesture recognition for human-robot interaction: a review",
+          "year": 2023,
+          "ranks": {
+            "baseline": 9,
+            "rrf": 9
+          }
+        },
+        {
+          "key": "doi:10.1201/9780203736166",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "The Psychology of Human-Computer Interaction",
+          "year": 2018,
+          "ranks": {
+            "graph_rerank": 9
+          }
+        },
+        {
+          "key": "doi:10.1109/access.2021.3127881",
+          "grade": 3,
+          "reason": "topic phrase in title",
+          "title": "A Systematic Review of Human–Computer Interaction and Explainable Artificial Intelligence in Healthcare With Artificial Intelligence Techniques",
+          "year": 2021,
+          "ranks": {
+            "baseline": 10,
+            "rrf": 10
+          }
+        },
+        {
+          "key": "doi:10.1145/2907069",
+          "grade": 2,
+          "reason": "topic phrase in title; non-survey cap for review intent",
+          "title": "Research contributions in human-computer interaction",
+          "year": 2016,
+          "ranks": {
+            "graph_rerank": 10
+          }
+        }
+      ]
+    }
+  ],
+  "provenance": "rubric-assisted draft; human review required"
+}

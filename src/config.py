@@ -22,7 +22,7 @@ DEFAULT_RANKING_CONFIG = {
         "max_path_length": 1,
         "relation_whitelist": ["/r/IsA", "/r/PartOf", "/r/HasA", "/r/RelatedTo",
                                "/r/Synonym", "/r/DerivedFrom", "/r/FormOf"],
-        "degree_cap": None,
+        "degree_cap": 500,
         "min_edge_weight": 1,
     },
     "freshness": {"half_life_years": 5.0, "enabled_by_default": False},

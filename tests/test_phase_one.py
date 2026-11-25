@@ -172,7 +172,9 @@ class GraphRerankTests(unittest.TestCase):
         row, document = v3_row_and_settings(time_filter="recent")
         verification.validate_v3_document(document)
         results = row["results"]
-        self.assertEqual([item["key"] for item in results], ["id:c", "id:a", "id:b"])
+        # The original exact matches keep the Acemap prior; the expansion-only
+        # record is scored by graph/freshness but does not displace them.
+        self.assertEqual([item["key"] for item in results], ["id:a", "id:b", "id:c"])
         robot = next(item for item in results if item["key"] == "id:c")
         self.assertEqual(robot["score_components"]["graph"], 1.0)
         self.assertEqual(robot["evidence"]["graph_paths"][0]["assertions"], ["/a/1"])
@@ -200,6 +202,70 @@ class GraphRerankTests(unittest.TestCase):
         row, _ = v3_row_and_settings(time_filter=None)
         self.assertTrue(all(item["score_components"]["freshness"] == 0.0
                             for item in row["results"]))
+
+    def test_explicit_year_range_hard_filters_outside_years(self):
+        row, _ = v3_row_and_settings(
+            time_filter={"start": 2020, "end": 2024})
+        keys = [item["key"] for item in row["results"]]
+        self.assertNotIn("id:b", keys)
+        recent = next(item for item in row["results"] if item["key"] == "id:c")
+        self.assertEqual(recent["score_components"]["freshness"], 1.0)
+
+
+class IntentIntegrationTests(unittest.TestCase):
+    def test_graph_rerank_uses_parsed_topic_as_effective_query(self):
+        class IntentClient:
+            def __init__(self):
+                self.calls = []
+
+            def search(self, term, size):
+                self.calls.append(term)
+                return [{"id": "topic", "title": "Robotics",
+                         "publication_year": 2024}], "topic.json"
+
+        resolved = config.resolve_for_ranker(
+            config.default_ranking_config(), "graph_rerank")
+        ranker = rankers.get_ranker("graph_rerank", config=resolved)
+        expansion = [{"term": "robot", "evidence": EDGE,
+                      "domain_support_seeds": []}]
+        context = {"edges": [EDGE], "expansions": expansion,
+                   "topic": "robotics", "time_filter": "recent",
+                   "search_term": "robotics"}
+        client = IntentClient()
+        row = search.search_one_v3(
+            client, "recent research on robotics", 10, expansion, ranker,
+            context, search_term="robotics")
+        self.assertEqual(client.calls, ["robotics", "robot"])
+        self.assertEqual([request["term"] for request in row["requests"]],
+                         ["robotics", "robot"])
+        self.assertTrue(row["results"][0]["matches"][0]["is_original"])
+        row["conceptnet"] = {
+            "query": "robotics", "matched_concept": "robotics",
+            "forms_checked": ["robotics"], "backend": "local",
+            "source": dict(MANIFEST), "diagnostics": [], "edges": [dict(EDGE)],
+            "scope": SNAPSHOT_SCOPE,
+        }
+        document = {
+            "schema_version": 3, "domain": "query-time English ConceptNet",
+            "endpoint": constants.ENDPOINT,
+            "settings": {
+                "knowledge": "local", "size_per_term": 10, "max_expansions": 3,
+                "lexical_forms": "ai -> artificial intelligence; exact phrases only",
+                "fusion": resolved["fusion"], "ranker": "graph_rerank",
+                "ranker_version": "graph-rerank-v1",
+                "ranker_config": resolved,
+                "config_hash": config_hash(resolved),
+                "graph_version": "g-" + "0" * 16,
+                "snapshot_key_schema": 2, "record_feature_version": 1,
+            },
+            "summary": {"queries": 1, "successful_queries": 1,
+                        "successful_with_enhancement": 1},
+            "searches": [row],
+        }
+        verification.validate_v3_document(document)
+        self.assertEqual(
+            verification._effective_query(row, document["settings"], 3),
+            "robotics")
 
 
 class SearchPipelineTests(unittest.TestCase):

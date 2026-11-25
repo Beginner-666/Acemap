@@ -282,19 +282,70 @@ def _bm25(query_tokens, documents, k1=1.5, b=0.75):
     return scores
 
 
+def _outside_time_filter(year, time_filter):
+    """Return True when a year is outside an explicit ``start/end`` filter.
+
+    ``"recent"`` is a soft preference handled by ``freshness``; only explicit
+    year ranges are hard filters.  Unknown years are kept to avoid hiding
+    records whose metadata is incomplete.
+    """
+    if not isinstance(time_filter, dict) or year is None:
+        return False
+    start = time_filter.get("start")
+    end = time_filter.get("end")
+    if start is not None and year < start:
+        return True
+    if end is not None and year > end:
+        return True
+    return False
+
+
+def _refresh_metrics(metrics, entries):
+    baseline_keys = {entry["key"] for entry in entries
+                     if any(match.get("is_original") for match in entry["matches"])}
+    return {
+        "baseline_unique": len(baseline_keys),
+        "enhanced_unique": len(entries),
+        "additional_unique": len(entries) - len(baseline_keys),
+        "failed_requests": metrics["failed_requests"],
+    }
+
+
 def _freshness_value(year, reference, half_life, time_filter):
     if year is None:
         return 0.0
     if isinstance(time_filter, dict):
         start = time_filter.get("start")
         end = time_filter.get("end")
-        if (start is None or year >= start) and (end is None or year <= end):
+        if start is not None and year < start:
+            distance = start - year
+        elif end is not None and year > end:
+            distance = year - end
+        else:
             return 1.0
-        distance = start - year if end is None else year - end
         return min(1.0, 0.5 ** (max(0, distance) / half_life))
     if reference is None:
         return 0.0
     return min(1.0, 0.5 ** (max(0, reference - year) / half_life))
+
+
+def _original_acemap_scores(entries, k):
+    """Normalize original-term reciprocal rank, ignoring expansion matches.
+
+    This is the ``1 / (60 + rank)`` Acemap prior from the phase-one formula.
+    Expansion-only records receive 0; graph/text/freshness can still promote
+    them, but they cannot outrank exact original matches on Acemap evidence
+    alone.
+    """
+    reciprocal = {}
+    for entry in entries:
+        ranks = [match["rank"] for match in entry["matches"]
+                 if match.get("is_original")]
+        if ranks:
+            reciprocal[entry["key"]] = 1.0 / (k + min(ranks))
+    maximum = max(reciprocal.values(), default=0.0)
+    return {key: value / maximum if maximum > 0 else 0.0
+            for key, value in reciprocal.items()}
 
 
 def _expansion_edges(graph_context):
@@ -326,11 +377,13 @@ class GraphRerankRanker:
 
     Score components are normalized to ``[0, 1]``:
 
-    * ``acemap``     = RRF fusion score / maximum fusion score;
+    * ``acemap``     = original-term ``1 / (k + rank)`` normalized by the best
+                       original reciprocal rank; expansion-only records get 0;
     * ``graph``      = best one-hop expansion edge weight / maximum weight,
                        where the expansion term occurs in the paper;
-    * ``text``       = BM25 over title/abstract/keywords/concepts/topics,
-                       normalized by the best candidate score;
+    * ``text``       = BM25 of the parsed topic over title/abstract/keywords/
+                       concepts/topics, normalized by the best candidate score;
+                       expansion terms are not added to the text query;
     * ``freshness``  = exponential decay from the newest candidate year, only
                        when the query asks for recent work (or config enables
                        it by default);
@@ -358,26 +411,37 @@ class GraphRerankRanker:
             return {"results": [], "metrics": metrics}
 
         features = [paper_features(entry["paper"]) for entry in ranked]
-        maximum_fusion = max((entry["fusion_score"] for entry in ranked), default=0.0)
+        time_filter = graph_context.get("time_filter")
+        if isinstance(time_filter, dict):
+            kept = [(entry, item) for entry, item in zip(ranked, features)
+                    if not _outside_time_filter(item["year"], time_filter)]
+            if len(kept) != len(ranked):
+                ranked = [entry for entry, _ in kept]
+                features = [item for _, item in kept]
+                metrics = _refresh_metrics(metrics, ranked)
+                if not ranked:
+                    return {"results": [], "metrics": metrics}
+
+        acemap_scores = _original_acemap_scores(ranked, self.k)
         expansion_edges = _expansion_edges(graph_context)
         maximum_weight = max((edge.get("weight", 0.0) for edge in expansion_edges.values()),
                              default=0.0)
 
         topic = graph_context.get("topic") or query
+        # Text similarity measures the user's topic against the paper.  It must
+        # not include expansion terms, otherwise noisy RelatedTo edges reward
+        # documents that only match the noisy term.
         query_tokens = _tokens(topic)
-        for term in expansion_edges:
-            query_tokens += _tokens(term)
         text_scores = _bm25(query_tokens, [_document_tokens(item) for item in features])
         maximum_text = max(text_scores, default=0.0)
         reference_year = max((item["year"] for item in features if item["year"] is not None),
                              default=None)
-        time_filter = graph_context.get("time_filter")
         freshness_enabled = (time_filter is not None
                              or self.config["freshness"]["enabled_by_default"])
 
         results = []
         for entry, item, text in zip(ranked, features, text_scores):
-            acemap = entry["fusion_score"] / maximum_fusion if maximum_fusion > 0 else 0.0
+            acemap = acemap_scores.get(entry["key"], 0.0)
             text_score = text / maximum_text if maximum_text > 0 else 0.0
 
             matched_graph_terms = []
@@ -392,7 +456,7 @@ class GraphRerankRanker:
                 path_score = weight / maximum_weight if maximum_weight > 0 else 0.0
                 path_score = min(1.0, max(0.0, path_score))
                 paths.append({
-                    "nodes": [query, term],
+                    "nodes": [topic, term],
                     "relations": [edge["relation"]],
                     "weight": weight,
                     "score": path_score,

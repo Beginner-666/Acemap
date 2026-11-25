@@ -14,6 +14,7 @@ from unittest.mock import patch
 from . import conceptnet_provider, constants, edges, jsonio, search, text
 from .conceptnet_index import RELATIONS
 from .conceptnet_provider import SNAPSHOT_SCOPE
+from .query_understanding import parse_intent
 from .versions import OUTPUT_SCHEMA_V2, OUTPUT_SCHEMA_V3, config_hash
 
 TOP_KEYS = ("schema_version", "domain", "endpoint", "settings", "summary", "searches")
@@ -176,10 +177,23 @@ def _validate_edge(edge, backend):
         raise ValueError("conceptnet edge metadata must be an object")
 
 
+def _effective_query(row, settings, version):
+    """Return the retrieval term implied by the frozen settings.
+
+    v3 graph_rerank applies ``qu-v1`` before lookup, so its ConceptNet snapshot
+    and original request use the parsed topic.  baseline/rrf (and all v2 rows)
+    keep the full normalized row query.
+    """
+    if version == 3 and settings["ranker"] == "graph_rerank":
+        topic = parse_intent(row["query"])["topic"]
+        return topic or row["query"]
+    return row["query"]
+
+
 def _validate_snapshot(snapshot, query):
     _keys(snapshot, SNAPSHOT_KEYS, "conceptnet")
     if snapshot["query"] != query:
-        raise ValueError("conceptnet.query does not match the search row")
+        raise ValueError("conceptnet.query does not match the effective search term")
     if snapshot["matched_concept"] is not None:
         _text(snapshot["matched_concept"], "conceptnet.matched_concept")
     _string_list(snapshot["forms_checked"], "conceptnet.forms_checked")
@@ -346,9 +360,10 @@ def _validate_rows(doc, version):
             raise ValueError("searches[].requests must be a list")
         for request in row["requests"]:
             _validate_request(request)
-        terms = [row["query"]] + expansion_terms
+        effective_query = _effective_query(row, doc["settings"], version)
+        terms = [effective_query] + expansion_terms
         if [request["term"] for request in row["requests"]] != terms:
-            raise ValueError("requests must follow query then expansion order")
+            raise ValueError("requests must follow the effective query then expansions")
         request_counts = {request["term"]: request.get("count", 0)
                           for request in row["requests"] if request["status"] == "ok"}
         if row["status"] == "failed":
@@ -374,8 +389,8 @@ def _validate_rows(doc, version):
             else:
                 _validate_v3_result(result, request_counts, doc["settings"])
             for match in result["matches"]:
-                if match["is_original"] != (match["term"] == row["query"]):
-                    raise ValueError("matches[].is_original disagrees with the query term")
+                if match["is_original"] != (match["term"] == effective_query):
+                    raise ValueError("matches[].is_original disagrees with the effective query")
             keys.append(result["key"])
         if len(keys) != len(set(keys)):
             raise ValueError("searches[].results keys must be unique")
@@ -387,9 +402,9 @@ def _validate_rows(doc, version):
             raise ValueError("metrics.baseline_unique does not match matches")
         if row["metrics"]["additional_unique"] != len(keys) - len(baseline_keys):
             raise ValueError("metrics.additional_unique does not match matches")
-        _validate_snapshot(row["conceptnet"], row["query"])
+        _validate_snapshot(row["conceptnet"], effective_query)
         if version == 3:
-            allowed_terms = {row["query"], *expansion_terms}
+            allowed_terms = {effective_query, *expansion_terms}
             assertion_ids = {edge["assertion"] for edge in row["conceptnet"]["edges"]}
             for result in row["results"]:
                 if not set(result["evidence"]["matched_terms"]) <= allowed_terms:
@@ -403,9 +418,12 @@ def _validate_rows(doc, version):
             if row["warning"] is not None:
                 raise ValueError("enhanced rows must not have a warning")
         else:
-            expected = ("ConceptNet has no usable exact/normalized concept; original search only"
-                        if row["conceptnet"]["backend"] != "none"
-                        else "ConceptNet unavailable; original search only")
+            if version == 3 and doc["settings"]["ranker"] == "baseline":
+                expected = "baseline ranker: original-term search only"
+            else:
+                expected = ("ConceptNet has no usable exact/normalized concept; original search only"
+                            if row["conceptnet"]["backend"] != "none"
+                            else "ConceptNet unavailable; original search only")
             if row["warning"] != expected:
                 raise ValueError("warning does not match the ConceptNet backend")
         if version == 2:

@@ -82,6 +82,44 @@ def edges_for_term(db, term, limit=1000):
     return list(edges.values())
 
 
+def node_degrees(source, labels, chunk=400):
+    """Return global graph degree for ``labels`` using both endpoints.
+
+    ``source`` may be an open read-only connection or an index path.  Degree is
+    the number of indexed edges whose subject or object is the label; it is used
+    only as a conservative hub filter, never as an evidence field.
+    """
+    labels = sorted({item for item in labels
+                     if isinstance(item, str) and item})
+    if not labels:
+        return {}
+    if isinstance(source, sqlite3.Connection):
+        db = source
+        close = False
+    else:
+        path = Path(source)
+        if not path.exists():
+            return {}
+        db = sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)
+        close = True
+    try:
+        degrees = {label: 0 for label in labels}
+        for start in range(0, len(labels), max(1, int(chunk))):
+            part = labels[start:start + max(1, int(chunk))]
+            placeholders = ",".join("?" for _ in part)
+            for column in ("subject", "object"):
+                rows = db.execute(
+                    f"SELECT {column}, count(*) FROM edges "
+                    f"WHERE {column} IN ({placeholders}) GROUP BY {column}",
+                    part).fetchall()
+                for label, count in rows:
+                    degrees[label] = degrees.get(label, 0) + int(count)
+        return degrees
+    finally:
+        if close:
+            db.close()
+
+
 def _table_columns(db, table):
     return tuple(row[1] for row in db.execute(f"PRAGMA table_info({table})"))
 

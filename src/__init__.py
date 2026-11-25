@@ -18,7 +18,7 @@ The pipeline is intentionally split by responsibility:
 - ``multihop``: opt-in one-hop author/institution expansion (``multihop-v1``).
 - ``config``: strict ranking configuration loading.
 - ``paper_features``: read-only, fault-tolerant paper feature extraction.
-- ``evaluation``: evaluation query, qrels, and config loaders.
+- ``evaluation``: evaluation queries, qrels, metrics, and comparison reports.
 - ``verification``: version-aware output validation and offline replay.
 - ``versions``: frozen protocol version identifiers and hashing helpers.
 - ``search``: query expansion, fusion, and result assembly.

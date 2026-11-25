@@ -1,0 +1,324 @@
+{
+  "queries": [
+    {
+      "id": "q001",
+      "text": "robotics",
+      "topic": "robotics",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q002",
+      "text": "artificial intelligence",
+      "topic": "artificial intelligence",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q003",
+      "text": "machine learning",
+      "topic": "machine learning",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q004",
+      "text": "deep learning",
+      "topic": "deep learning",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q005",
+      "text": "neural networks",
+      "topic": "neural networks",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q006",
+      "text": "computer vision",
+      "topic": "computer vision",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q007",
+      "text": "natural language processing",
+      "topic": "natural language processing",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q008",
+      "text": "data mining",
+      "topic": "data mining",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q009",
+      "text": "information retrieval",
+      "topic": "information retrieval",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q010",
+      "text": "speech recognition",
+      "topic": "speech recognition",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q011",
+      "text": "autonomous vehicles",
+      "topic": "autonomous vehicles",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q012",
+      "text": "cybersecurity",
+      "topic": "cybersecurity",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q013",
+      "text": "cloud computing",
+      "topic": "cloud computing",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q014",
+      "text": "internet of things",
+      "topic": "internet of things",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q015",
+      "text": "blockchain",
+      "topic": "blockchain",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q016",
+      "text": "quantum computing",
+      "topic": "quantum computing",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q017",
+      "text": "bioinformatics",
+      "topic": "bioinformatics",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q018",
+      "text": "medical imaging",
+      "topic": "medical imaging",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q019",
+      "text": "human computer interaction",
+      "topic": "human computer interaction",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q020",
+      "text": "software engineering",
+      "topic": "software engineering",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q021",
+      "text": "operating systems",
+      "topic": "operating systems",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q022",
+      "text": "programming languages",
+      "topic": "programming languages",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q023",
+      "text": "computer graphics",
+      "topic": "computer graphics",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q024",
+      "text": "virtual reality",
+      "topic": "virtual reality",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q025",
+      "text": "augmented reality",
+      "topic": "augmented reality",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q026",
+      "text": "pattern recognition",
+      "topic": "pattern recognition",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q027",
+      "text": "data science",
+      "topic": "data science",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q028",
+      "text": "big data",
+      "topic": "big data",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q029",
+      "text": "information security",
+      "topic": "information security",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q030",
+      "text": "computer architecture",
+      "topic": "computer architecture",
+      "time_filter": null,
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q031",
+      "text": "recent research on robotics",
+      "topic": "robotics",
+      "time_filter": "recent",
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q032",
+      "text": "recent papers on machine learning",
+      "topic": "machine learning",
+      "time_filter": "recent",
+      "task": "papers",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q033",
+      "text": "2020-2024 research on computer vision",
+      "topic": "computer vision",
+      "time_filter": "2020-2024",
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q034",
+      "text": "latest review on natural language processing",
+      "topic": "natural language processing",
+      "time_filter": "recent",
+      "task": "review",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q035",
+      "text": "since 2022 papers on cybersecurity",
+      "topic": "cybersecurity",
+      "time_filter": "since 2022",
+      "task": "papers",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q036",
+      "text": "recent research on medical imaging",
+      "topic": "medical imaging",
+      "time_filter": "recent",
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q037",
+      "text": "survey on data mining",
+      "topic": "data mining",
+      "time_filter": null,
+      "task": "survey",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q038",
+      "text": "recent research on deep learning",
+      "topic": "deep learning",
+      "time_filter": "recent",
+      "task": "research",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q039",
+      "text": "2018-2022 papers on blockchain",
+      "topic": "blockchain",
+      "time_filter": "2018-2022",
+      "task": "papers",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    },
+    {
+      "id": "q040",
+      "text": "recent review on human computer interaction",
+      "topic": "human computer interaction",
+      "time_filter": "recent",
+      "task": "review",
+      "notes": "phase-one evaluation; freeze query text and qrels together"
+    }
+  ]
+}

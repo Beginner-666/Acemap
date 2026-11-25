@@ -22,7 +22,7 @@
       "/r/DerivedFrom",
       "/r/FormOf"
     ],
-    "degree_cap": null,
+    "degree_cap": 500,
     "min_edge_weight": 1
   },
   "freshness": {

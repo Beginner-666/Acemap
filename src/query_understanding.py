@@ -179,7 +179,7 @@ def _degree(edge_list):
 
 
 def select_expansions(edge_list, query, limit, min_edge_weight=1,
-                      degree_cap=None, relation_whitelist=None):
+                      degree_cap=None, relation_whitelist=None, degrees=None):
     """Select filtered, provenance-preserving one-hop expansion candidates.
 
     The returned objects keep the frozen expansion shape:
@@ -219,8 +219,14 @@ def select_expansions(edge_list, query, limit, min_edge_weight=1,
             continue
         if _morphology(term) == query_morphology:
             continue
-        if degree_cap is not None and degree.get(neighbor, 0) > degree_cap:
-            continue
+        if degree_cap is not None:
+            # Prefer the global index degree when the caller supplied it; the
+            # snapshot-local degree is only a conservative fallback.
+            node_degree = (degrees or {}).get(neighbor)
+            if node_degree is None:
+                node_degree = degree.get(neighbor, 0)
+            if node_degree > degree_cap:
+                continue
         existing = candidates.get(term)
         if existing is None or edge_order(edge) < edge_order(existing):
             candidates[term] = edge

@@ -1,0 +1,221 @@
+"""Build a pooled, rubric-assisted qrels draft for reviewer verification.
+
+The rubric uses only the query topic and the paper's title/abstract/keywords/
+concepts.  It deliberately does not read ranker scores or ConceptNet expansion
+edges, so the draft does not directly reward a particular ranker.  The output
+must still be reviewed by a human before being treated as a gold standard; the
+review file keeps every suggestion and its source ranks visible.
+"""
+
+from __future__ import annotations
+
+import argparse
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from src import evaluation, jsonio, verification  # noqa: E402
+from src.paper_features import paper_features  # noqa: E402
+from src.query_understanding import STOPWORDS, singular_forms  # noqa: E402
+from src.text import normalize  # noqa: E402
+
+TOKEN = re.compile(r"[a-z0-9]+")
+VENUE = re.compile(
+    r"\b(proceedings|conference|workshop|symposium|congress|handbook|"
+    r"encyclopedia|repository)\b", re.I)
+SURVEY = re.compile(r"\b(review|reviews|survey|surveys|overview|tutorial)\b", re.I)
+SURVEY_TASKS = frozenset({"review", "reviews", "survey", "surveys",
+                          "tutorial", "tutorials"})
+
+
+def tokens(value):
+    result = []
+    for token in TOKEN.findall(normalize(value)):
+        if len(token) < 2 or token in STOPWORDS:
+            continue
+        result.extend(singular_forms(token))
+    return result
+
+
+def phrase_in(haystack, needle):
+    if not needle:
+        return False
+    width = len(needle)
+    return any(haystack[index:index + width] == needle
+               for index in range(len(haystack) - width + 1))
+
+
+def _in_time_filter(year, time_filter):
+    """Apply only explicit year constraints; ``recent`` is a soft preference."""
+    if not isinstance(time_filter, str) or year is None:
+        return True
+    match = re.search(r"(19|20)\d{2}", time_filter)
+    if not match:
+        return True
+    value = int(match.group(0))
+    if re.fullmatch(r"\d{4}-\d{4}", time_filter):
+        end = int(time_filter.split("-")[1])
+        return value <= year <= end
+    if time_filter.startswith("since "):
+        return year >= value
+    if time_filter.startswith("before "):
+        return year <= value
+    return True
+
+
+def grade(paper, topic, time_filter=None, task=None):
+    topic_tokens = tokens(topic)
+    if not topic_tokens:
+        return 0, "empty topic"
+    features = paper_features(paper)
+    if not _in_time_filter(features["year"], time_filter):
+        return 0, "outside explicit time filter"
+    title_text = features["title"]
+    title = tokens(title_text)
+    body_text = " ".join([
+        features["abstract"],
+        " ".join(features["keywords"]),
+        " ".join(item["display_name"] for item in features["concepts"]),
+    ])
+    body = tokens(body_text)
+    if phrase_in(title, topic_tokens):
+        value, reason = 3, "topic phrase in title"
+    elif topic_tokens and all(token in title for token in topic_tokens):
+        value, reason = 3, "all topic tokens in title"
+    elif phrase_in(body, topic_tokens):
+        value, reason = 2, "topic phrase in abstract/keywords/concepts"
+    elif all(token in body for token in topic_tokens):
+        value, reason = 2, "all topic tokens in abstract/keywords/concepts"
+    else:
+        title_hits = sum(token in title for token in topic_tokens)
+        if title_hits >= max(1, (len(topic_tokens) + 1) // 2):
+            value, reason = 2, "majority of topic tokens in title"
+        elif any(token in title or token in body for token in topic_tokens):
+            value, reason = 1, "partial topic-token overlap"
+        else:
+            return 0, "no topic-token overlap"
+    # Venue/proceedings titles are not a research contribution about the topic.
+    if VENUE.search(title_text):
+        value = min(value, 1)
+        reason += "; venue/proceedings cap"
+    # A short title that is just the topic is usually a book/journal label.
+    if len(title) <= 2 or normalize(title_text) == normalize(topic):
+        value = min(value, 2)
+        reason += "; generic short title cap"
+    # A review/survey query should not treat every research paper as a 3.
+    if (str(task).casefold() in SURVEY_TASKS
+            and not SURVEY.search(title_text + " " + body_text)):
+        value = min(value, 2)
+        reason += "; non-survey cap for review intent"
+    return value, reason
+
+
+def load(name, path):
+    document = jsonio.read_json(path)
+    version = document.get("schema_version")
+    if version == 2:
+        verification.validate_v2_document(document)
+    elif version == 3:
+        verification.validate_v3_document(document)
+        if name in evaluation.DEFAULT_RESULTS and document["settings"]["ranker"] != name:
+            raise ValueError(f"{path} was generated by {document['settings']['ranker']}")
+    else:
+        raise ValueError(f"{path} is not a v2 or v3 result document")
+    return document
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--queries", type=Path,
+                        default=ROOT / "config" / "evaluation_queries.json")
+    parser.add_argument("--results", action="append", required=True,
+                        metavar="NAME=PATH")
+    parser.add_argument("--pool", type=int, default=10)
+    parser.add_argument("--qrels", type=Path,
+                        default=ROOT / "config" / "qrels.json")
+    parser.add_argument("--review", type=Path,
+                        default=ROOT / "results" / "qrels_review.json")
+    args = parser.parse_args(argv)
+    if args.pool < 1:
+        parser.error("--pool must be >= 1")
+    queries = evaluation.load_queries(args.queries)
+    specs = {}
+    for value in args.results:
+        if "=" not in value:
+            parser.error("--results must use NAME=PATH")
+        name, path = value.split("=", 1)
+        specs[name] = Path(path)
+    documents = {name: load(name, path) for name, path in specs.items()}
+
+    qrels = {}
+    review = {"queries": []}
+    for query in queries:
+        text = normalize(query["text"])
+        pooled = {}
+        for name, document in documents.items():
+            row = next((item for item in document["searches"]
+                        if item["query"] == text), None)
+            if row is None:
+                raise ValueError(f"{name} does not contain query {text}")
+            for rank, result in enumerate(row["results"], 1):
+                key = result["key"]
+                entry = pooled.setdefault(key, {
+                    "paper": result["paper"], "ranks": {}, "scores": {}})
+                entry["ranks"][name] = rank
+                entry["scores"][name] = result.get(
+                    "score", result.get("fusion_score", 0.0))
+        ordered = sorted(pooled.items(),
+                         key=lambda pair: (min(pair[1]["ranks"].values()), pair[0]))
+        labels = {}
+        review_rows = []
+        for key, entry in ordered:
+            value, reason = grade(entry["paper"], query["topic"],
+                                  query["time_filter"], query["task"])
+            labels[key] = value
+            if min(entry["ranks"].values()) <= args.pool:
+                review_rows.append({
+                    "key": key,
+                    "grade": value,
+                    "reason": reason,
+                    "title": paper_features(entry["paper"])["title"],
+                    "year": paper_features(entry["paper"])["year"],
+                    "ranks": entry["ranks"],
+                })
+        # If the pooled top-K has no positive, add the strongest deeper match
+        # so the query still has a non-empty relevance set; the review file
+        # records the added key and its original rank.
+        if not any(value > 0 for value in labels.values()):
+            deeper = [(value, key, entry) for key, entry in ordered
+                      if (value := grade(entry["paper"], query["topic"],
+                                        query["time_filter"], query["task"])[0]) > 0]
+            if deeper:
+                value, key, entry = max(deeper, key=lambda item: (item[0], item[1]))
+                labels[key] = value
+                review_rows.append({
+                    "key": key, "grade": value, "reason": "added from deeper pool",
+                    "title": paper_features(entry["paper"])["title"],
+                    "year": paper_features(entry["paper"])["year"],
+                    "ranks": entry["ranks"],
+                })
+        qrels[query["id"]] = labels
+        review["queries"].append({
+            "id": query["id"], "text": query["text"], "topic": query["topic"],
+            "qualifiers": {"time_filter": query["time_filter"],
+                           "task": query["task"]},
+            "positive": sum(value > 0 for value in labels.values()),
+            "candidates": review_rows,
+        })
+    review["provenance"] = "rubric-assisted draft; human review required"
+    jsonio.write_json(args.qrels, qrels)
+    jsonio.write_json(args.review, review)
+    print(f"qrels: {args.qrels}; review: {args.review}; "
+          f"queries={len(queries)}; labels={sum(len(v) for v in qrels.values())}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -10,7 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 
-PROTOCOL_VERSION = 1
+PROTOCOL_VERSION = 2
 
 OUTPUT_SCHEMA_V2 = 2
 OUTPUT_SCHEMA_V3 = 3
@@ -24,7 +24,7 @@ CLEAN_GRAPH_RULES_VERSION = "clean-v1"
 
 RANKER_PROTOCOL_VERSION = 1
 RECORD_FEATURE_VERSION = 1
-VERIFIER_VERSION = 3
+VERIFIER_VERSION = 4
 
 CONCEPTNET_ONLINE_SOURCE_ID = "online:conceptnet-api:limit=1000:v1"
 MISSING_GRAPH_ID = "g-missing"

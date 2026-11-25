@@ -1,6 +1,7 @@
 {
   "k_values": [5, 10],
   "metrics": ["precision", "recall", "ndcg", "mrr"],
+  "relevance_threshold": 1,
   "seed": 0,
   "splits": {
     "type": "time",

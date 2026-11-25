@@ -21,7 +21,7 @@
   - `multihop.py`：可选的一跳作者/机构扩展与 `multihop-v1` 文档。
   - `config.py`：排序配置的严格加载与校验。
   - `paper_features.py`：论文年份、DOI、作者、机构、主题等特征提取。
-  - `evaluation.py`：评估查询、qrels 与评估配置加载器。
+  - `evaluation.py`：评估查询、qrels、Precision/Recall/nDCG/MRR 与 `evaluate` 报告。
   - `verification.py`：v2/v3 输出校验与离线字节回放。
   - `versions.py`：协议版本常量与规范化哈希。
   - `search.py`：查询扩展、加权倒数排名融合与结果组装。
@@ -32,7 +32,9 @@
 - `config/dynamic_queries.txt`：三组人工智能领域示例查询。
 - `config/ranking.json`：排序权重与融合参数。
 - `config/multihop.json`：多跳权重、种子上限与单跳请求数。
-- `config/evaluation.json`：评估 K 值、指标与时间切分。
+- `config/evaluation.json`：评估 K 值、指标、相关性阈值与时间切分。
+- `config/evaluation_queries.json` / `config/evaluation_queries.txt`：40 条固定评估查询。
+- `config/qrels.json`：40 条查询的规则辅助 qrels 草稿（待人工复核）。
 - `data/raw/`：自行下载的 ConceptNet 原始文件，不纳入版本控制。
 - `data/conceptnet_en.sqlite`：本地构建的可复用索引，不纳入版本控制。
 - `data/conceptnet_cache/`：正式查询实际使用的图谱关系与来源快照。
@@ -40,10 +42,13 @@
 - `results/dynamic_queries.json`：冻结的 v2 真实示例结果。
 - `results/dynamic_queries_v3.json`：冻结的阶段一 v3 `graph_rerank` 结果。
 - `results/dynamic_queries_multihop.json`：可选多跳扩展结果（`multihop-v1`）。
+- `results/eval_baseline.json` / `eval_rrf.json` / `eval_graph_rerank.json`：40 条评估查询的三种排序结果。
+- `results/evaluation_report.json`：三种 ranker 的指标与对比报告。
+- `results/qrels_review.json`：qrels 候选池与建议分数，供人工复核。
 - `results/dynamic_verification.json` / `dynamic_verification_v3.json`：保存的核验统计。
 - `results/migrations/`：缓存键与图谱元数据迁移清单。
 - `scripts/m0_migrate.py`：M0 数据迁移命令（dry-run / apply / rollback）。
-- `tests/`：57 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、缓存迁移、图谱校验与跨平台 JSON 换行检查。
+- `tests/`：67 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、评估指标、全局度过滤、缓存迁移、图谱校验与跨平台 JSON 换行检查。
 
 ## 快速验证（无需完整图谱、无需联网）
 
@@ -94,7 +99,28 @@ python .\acemap_search.py multihop --results .\results\dynamic_queries_v3.json `
   --output .\results\dynamic_queries_multihop.json --cache-only
 ```
 
-关闭阶段一能力：省略 `--schema-version 3` 即回到 v2；`--ranker baseline` 只按 Acemap 原顺序打分；不执行 `multihop` 子命令即完全关闭多跳。v3 的 `baseline`/`rrf` 仅使用原词或原 RRF 分数，`graph_rerank` 使用 `config/ranking.json` 的权重，并把完整配置内联到输出。
+### 增强开关
+
+| 目标 | 开关 | 行为 |
+| --- | --- | --- |
+| 保持原有 v2 行为 | 省略 `--schema-version 3` | 原词 + 扩展词加权 RRF，输出字节冻结 |
+| 只做原词对照 | `--schema-version 3 --ranker baseline` | 不发起扩展请求，保留 Acemap 顺序 |
+| 只做 RRF 对照 | `--schema-version 3 --ranker rrf` | 复用 v2 扩展选择与融合分数 |
+| 开启阶段一重排 | `--schema-version 3 --ranker graph_rerank` | 查询理解、图谱/文本/时间重排 |
+| 关闭/开启多跳 | 不执行 / 执行 `multihop` 子命令 | 独立输出，不修改 v2/v3 文件 |
+| 关闭/开启个性化 | `personalization.alpha = 0` | 当前阶段一固定为 0 |
+
+`baseline`/`rrf`/`graph_rerank` 均可通过 `--ranker` 直接切换；`graph_rerank` 的完整配置会内联到 v3 输出，便于复现。
+
+### 参数调节
+
+| 文件 | 主要参数 | 作用 |
+| --- | --- | --- |
+| `config/ranking.json` | `weights.*`、`fusion.*`、`graph.degree_cap`、`graph.min_edge_weight`、`freshness.*` | 排序权重、RRF 参数、扩展过滤与时间衰减 |
+| `config/multihop.json` | `hop_weight`、`max_authors`、`max_institutions`、`seed_limit`、`size_per_hop`、`min_seed_score` | 多跳强度、种子数量和触发阈值 |
+| `config/evaluation.json` | `k_values`、`metrics`、`relevance_threshold`、`splits` | 评估切分与指标 |
+
+另有命令行开关：`--max-expansions`（扩展词上限）、`--size`（每个词条数）、`--knowledge`（`auto/local/online`）、`--ranking-config`（替换排序配置）、`--cache-only` / `--refresh`。修改 JSON 即可调参，不需要改代码；新配置会改变 `config_hash` 并写在输出中。
 
 `acemap_search.py` 只是兼容入口，`python -m src ...` 与上述命令等价。默认 `--knowledge auto` 优先查询 ConceptNet 在线 API，不可用时回退本地索引。`--knowledge local` 只用本地索引，`--knowledge online` 只用在线服务。`--cache-only` 禁止联网并要求已有 ConceptNet 邻居快照和论文缓存；`--refresh` 会覆盖对应查询缓存，保留正式实验时应使用另一缓存目录。
 
@@ -116,11 +142,19 @@ python .\acemap_search.py build-index --assertions .\data\raw\conceptnet-asserti
 python .\verify_results.py
 python .\verify_results.py --results .\results\dynamic_queries_v3.json
 python -B -m unittest discover -s tests -v
+
+# 40 条固定查询的三种 ranker 对比
+python -m src evaluate --results baseline=results/eval_baseline.json `
+  --results rrf=results/eval_rrf.json `
+  --results graph_rerank=results/eval_graph_rerank.json `
+  --qrels-provenance "ai-assisted rubric; human review pending"
 ```
 
 核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。v3 校验还会用文档内联的 `ranker_config` 重算 `config_hash` 和每个 `score`，并逐字节回放 `results/dynamic_queries_v3.json`。
 
-2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；阶段一实现后 v2 复核仍逐字节一致，当前 57 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
+2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；阶段一实现后 v2 复核仍逐字节一致，当前 67 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。
+
+40 条固定查询、`relevance_threshold=1` 的规则辅助 qrels 上，`graph_rerank` 相对 `baseline`：`nDCG@10` 0.8626 → 0.8879，`Recall@10` 0.3528 → 0.3606；`rrf` 为 0.8576 / 0.3499。该 qrels 是规则辅助草稿（会议/论文集、通用短标题、survey 意图和显式年份均已降级或过滤），仍需人工复核；指标用于消融对比，不应单独作为质量结论。候选数量增加不代表精确率或召回率提高。
 
 ## 数据来源
 

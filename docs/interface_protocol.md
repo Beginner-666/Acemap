@@ -1,7 +1,7 @@
 # Acemap 搜索接口协议
 
-- 协议版本：`1`
-- 状态：冻结（v2 已实现；v3 已实现并生成黄金文件；M0 接口与迁移已实现；阶段一搜索重排、多跳和评估链路已实现；qrels 为规则辅助草稿，待人工复核）
+- 协议版本：`3`
+- 状态：冻结（v2 已实现；v3 已实现并生成黄金文件；M0 接口与迁移已实现；阶段一搜索重排、多跳和评估链路已实现；阶段二 `clean-v1` 清洗图与独立扩展表已实现并默认关闭；qrels 为规则辅助草稿，待人工复核）
 - 适用分支：`feature/verify`
 - 本文是输出、验证、缓存、图谱索引、排序器、特征、评估之间接口的**规范性说明**。实现代码与本文冲突时，v2 以现有代码和黄金文件为准并应立即修正文档；v3 以本文为准，首次实现时不得自行改字段。
 
@@ -48,13 +48,13 @@
 | `OUTPUT_SCHEMA_V3` | `3` | 搜索结果文档 | 已实现、黄金文件已生成（M1） |
 | `INDEX_SCHEMA_VERSION` | `1` | SQLite 图谱索引 `manifest.schema_version` | 已实现、冻结 |
 | `SNAPSHOT_KEY_SCHEMA` | `2` | ConceptNet 快照缓存键 | 已实现并完成迁移 |
-| `GRAPH_RULES_VERSION` | `"raw-v1"` | 当前原始断言索引 | 已实现；M2 清洗图使用 `"clean-v1"` |
+| `GRAPH_RULES_VERSION` | `"raw-v1"` / `"clean-v1"` | 原始断言索引 / M2 清洗图 | 均已实现；`clean-v1` 为可选显式图谱 |
 | `RANKER_PROTOCOL_VERSION` | `1` | Ranker 接口形状 | 已实现（baseline/rrf/graph_rerank） |
 | `QUERY_UNDERSTANDING_VERSION` | `"qu-v1"` | v3 查询理解与扩展筛选 | 已实现（规则版） |
 | `RECORD_FEATURE_VERSION` | `1` | 论文特征层 | 已实现 |
 | `VERIFIER_VERSION` | `4` | 验证器行为 | 已实现（v2 回放 + v3 有效查询校验与回放） |
 
-`PROTOCOL_VERSION = 2` 覆盖本文全部接口。任何字段名、类型、必填性、排序规则、哈希公式的变化都必须提升 `PROTOCOL_VERSION`，并同步修改文档、验证器和测试。版本 2 增加了 `qu-v1` 有效检索词语义和 graph_rerank 的显式年份硬过滤；这些变化不改变 v2 输出字节。
+`PROTOCOL_VERSION = 3` 覆盖本文全部接口。任何字段名、类型、必填性、排序规则、哈希公式的变化都必须提升 `PROTOCOL_VERSION`，并同步修改文档、验证器和测试。版本 3 增加可选的 `clean-v1` 清洗图接口：在 `clean-v1` 的 `graph_id` payload 中加入 `clean_parameters_sha256`；`raw-v1` 的六字段公式、v2/v3 搜索结果字节和现有黄金文件均不变。
 
 ---
 
@@ -550,12 +550,18 @@ payload = {
   "min_weight": manifest["min_weight"],
   "rules_version": "raw-v1" | "clean-v1"
 }
+if rules_version == "clean-v1":
+    payload["clean_parameters_sha256"] = metadata["clean_parameters_sha256"]
 graph_id = "g-" + sha256(canonical_json(payload)).hexdigest()[:16]
 ```
 
 - `canonical_json`：UTF-8、`sort_keys=True`、`separators=(",", ":")`、无尾随换行。
 - 当前索引无 `graph_id` 元数据时，必须能由 `manifest` 推导；索引缺失时使用 `"g-missing"` 哨兵，且不得写入 local 快照。
 - 推导必须惰性执行：online 模式不得因索引缺失而失败或改变 `diagnostics`。
+- `rules_version` 由独立 `metadata` 行给出；缺失时按 `"raw-v1"` 处理。`raw-v1` 的 payload 保持冻结的六个字段。
+- `clean-v1` 在 payload 中增加 `clean_parameters_sha256`；该值由 `sha256(canonical_json(cleaning_parameters))` 得到，`cleaning_parameters` 包含 `rules_version`、`min_weight`、`degree_cap`、`domain_terms_sha256`、`extensions_sha256`。缺少该 metadata 行时，`clean-v1` 的推导必须显式失败，禁止生成可能与缓存冲突的 id。
+- 清洗图 `metadata` 必须包含 `rules_version="clean-v1"`、`parent_graph_id`、`graph_id`、`licenses`、`datasets`、`content_sha256`、`extensions`、`extensions_merged`、`cleaning_parameters`、`clean_parameters_sha256` 和 `cleaning_report`；这些行不进入 `manifest`，因此不改变 local 快照的 `source` 形状。
+- 清洗图的 `manifest.source_sha256` 仍是原始源文件哈希，语义不变。改变 `min_weight`、`degree_cap`、领域词表或合并扩展会改变 `clean_parameters_sha256`，从而产生新的 `graph_id`。未合并扩展时扩展只存在于独立 `extensions` 表，`extensions_sha256` 为 `null`。
 
 ### 6.4 迁移规则（M0 已实现）
 
@@ -617,13 +623,22 @@ CREATE INDEX by_object  ON edges(object, weight DESC, assertion);
 
 全量扫描可以作为独立命令，但不得成为每次查询的前置步骤。
 
-### 7.5 M2 清洗图约束
+### 7.5 M2 清洗图约束（`clean-v1` 已实现）
 
-- 必须可被现有 provider 读取，或 provider 与清洗图在同一次提交中一起升级。
-- 必须保留 `edges.evidence` 的完整原始 assertion 与 `source_line`。
-- 删除边与标记低置信度边必须二选一并写入清洗规则；不得默默改变查询时候选集。
-- 必须记录 `rules_version`、`parent_graph_id`、许可证与来源。
-- 清洗必须离线可复现；逻辑内容哈希一致优先于 SQLite 文件字节一致。
+清洗图是独立 SQLite 产物，默认搜索路径不读取它；只有显式传入 `--index data/conceptnet_clean.sqlite` 才启用，删除该参数即恢复原始图行为。原始断言与原始索引不得被修改。
+
+- 表结构与 §7.1 完全一致，现有 provider 可直接读取；`manifest` 仍只含 §7.2 的 10 个键。
+- `edges.evidence` 必须保留原始 `assertion`、`relation`、`subject`、`object`、`subject_uri`、`object_uri`、`weight`、`metadata`、`source_line`，并增加 `source_lines`、`source_assertions`、`aliases`、`dataset`、`license`、`datasets`、`licenses`、`sources`、`source_types`、`confidence`、`domain_relevant`、`rules_version`。合并重复边时保留最高权重，并把全部来源合并进证据。
+- 清洗规则版本为 `"clean-v1"`，每类规则都写入 `cleaning_report.counts`：
+  1. 删除非法 URI、空标签、非英语端点、非白名单关系、自环、非有限权重、低于 `min_weight` 的边；
+  2. 对规范化 `(subject, relation, object)` 去重；
+  3. 合并大小写、下划线和 POS 后缀造成的重复节点，保留原始 URI 别名；
+  4. 对超 `degree_cap` 节点按 `(-weight, assertion)` 保留前 `degree_cap` 条边，删除其余边；
+  5. 领域词表未命中的边**标记为低置信度而非删除**（`confidence <= 0.5`、`domain_relevant=false`），该策略固定写入清洗规则，不静默删除。
+- 扩展数据必须写入独立 `extensions` 表，不得覆盖 `edges`。每条扩展必须包含 `subject`、`relation`、`object`、`weight`、`source`、`license`、`confidence`、`created_at`；来源等级固定为 `domain_glossary > public_ontology > paper_concepts > human_review > online_api`，`clean-graph` 不发起网络请求。只有显式 `--extensions` 才导入，只有显式 `--merge-extensions` 才合并进 `edges`。
+- `metadata` 必须记录 `rules_version`、`parent_graph_id`、`graph_id`、`licenses`、`datasets`、`content_sha256`、`extensions`、`extensions_merged`、`cleaning_parameters`、`clean_parameters_sha256`、`cleaning_report`；`extensions` manifest 记录每个输入文件的 SHA256、来源类型、边数、节点数与许可证。
+- 必须生成 `results/graph_quality.json`（`schema_version: "graph-quality-v1"`），包含清洗前后计数、每条规则删除/标记数、关系分布、度分布、孤立节点、重复率、跨语言边数、低权重边数、领域覆盖率、固定样本与 `conclusion: "pending manual review"`。报告不得写当前时间、绝对路径或随机数。
+- 清洗必须离线可复现；同一输入与规则必须得到相同的 `content_sha256` 和逐字节相同的质量报告。SQLite 文件字节一致作为额外目标，不作为唯一判据。
 
 ---
 
@@ -883,6 +898,8 @@ sha256sum results/dynamic_queries.json results/dynamic_queries_v3.json
 | 多跳 `multihop-v1` | 新独立 schema | 已实现，默认关闭 | 独立校验器 + 缓存回放 |
 | 快照缓存键 v2 | 冻结公式 | 已实现并完成迁移 | 迁移 + 回放 |
 | 图谱索引读取 | 冻结 | 已实现 | 校验器测试 |
+| 清洗图 `clean-v1` | 新独立产物 | 已实现（`clean-graph`，默认关闭） | 单测 + 结构校验 + 质量报告 |
+| 扩展边 `extensions-v1` | 新独立表 | 已实现（仅 `--extensions`） | 字段校验 + manifest 测试 |
 | 论文特征 | 冻结字段 | 已实现 | 单测 |
 | 评估/qrels | 冻结字段 | 已实现（指标 + `evaluate` + 40 条查询） | 指标单测 + 报告回放；qrels 待人工复核 |
 

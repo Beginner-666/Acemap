@@ -84,18 +84,20 @@ def _collect_term_results(client, query, size, expansion, search_term=None):
     return term_results, requests
 
 
-def _document_graph_version(rows):
+def _document_graph_version(rows, local_graph_id=None):
     """Resolve the single graph version embedded in v3 settings.
 
     Mixing local graph versions in one document would make the inline settings
-    lie about at least one row, so that case fails explicitly.
+    lie about at least one row, so that case fails explicitly.  ``local_graph_id``
+    is the provider's resolved id; using it keeps clean-v1 indexes from being
+    mislabelled as raw-v1 while leaving the frozen snapshot shape untouched.
     """
     versions = set()
     for row in rows:
         snapshot = row["conceptnet"]
         backend = snapshot["backend"]
         if backend == "local":
-            versions.add(graph_index.derive_graph_id(snapshot["source"]))
+            versions.add(local_graph_id or graph_index.derive_graph_id(snapshot["source"]))
         elif backend == "online":
             versions.add(CONCEPTNET_ONLINE_SOURCE_ID)
     if not versions:
@@ -196,7 +198,8 @@ def _run_search_v3(args):
         expansion = [item for item in expansion
                      if item["term"] not in (query, search_term)]
         graph_context = {
-            "graph_version": _document_graph_version([{"conceptnet": snapshot}]),
+            "graph_version": _document_graph_version(
+                [{"conceptnet": snapshot}], local_graph_id=provider.graph_id),
             "edges": snapshot["edges"],
             "expansions": expansion,
             "topic": intent["topic"],
@@ -219,7 +222,7 @@ def _run_search_v3(args):
         print(f"{query}: kg={snapshot['backend']}; concept={matched}; "
               f"expansions={[i['term'] for i in expansion]}; ranker={ranker.name}; "
               f"{row['status']}", flush=True)
-    graph_version = _document_graph_version(results)
+    graph_version = _document_graph_version(results, local_graph_id=provider.graph_id)
     settings = {
         "knowledge": args.knowledge,
         "size_per_term": args.size,

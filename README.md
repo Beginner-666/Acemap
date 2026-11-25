@@ -14,6 +14,7 @@
   - `acemap_client.py`：Acemap 请求、重试与响应缓存。
   - `conceptnet_index.py`：通用英文 SQLite 索引构建（动态图谱机制）。
   - `graph_index.py`：图谱清单、`graph_id`、读取与结构校验契约。
+  - `graph_clean.py`：可选 `clean-v1` 图谱清洗、去重、扩展导入与质量报告。
   - `conceptnet_provider.py`：在线/本地 ConceptNet 邻居查询与快照缓存。
   - `cache_migration.py`：ConceptNet 快照缓存键迁移、幂等重跑与回滚。
   - `rankers.py`：Ranker 协议及冻结的 baseline/RRF/graph_rerank 实现。
@@ -32,6 +33,7 @@
 - `config/dynamic_queries.txt`：三组人工智能领域示例查询。
 - `config/ranking.json`：排序权重与融合参数。
 - `config/multihop.json`：多跳权重、种子上限与单跳请求数。
+- `config/domain_terms.txt`：领域词表，仅用于清洗图的领域覆盖率与低置信度标记。
 - `config/evaluation.json`：评估 K 值、指标、相关性阈值与时间切分。
 - `config/evaluation_queries.json` / `config/evaluation_queries.txt`：40 条固定评估查询。
 - `config/qrels.json`：40 条查询的规则辅助 qrels 草稿（待人工复核）。
@@ -46,9 +48,10 @@
 - `results/evaluation_report.json`：三种 ranker 的指标与对比报告。
 - `results/qrels_review.json`：qrels 候选池与建议分数，供人工复核。
 - `results/dynamic_verification.json` / `dynamic_verification_v3.json`：保存的核验统计。
+- `results/graph_quality.json`：阶段二清洗图质量报告（`graph-quality-v1`）。
 - `results/migrations/`：缓存键与图谱元数据迁移清单。
 - `scripts/m0_migrate.py`：M0 数据迁移命令（dry-run / apply / rollback）。
-- `tests/`：67 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、评估指标、全局度过滤、缓存迁移、图谱校验与跨平台 JSON 换行检查。
+- `tests/`：74 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、评估指标、全局度过滤、缓存迁移、图谱校验、清洗规则、扩展导入与跨平台 JSON 换行检查。
 
 ## 快速验证（无需完整图谱、无需联网）
 
@@ -76,6 +79,37 @@ python scripts/m0_migrate.py graph-id --apply
 ```
 
 迁移清单写入 `results/migrations/`，`cache-key --rollback` 可恢复旧文件名。
+
+## 阶段二：图谱清洗与扩充（默认关闭）
+
+`clean-graph` 从原始 SQLite 索引或 ConceptNet assertions 构建独立的 `clean-v1` 图谱，并写出 `results/graph_quality.json`。默认搜索仍使用原始 `data/conceptnet_en.sqlite`；只有显式把 `--index` 指向清洗图才会启用：
+
+```bash
+python -m src clean-graph \
+  --input data/conceptnet_en.sqlite \
+  --output data/conceptnet_clean.sqlite \
+  --quality-report results/graph_quality.json \
+  --degree-cap 500 --min-weight 1
+
+# 显式使用清洗图；不传 --index 即恢复原始图
+python -m src search --query "robotics" --knowledge local \
+  --index data/conceptnet_clean.sqlite --cache-only \
+  --output results/new_search.json
+```
+
+清洗图保留原始 `assertion`、`source_line`、端点和许可证，新增 `source_lines`、`aliases`、`confidence`、`domain_relevant` 等溯源字段。重复三元组保留最高权重；超度节点按权重保留前 `degree-cap` 条边；领域词表未命中的边只降置信度、不删除。`graph_id` 的派生包含 `min_weight`、`degree_cap`、领域词表哈希与扩展 manifest 哈希，改变任一清洗参数都会产生新的 `graph_id`。
+
+扩展边默认只写入独立 `extensions` 表，不进入查询边；只有显式 `--extensions` 才导入，只有再传 `--merge-extensions` 才合并进 `edges`：
+
+```bash
+python -m src clean-graph --input data/conceptnet_en.sqlite \
+  --output data/conceptnet_clean_ext.sqlite \
+  --extensions config/ai_extensions.jsonl --merge-extensions
+```
+
+扩展输入每条必须包含 `subject`、`relation`、`object`、`weight`、`source`、`license`、`confidence`、`created_at`，来源类型固定为 `domain_glossary > public_ontology > paper_concepts > human_review > online_api`。`clean-graph` 不发起网络请求。
+
+2026-11-25 的全量清洗结果：输入 `2,653,040` 条边，输出去重后 `2,460,898` 条边、`989,059` 个节点；合并 `79,017` 条重复边（`74,557` 个重复组），`339` 个超度节点共删除 `113,125` 条边，孤立节点 `1,879` 个。清洗图 `graph_id` 为 `g-5d13ee8117eae85f`，父图 `graph_id` 为 `g-82e3382c2a25fee7`，逻辑内容哈希为 `3811964c66382ad2e3e2f7a175fc7d901a4ca71dedaa3720d34963127d6fd18d`。领域词表仅命中 `1,953` 条边，覆盖率为 `0.00079`；ConceptNet 是通用图谱，该数值用于说明领域覆盖范围，不作为质量结论。完整统计与固定样本见 `results/graph_quality.json`。
 
 ## 运行
 
@@ -108,6 +142,8 @@ python .\acemap_search.py multihop --results .\results\dynamic_queries_v3.json `
 | 只做 RRF 对照 | `--schema-version 3 --ranker rrf` | 复用 v2 扩展选择与融合分数 |
 | 开启阶段一重排 | `--schema-version 3 --ranker graph_rerank` | 查询理解、图谱/文本/时间重排 |
 | 关闭/开启多跳 | 不执行 / 执行 `multihop` 子命令 | 独立输出，不修改 v2/v3 文件 |
+| 关闭/开启清洗图 | 不传 / 传 `--index data/conceptnet_clean.sqlite` | 独立图谱，默认仍用原始索引 |
+| 关闭/开启扩展边 | 不传 / 传 `--extensions` | 默认只写独立表；再传 `--merge-extensions` 才合并 |
 | 关闭/开启个性化 | `personalization.alpha = 0` | 当前阶段一固定为 0 |
 
 `baseline`/`rrf`/`graph_rerank` 均可通过 `--ranker` 直接切换；`graph_rerank` 的完整配置会内联到 v3 输出，便于复现。
@@ -152,7 +188,9 @@ python -m src evaluate --results baseline=results/eval_baseline.json `
 
 核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。v3 校验还会用文档内联的 `ranker_config` 重算 `config_hash` 和每个 `score`，并逐字节回放 `results/dynamic_queries_v3.json`。
 
-2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；阶段一实现后 v2 复核仍逐字节一致，当前 67 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。
+2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。接口迁移后重新核验，仍与原结果逐字节比较通过；阶段一实现后 v2 复核仍逐字节一致，当前 74 项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。
+
+阶段二清洗图使用独立 SQLite 与 `results/graph_quality.json`；测试覆盖清洗规则、去重、度上限、扩展导入、确定性构建、provider 读取和 `clean-v1` 图版本。默认搜索不读取清洗图，因此 v2/v3 黄金文件与上述指标不受影响。
 
 40 条固定查询、`relevance_threshold=1` 的规则辅助 qrels 上，`graph_rerank` 相对 `baseline`：`nDCG@10` 0.8626 → 0.8879，`Recall@10` 0.3528 → 0.3606；`rrf` 为 0.8576 / 0.3499。该 qrels 是规则辅助草稿（会议/论文集、通用短标题、survey 意图和显式年份均已降级或过滤），仍需人工复核；指标用于消融对比，不应单独作为质量结论。候选数量增加不代表精确率或召回率提高。
 

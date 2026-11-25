@@ -1,0 +1,42 @@
+# AI-domain terms for graph quality coverage (one normalized term per line).
+# These terms only mark low confidence; they never delete edges.
+artificial intelligence
+machine learning
+deep learning
+neural network
+neural networks
+reinforcement learning
+supervised learning
+unsupervised learning
+computer vision
+natural language processing
+robotics
+robot
+robots
+autonomous driving
+knowledge graph
+knowledge graphs
+data mining
+information retrieval
+search engine
+large language model
+large language models
+language model
+language models
+computer science
+algorithm
+algorithms
+dataset
+datasets
+classification
+clustering
+regression
+optimization
+reasoning
+planning
+perception
+agent
+agents
+multi-agent system
+human computer interaction
+crowdsourcing

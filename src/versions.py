@@ -10,7 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 
-PROTOCOL_VERSION = 2
+PROTOCOL_VERSION = 3
 
 OUTPUT_SCHEMA_V2 = 2
 OUTPUT_SCHEMA_V3 = 3

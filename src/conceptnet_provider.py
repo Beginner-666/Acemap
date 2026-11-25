@@ -64,6 +64,15 @@ class ConceptNet:
                     self._graph_id = MISSING_GRAPH_ID
         return self._graph_id
 
+    @property
+    def graph_id(self):
+        """Return the resolved local graph id without changing snapshot bytes.
+
+        The provider keeps the graph version in the cache key and attribute,
+        never in the snapshot payload (see interface protocol §6.2).
+        """
+        return self._load_graph_id()
+
     def source_id(self, backend):
         """Return the cache source identifier for a successful backend."""
         if backend == "online":

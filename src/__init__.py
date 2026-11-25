@@ -11,6 +11,7 @@ The pipeline is intentionally split by responsibility:
 - ``acemap_client``: cached Acemap HTTP access.
 - ``conceptnet_index``: offline SQLite index construction.
 - ``graph_index``: graph manifest, graph_id, read and validation contract.
+- ``graph_clean``: opt-in clean-v1 graph cleaning, extensions, and quality report.
 - ``conceptnet_provider``: online/local ConceptNet neighbor lookup.
 - ``cache_migration``: snapshot cache-key migration plan/apply/rollback.
 - ``rankers``: ranker protocol plus frozen baseline/RRF/graph_rerank implementations.

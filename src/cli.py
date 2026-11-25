@@ -23,6 +23,24 @@ def build_parser():
     index.add_argument("--assertions", type=Path, required=True)
     index.add_argument("--output", type=Path, default=constants.DEFAULT_INDEX)
 
+    clean = commands.add_parser(
+        "clean-graph",
+        help="从原始 ConceptNet 索引/断言构建可选的 clean-v1 图谱与质量报告")
+    clean.add_argument("--input", type=Path, required=True)
+    clean.add_argument("--output", type=Path,
+                       default=constants.ROOT / "data" / "conceptnet_clean.sqlite")
+    clean.add_argument("--min-weight", type=float, default=1.0)
+    clean.add_argument("--degree-cap", type=int, default=500)
+    clean.add_argument("--domain-terms", type=Path,
+                       default=constants.ROOT / "config" / "domain_terms.txt")
+    clean.add_argument("--extensions", type=Path, action="append", default=[],
+                       help="可重复；JSON/JSONL 扩展边输入")
+    clean.add_argument("--merge-extensions", action="store_true",
+                       help="显式把扩展边合并进 edges；默认只写独立 extensions 表")
+    clean.add_argument("--quality-report", type=Path,
+                       default=constants.ROOT / "results" / "graph_quality.json")
+    clean.add_argument("--sample-size", type=int, default=20)
+
     search = commands.add_parser("search", help="基于动态 ConceptNet 邻居扩展关键词并查询 Acemap")
     selection = search.add_mutually_exclusive_group(required=True)
     selection.add_argument("--query")
@@ -92,12 +110,28 @@ def main(argv=None):
             parser.error("扩展数至少为 1，size 为 1–100，重试次数非负，timeout 为正有限数")
         if args.schema_version == 2 and args.ranker is not None:
             parser.error("--ranker 仅用于 --schema-version 3；schema 2 输出保持冻结")
+    elif args.command == "clean-graph":
+        if (not math.isfinite(args.min_weight) or args.min_weight < 0
+                or args.degree_cap < 1 or args.sample_size < 0):
+            parser.error("min-weight 需为非负有限数，degree-cap 至少为 1，sample-size 非负")
+        if args.merge_extensions and not args.extensions:
+            parser.error("--merge-extensions 需要至少一个 --extensions 输入")
     elif args.command == "multihop":
         if (args.retries < 0 or not math.isfinite(args.timeout) or args.timeout <= 0):
             parser.error("重试次数非负，timeout 为正有限数")
     try:
         if args.command == "build-index":
             build_index(args.assertions, args.output)
+            return 0
+        if args.command == "clean-graph":
+            from .graph_clean import clean_graph
+            clean_graph(args.input, args.output, min_weight=args.min_weight,
+                        degree_cap=args.degree_cap,
+                        domain_terms=args.domain_terms,
+                        extensions=args.extensions,
+                        merge_extensions=args.merge_extensions,
+                        quality_report=args.quality_report,
+                        sample_size=args.sample_size, verbose=True)
             return 0
         if args.command == "multihop":
             from .multihop import run_multihop

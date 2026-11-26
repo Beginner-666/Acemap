@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import math
 from pathlib import Path
 import sqlite3
@@ -151,6 +152,13 @@ def build_parser():
     personalize.add_argument("--max-events", type=int, default=100)
     personalize.add_argument("--output", type=Path,
                              default=constants.ROOT / "results" / "personalized.json")
+
+    api = commands.add_parser(
+        "check-api", help="校验可选 API 配置；不会发起网络请求或显示密钥")
+    api.add_argument("--config", type=Path,
+                     default=constants.ROOT / "config" / "api.example.json")
+    api.add_argument("--output", type=Path,
+                     help="可选；将安全的 provider 状态写入 JSON")
     return parser
 
 
@@ -232,6 +240,17 @@ def main(argv=None):
         if args.command == "personalize":
             from .profile import run_personalize
             return run_personalize(args)
+        if args.command == "check-api":
+            from .api_clients import load_api_config, provider_status
+            config = load_api_config(args.config)
+            output = {"schema_version": "api-status-v1",
+                      "config": args.config.name,
+                      "providers": provider_status(config)}
+            if args.output:
+                write_json(args.output, output)
+            else:
+                print(json.dumps(output, ensure_ascii=False, indent=2))
+            return 0
         return run_search(args)
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
         print(f"操作失败：{exc}", file=sys.stderr)

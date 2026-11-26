@@ -24,4 +24,5 @@ The pipeline is intentionally split by responsibility:
 - ``versions``: frozen protocol version identifiers and hashing helpers.
 - ``search``: query expansion, fusion, and result assembly.
 - ``cli``: command-line parsing.
+- ``api_clients``: opt-in OpenAlex and DeepSeek adapters with offline-safe configuration.
 """

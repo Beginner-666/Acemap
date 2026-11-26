@@ -10,6 +10,7 @@ import sys
 
 from . import constants
 from .conceptnet_index import build_index
+from .jsonio import digest, read_json, write_json
 from .rankers import RANKER_VERSIONS
 from .search import run_search
 
@@ -98,6 +99,58 @@ def build_parser():
     evaluate.add_argument("--output", type=Path,
                           default=constants.ROOT / "results" / "evaluation_report.json")
     evaluate.set_defaults(command="evaluate")
+
+    graph = commands.add_parser(
+        "graph-analyze", help="离线运行可复现的图算法并输出候选解释")
+    graph.add_argument("--edges", type=Path, required=True,
+                       help="JSON 边文件，或包含 edges 数组的快照")
+    graph.add_argument("--seeds", nargs="+", required=True)
+    graph.add_argument("--algorithm", choices=("pagerank", "weighted_path",
+                                                 "common_neighbors", "adamic_adar",
+                                                 "community", "meta_path"),
+                       default="pagerank")
+    graph.add_argument("--top-k", type=int, default=10)
+    graph.add_argument("--max-hops", type=int, default=3)
+    graph.add_argument("--iterations", type=int, default=50)
+    graph.add_argument("--damping", type=float, default=0.85)
+    graph.add_argument("--relations", nargs="*", default=[],
+                       help="meta_path 的关系序列，例如 /r/IsA /r/RelatedTo")
+    graph.add_argument("--output", type=Path,
+                       default=constants.ROOT / "results" / "graph_analysis.json")
+
+    rag = commands.add_parser(
+        "rag", help="基于搜索结果和图谱证据生成可引用的 RAG 回答")
+    rag.add_argument("--query", required=True)
+    rag.add_argument("--results", type=Path,
+                     help="可选的 v2/v3 搜索结果文件；省略时输出证据不足回答")
+    rag.add_argument("--max-facts", type=int, default=12)
+    rag.add_argument("--max-papers", type=int, default=8)
+    rag.add_argument("--output", type=Path,
+                     default=constants.ROOT / "results" / "rag.json")
+
+    profile = commands.add_parser(
+        "profile", help="根据显式授权的历史记录构建用户兴趣画像")
+    profile.add_argument("--history", type=Path, required=True)
+    profile.add_argument("--consent", action="store_true",
+                         help="明确允许使用该历史记录")
+    profile.add_argument("--reference-year", type=int, default=2025)
+    profile.add_argument("--half-life-years", type=float, default=5.0)
+    profile.add_argument("--max-events", type=int, default=100)
+    profile.add_argument("--output", type=Path,
+                         default=constants.ROOT / "results" / "profile.json")
+
+    personalize = commands.add_parser(
+        "personalize", help="将显式授权的兴趣画像应用到已有搜索结果")
+    personalize.add_argument("--results", type=Path, required=True)
+    personalize.add_argument("--history", type=Path)
+    personalize.add_argument("--consent", action="store_true",
+                             help="明确允许使用该历史记录")
+    personalize.add_argument("--alpha", type=float, default=0.2)
+    personalize.add_argument("--reference-year", type=int, default=2025)
+    personalize.add_argument("--half-life-years", type=float, default=5.0)
+    personalize.add_argument("--max-events", type=int, default=100)
+    personalize.add_argument("--output", type=Path,
+                             default=constants.ROOT / "results" / "personalized.json")
     return parser
 
 
@@ -119,6 +172,19 @@ def main(argv=None):
     elif args.command == "multihop":
         if (args.retries < 0 or not math.isfinite(args.timeout) or args.timeout <= 0):
             parser.error("重试次数非负，timeout 为正有限数")
+    elif args.command == "graph-analyze":
+        if args.top_k < 1 or args.max_hops < 1 or args.iterations < 1 \
+                or not 0 <= args.damping < 1:
+            parser.error("top-k、max-hops、iterations 必须为正数，damping 必须在 [0,1) 内")
+    elif args.command == "rag":
+        if args.max_facts < 0 or args.max_papers < 0:
+            parser.error("RAG 证据数量不能为负数")
+    elif args.command in ("profile", "personalize"):
+        if (args.max_events < 1 or args.half_life_years <= 0
+                or not math.isfinite(args.half_life_years)):
+            parser.error("max-events 至少为 1，half-life-years 必须为正有限数")
+        if args.command == "personalize" and not 0 <= args.alpha <= 1:
+            parser.error("alpha 必须在 [0,1] 内")
     try:
         if args.command == "build-index":
             build_index(args.assertions, args.output)
@@ -139,6 +205,33 @@ def main(argv=None):
         if args.command == "evaluate":
             from .evaluation import run_evaluation
             return run_evaluation(args)
+        if args.command == "graph-analyze":
+            from .graph_algorithms import analyze_graph
+            value = read_json(args.edges)
+            edges = value.get("edges", []) if isinstance(value, dict) else value
+            if args.algorithm == "pagerank":
+                parameters = {"iterations": args.iterations, "damping": args.damping}
+            elif args.algorithm == "weighted_path":
+                parameters = {"max_hops": args.max_hops}
+            else:
+                parameters = {}
+            if args.algorithm == "meta_path":
+                parameters["relation_sequence"] = args.relations
+            output = analyze_graph(
+                edges, args.seeds, args.algorithm, args.top_k,
+                source={"file": args.edges.name, "sha256": digest(args.edges)},
+                **parameters)
+            write_json(args.output, output)
+            return 0
+        if args.command == "rag":
+            from .rag import run_rag
+            return run_rag(args)
+        if args.command == "profile":
+            from .profile import run_profile
+            return run_profile(args)
+        if args.command == "personalize":
+            from .profile import run_personalize
+            return run_personalize(args)
         return run_search(args)
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:
         print(f"操作失败：{exc}", file=sys.stderr)

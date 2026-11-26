@@ -15,6 +15,7 @@
   - `conceptnet_index.py`：通用英文 SQLite 索引构建（动态图谱机制）。
   - `graph_index.py`：图谱清单、`graph_id`、读取与结构校验契约。
   - `graph_clean.py`：可选 `clean-v1` 图谱清洗、去重、扩展导入与质量报告。
+  - `graph_algorithms.py`：可复现的 PageRank、加权路径、邻居、社区和元路径分析。
   - `conceptnet_provider.py`：在线/本地 ConceptNet 邻居查询与快照缓存。
   - `cache_migration.py`：ConceptNet 快照缓存键迁移、幂等重跑与回滚。
   - `rankers.py`：Ranker 协议及冻结的 baseline/RRF/graph_rerank 实现。
@@ -22,6 +23,8 @@
   - `multihop.py`：可选的一跳作者/机构扩展与 `multihop-v1` 文档。
   - `config.py`：排序配置的严格加载与校验。
   - `paper_features.py`：论文年份、DOI、作者、机构、主题等特征提取。
+  - `rag.py`：证据上下文、引用约束和生成失败降级。
+  - `profile.py`：显式授权的兴趣画像、时间衰减和个性化排序。
   - `evaluation.py`：评估查询、qrels、Precision/Recall/nDCG/MRR 与 `evaluate` 报告。
   - `verification.py`：v2/v3 输出校验与离线字节回放。
   - `versions.py`：协议版本常量与规范化哈希。
@@ -51,7 +54,7 @@
 - `results/graph_quality.json`：阶段二清洗图质量报告（`graph-quality-v1`）。
 - `results/migrations/`：缓存键与图谱元数据迁移清单。
 - `scripts/m0_migrate.py`：M0 数据迁移命令（dry-run / apply / rollback）。
-- `tests/`：74 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、评估指标、全局度过滤、缓存迁移、图谱校验、清洗规则、扩展导入与跨平台 JSON 换行检查。
+- `tests/`：81 项回归测试，包含输出协议、失败路径、Ranker 等价性、查询理解、多跳扩展、评估指标、全局度过滤、缓存迁移、图谱校验、清洗规则、扩展导入、后三阶段模块与跨平台 JSON 换行检查。
 
 ## 快速验证（无需完整图谱、无需联网）
 
@@ -110,6 +113,28 @@ python -m src clean-graph --input data/conceptnet_en.sqlite \
 扩展输入每条必须包含 `subject`、`relation`、`object`、`weight`、`source`、`license`、`confidence`、`created_at`，来源类型固定为 `domain_glossary > public_ontology > paper_concepts > human_review > online_api`。`clean-graph` 不发起网络请求。
 
 2026-11-25 的全量清洗结果：输入 `2,653,040` 条边，输出去重后 `2,460,898` 条边、`989,059` 个节点；合并 `79,017` 条重复边（`74,557` 个重复组），`339` 个超度节点共删除 `113,125` 条边，孤立节点 `1,879` 个。清洗图 `graph_id` 为 `g-5d13ee8117eae85f`，父图 `graph_id` 为 `g-82e3382c2a25fee7`，逻辑内容哈希为 `3811964c66382ad2e3e2f7a175fc7d901a4ca71dedaa3720d34963127d6fd18d`。领域词表仅命中 `1,953` 条边，覆盖率为 `0.00079`；ConceptNet 是通用图谱，该数值用于说明领域覆盖范围，不作为质量结论。完整统计与固定样本见 `results/graph_quality.json`。
+
+## 阶段三至五：图算法、RAG 与个性化
+
+后三阶段使用独立输出，不修改冻结的 v2/v3 搜索文件：
+
+```powershell
+# 阶段三：在快照边上运行确定性的图算法
+python .\acemap_search.py graph-analyze --edges .\data\conceptnet_cache\snapshot.json `
+  --seeds robotics --algorithm pagerank --output .\results\graph_analysis.json
+
+# 阶段四：从 v2/v3 结果组装带逐条引用的离线回答
+python .\acemap_search.py rag --query "robotics" `
+  --results .\results\dynamic_queries_v3.json --output .\results\rag.json
+
+# 阶段五：明确授权后构建画像并应用个性化排序
+python .\acemap_search.py profile --history .\config\history.json --consent `
+  --output .\results\profile.json
+python .\acemap_search.py personalize --results .\results\dynamic_queries_v3.json `
+  --history .\config\history.json --consent --output .\results\personalized.json
+```
+
+`graph-analysis-v1` 支持 PageRank、加权路径、Common Neighbors、Adamic-Adar、局部社区相似度和固定关系序列路径；每个候选包含分数、参数和可追溯路径。`rag-v1` 默认使用确定性的抽取式回答，可接入外部生成器；生成器失败或引用不在证据上下文中时自动回退到证据回答。`personalized-v1` 仅使用显式传入且获得 `--consent` 的历史记录，使用固定参考年份和时间衰减；未授权或冷启动时画像权重自动为零。
 
 ## 运行
 

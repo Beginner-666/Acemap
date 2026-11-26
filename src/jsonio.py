@@ -8,7 +8,9 @@ from pathlib import Path
 
 
 def read_json(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    # Accept UTF-8 files produced by both Python and PowerShell.  Writing
+    # remains BOM-free so frozen output bytes stay unchanged.
+    return json.loads(Path(path).read_text(encoding="utf-8-sig"))
 
 
 def write_json(path, value):

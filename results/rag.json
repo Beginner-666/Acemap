@@ -1,0 +1,236 @@
+{
+  "schema_version": "rag-v1",
+  "source": {
+    "file": "dynamic_queries_v3.json",
+    "sha256": "e740614aac9a15add203a9e100c7c40ddbdec91250a06a41e42a4b0d9208a19e"
+  },
+  "query": "robotics",
+  "graph_facts": [
+    {
+      "subject": "animatronics",
+      "relation": "/r/IsA",
+      "object": "robotics",
+      "source": "/a/[/r/IsA/,/c/en/animatronics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]"
+    },
+    {
+      "subject": "robotics",
+      "relation": "/r/IsA",
+      "object": "artificial intelligence",
+      "source": "/a/[/r/IsA/,/c/en/robotics/n/wn/cognition/,/c/en/artificial_intelligence/n/wn/cognition/]"
+    },
+    {
+      "subject": "telerobotics",
+      "relation": "/r/IsA",
+      "object": "robotics",
+      "source": "/a/[/r/IsA/,/c/en/telerobotics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]"
+    },
+    {
+      "subject": "biorobotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robotics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/biorobotics/,/c/en/robotics/]"
+    },
+    {
+      "subject": "microbotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robotics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/microbotics/,/c/en/robotics/]"
+    },
+    {
+      "subject": "microrobotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robotics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/microrobotics/,/c/en/robotics/]"
+    },
+    {
+      "subject": "nanorobotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robotics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/nanorobotics/,/c/en/robotics/]"
+    },
+    {
+      "subject": "neurorobotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robotics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/neurorobotics/,/c/en/robotics/]"
+    },
+    {
+      "subject": "robotics",
+      "relation": "/r/DerivedFrom",
+      "object": "ics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/ics/]"
+    },
+    {
+      "subject": "robotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robot",
+      "source": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/robot/]"
+    },
+    {
+      "subject": "robotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robot",
+      "source": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/robot/n/]"
+    },
+    {
+      "subject": "sociorobotics",
+      "relation": "/r/DerivedFrom",
+      "object": "robotics",
+      "source": "/a/[/r/DerivedFrom/,/c/en/sociorobotics/,/c/en/robotics/]"
+    }
+  ],
+  "papers": [
+    {
+      "id": "doi:10.1016/j.tibtech.2013.03.002",
+      "title": "Soft robotics: a bioinspired evolution in robotics",
+      "doi": "10.1016/j.tibtech.2013.03.002",
+      "year": 2013,
+      "snippet": "",
+      "citation": "paper-1"
+    },
+    {
+      "id": "doi:10.1002/anie.201800907",
+      "title": "Soft Robotics",
+      "doi": "10.1002/anie.201800907",
+      "year": 2018,
+      "snippet": "Abstract This description of “soft robotics” is not intended to be a conventional review, in the sense of a comprehensive technical summary of a developing field. Rather, its objective is to describe soft robotics as a new field—one that offers opportunities to chemists and materials scientists who like to make “things” and to work with macroscopic objects that move and exert force. It will give one (personal) view of what soft actuators and robots are, and how this class of soft devices fits into the more highly developed field of conventional “hard” robotics. It will also suggest how and why soft robotics is more than simply a minor technical “tweak” on hard robotics and propose a unique role for chemistry, and materials science, in this field. Soft robotics is, at its core, intellectually and technologically different from hard robotics, both because it has different objectives and us",
+      "citation": "paper-2"
+    },
+    {
+      "id": "doi:10.1177/0278364913491297",
+      "title": "Vision meets robotics: The KITTI dataset",
+      "doi": "10.1177/0278364913491297",
+      "year": 2013,
+      "snippet": "We present a novel dataset captured from a VW station wagon for use in mobile robotics and autonomous driving research. In total, we recorded 6 hours of traffic scenarios at 10–100 Hz using a variety of sensor modalities such as high-resolution color and grayscale stereo cameras, a Velodyne 3D laser scanner and a high-precision GPS/IMU inertial navigation system. The scenarios are diverse, capturing real-world traffic situations, and range from freeways over rural areas to inner-city scenes with many static and dynamic objects. Our data is calibrated, synchronized and timestamped, and we provide the rectified and raw image sequences. Our dataset also contains object labels in the form of 3D tracklets, and we provide online benchmarks for stereo, optical flow, object detection and other tasks. This paper describes our recording platform, the data format and the utilities that we provide.",
+      "citation": "paper-3"
+    },
+    {
+      "id": "doi:10.1145/504729.504754",
+      "title": "Probabilistic robotics",
+      "doi": "10.1145/504729.504754",
+      "year": 2002,
+      "snippet": "Planning and navigation algorithms exploit statistics gleaned from uncertain, imperfect real-world environments to guide robots toward their goals and around obstacles.",
+      "citation": "paper-4"
+    },
+    {
+      "id": "doi:10.1038/s41928-018-0024-1",
+      "title": "Untethered soft robotics",
+      "doi": "10.1038/s41928-018-0024-1",
+      "year": 2018,
+      "snippet": "",
+      "citation": "paper-5"
+    },
+    {
+      "id": "doi:10.1017/9781316661239",
+      "title": "Modern Robotics",
+      "doi": "10.1017/9781316661239",
+      "year": 2017,
+      "snippet": "This introduction to robotics offers a distinct and unified perspective of the mechanics, planning and control of robots. Ideal for self-learning, or for courses, as it assumes only freshman-level physics, ordinary differential equations, linear algebra and a little bit of computing background. Modern Robotics presents the state-of-the-art, screw-theoretic techniques capturing the most salient physical features of a robot in an intuitive geometrical way. With numerous exercises at the end of each chapter, accompanying software written to reinforce the concepts in the book and video lectures aimed at changing the classroom experience, this is the go-to textbook for learning about this fascinating subject.",
+      "citation": "paper-6"
+    },
+    {
+      "id": "doi:10.1016/j.mtphys.2020.100258",
+      "title": "Hydrogel soft robotics",
+      "doi": "10.1016/j.mtphys.2020.100258",
+      "year": 2020,
+      "snippet": "With the rapidly growing attention to human-robot interfaces, soft robotics has attracted a great deal of interest. Soft robots have diverse advantages, including compliancy and safety, which contribute to seamless interactions with humans. To boost progress in the field, there is a need for compliant materials. Hydrogels are promising as compliant materials for soft robots because of their outstanding features, including high stretchability, transparency, ion conductivity, and biocompatibility. Furthermore, hydrogels provide innovative capabilities for soft robotics based on their unique responsiveness to stimuli. In this review, we discuss the unique features of hydrogel-based soft robots, from their fundamental working mechanisms to notable applications. Finally, we suggest perspectives on future directions that addressing potential challenges in the field of hydrogel soft robotics.",
+      "citation": "paper-7"
+    },
+    {
+      "id": "doi:10.1038/s41578-018-0022-y",
+      "title": "Biomedical applications of soft robotics",
+      "doi": "10.1038/s41578-018-0022-y",
+      "year": 2018,
+      "snippet": "",
+      "citation": "paper-8"
+    }
+  ],
+  "answer": {
+    "text": "- animatronics /r/IsA robotics. [/a/[/r/IsA/,/c/en/animatronics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]]\n- robotics /r/IsA artificial intelligence. [/a/[/r/IsA/,/c/en/robotics/n/wn/cognition/,/c/en/artificial_intelligence/n/wn/cognition/]]\n- telerobotics /r/IsA robotics. [/a/[/r/IsA/,/c/en/telerobotics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]]\n- biorobotics /r/DerivedFrom robotics. [/a/[/r/DerivedFrom/,/c/en/biorobotics/,/c/en/robotics/]]\n- microbotics /r/DerivedFrom robotics. [/a/[/r/DerivedFrom/,/c/en/microbotics/,/c/en/robotics/]]\n- Soft robotics: a bioinspired evolution in robotics (2013): No abstract was provided. [paper-1]\n- Soft Robotics (2018): Abstract This description of “soft robotics” is not intended to be a conventional review, in the sense of a comprehensive technical summary of a developing field. Rather, its objective is to describe soft robotics as a new field—one that offers opportunities to chemists and materials scientists who like to make “things” and to work with macroscopic objects that move and exert force. It will give one (personal) view of what soft actuators and robots are, and how this class o. [paper-2]\n- Vision meets robotics: The KITTI dataset (2013): We present a novel dataset captured from a VW station wagon for use in mobile robotics and autonomous driving research. In total, we recorded 6 hours of traffic scenarios at 10–100 Hz using a variety of sensor modalities such as high-resolution color and grayscale stereo cameras, a Velodyne 3D laser scanner and a high-precision GPS/IMU inertial navigation system. The scenarios are diverse, capturing real-world traffic situations, and range from fr. [paper-3]\n- Probabilistic robotics (2002): Planning and navigation algorithms exploit statistics gleaned from uncertain, imperfect real-world environments to guide robots toward their goals and around obstacles. [paper-4]\n- Untethered soft robotics (2018): No abstract was provided. [paper-5]",
+    "claims": [
+      {
+        "text": "animatronics /r/IsA robotics.",
+        "citations": [
+          "/a/[/r/IsA/,/c/en/animatronics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]"
+        ],
+        "type": "graph"
+      },
+      {
+        "text": "robotics /r/IsA artificial intelligence.",
+        "citations": [
+          "/a/[/r/IsA/,/c/en/robotics/n/wn/cognition/,/c/en/artificial_intelligence/n/wn/cognition/]"
+        ],
+        "type": "graph"
+      },
+      {
+        "text": "telerobotics /r/IsA robotics.",
+        "citations": [
+          "/a/[/r/IsA/,/c/en/telerobotics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]"
+        ],
+        "type": "graph"
+      },
+      {
+        "text": "biorobotics /r/DerivedFrom robotics.",
+        "citations": [
+          "/a/[/r/DerivedFrom/,/c/en/biorobotics/,/c/en/robotics/]"
+        ],
+        "type": "graph"
+      },
+      {
+        "text": "microbotics /r/DerivedFrom robotics.",
+        "citations": [
+          "/a/[/r/DerivedFrom/,/c/en/microbotics/,/c/en/robotics/]"
+        ],
+        "type": "graph"
+      },
+      {
+        "text": "Soft robotics: a bioinspired evolution in robotics (2013): No abstract was provided.",
+        "citations": [
+          "paper-1"
+        ],
+        "type": "paper"
+      },
+      {
+        "text": "Soft Robotics (2018): Abstract This description of “soft robotics” is not intended to be a conventional review, in the sense of a comprehensive technical summary of a developing field. Rather, its objective is to describe soft robotics as a new field—one that offers opportunities to chemists and materials scientists who like to make “things” and to work with macroscopic objects that move and exert force. It will give one (personal) view of what soft actuators and robots are, and how this class o.",
+        "citations": [
+          "paper-2"
+        ],
+        "type": "paper"
+      },
+      {
+        "text": "Vision meets robotics: The KITTI dataset (2013): We present a novel dataset captured from a VW station wagon for use in mobile robotics and autonomous driving research. In total, we recorded 6 hours of traffic scenarios at 10–100 Hz using a variety of sensor modalities such as high-resolution color and grayscale stereo cameras, a Velodyne 3D laser scanner and a high-precision GPS/IMU inertial navigation system. The scenarios are diverse, capturing real-world traffic situations, and range from fr.",
+        "citations": [
+          "paper-3"
+        ],
+        "type": "paper"
+      },
+      {
+        "text": "Probabilistic robotics (2002): Planning and navigation algorithms exploit statistics gleaned from uncertain, imperfect real-world environments to guide robots toward their goals and around obstacles.",
+        "citations": [
+          "paper-4"
+        ],
+        "type": "paper"
+      },
+      {
+        "text": "Untethered soft robotics (2018): No abstract was provided.",
+        "citations": [
+          "paper-5"
+        ],
+        "type": "paper"
+      }
+    ],
+    "grounded": true,
+    "insufficient_evidence": false
+  },
+  "generation": {
+    "mode": "extractive",
+    "model": "none",
+    "prompt_version": "rag-v1",
+    "error": null
+  },
+  "quality": {
+    "grounded": true,
+    "insufficient_evidence": false,
+    "citation_count": 10
+  }
+}

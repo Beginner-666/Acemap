@@ -12,7 +12,7 @@
     },
     "deepseek": {
       "enabled": false,
-      "base_url": "",
+      "base_url": "https://api.deepseek.com",
       "chat_path": "/chat/completions",
       "model": "deepseek-chat",
       "api_key_env": "DEEPSEEK_API_KEY",

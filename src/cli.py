@@ -159,6 +159,9 @@ def build_parser():
                      default=constants.ROOT / "config" / "api.example.json")
     api.add_argument("--output", type=Path,
                      help="可选；将安全的 provider 状态写入 JSON")
+    serve = commands.add_parser("serve", help="Start the visualization and API server")
+    serve.add_argument("--host", default="127.0.0.1")
+    serve.add_argument("--port", type=int, default=8000)
     return parser
 
 
@@ -250,6 +253,10 @@ def main(argv=None):
                 write_json(args.output, output)
             else:
                 print(json.dumps(output, ensure_ascii=False, indent=2))
+            return 0
+        if args.command == "serve":
+            from .server import serve
+            serve(args.host, args.port)
             return 0
         return run_search(args)
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as exc:

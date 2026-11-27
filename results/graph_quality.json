@@ -3,7 +3,7 @@
   "rules_version": "clean-v1",
   "input": {
     "file": "conceptnet_en.sqlite",
-    "sha256": "3b7425ff2fd274dbc8b9833f26ee3885b3dfcb1d5d90636371df8fcc4cd7099f",
+    "sha256": "f5ed7525bb58fac05d996491305d25e4fc22ae00cb45b668bdc41d32b0993c00",
     "kind": "sqlite"
   },
   "output": {

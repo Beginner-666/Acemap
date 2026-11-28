@@ -1,0 +1,15 @@
+{
+  "version": "profile-v1",
+  "enabled": false,
+  "reason": "explicit consent was not provided",
+  "events": 0,
+  "reference_year": 2025,
+  "half_life_years": 5.0,
+  "features": {
+    "authors": [],
+    "institutions": [],
+    "concepts": [],
+    "topics": [],
+    "keywords": []
+  }
+}

@@ -1,0 +1,442 @@
+{
+  "schema_version": "graph-analysis-v1",
+  "source": {
+    "file": "conceptnet_robotics_snapshot.json"
+  },
+  "algorithm": "pagerank",
+  "parameters": {
+    "damping": 0.85,
+    "iterations": 50,
+    "tolerance": 1e-10
+  },
+  "seeds": [
+    "robotics"
+  ],
+  "summary": {
+    "edges": 33,
+    "nodes": 27,
+    "candidates": 20
+  },
+  "candidates": [
+    {
+      "term": "animatronics",
+      "score": 0.058588622549001226,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "animatronics"
+          ],
+          "relation": "/r/IsA",
+          "assertion": "/a/[/r/IsA/,/c/en/animatronics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]",
+          "weight": 2.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "artificial intelligence",
+      "score": 0.058588622549001226,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "artificial intelligence"
+          ],
+          "relation": "/r/IsA",
+          "assertion": "/a/[/r/IsA/,/c/en/robotics/n/wn/cognition/,/c/en/artificial_intelligence/n/wn/cognition/]",
+          "weight": 2.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "telerobotics",
+      "score": 0.058588622549001226,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "telerobotics"
+          ],
+          "relation": "/r/IsA",
+          "assertion": "/a/[/r/IsA/,/c/en/telerobotics/n/wn/cognition/,/c/en/robotics/n/wn/cognition/]",
+          "weight": 2.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "application",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "application"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/application/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "biorobotics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "biorobotics"
+          ],
+          "relation": "/r/DerivedFrom",
+          "assertion": "/a/[/r/DerivedFrom/,/c/en/biorobotics/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "design",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "design"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/design/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "ics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "ics"
+          ],
+          "relation": "/r/DerivedFrom",
+          "assertion": "/a/[/r/DerivedFrom/,/c/en/robotics/,/c/en/ics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "kinodynamic",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "kinodynamic"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/kinodynamic/a/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "manufacture",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "manufacture"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/robotics/n/,/c/en/manufacture/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "mechatronics engineering",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "mechatronics engineering"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/mechatronics_engineering/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "mecomtronics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "mecomtronics"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/mecomtronics/n/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "microbotics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "microbotics"
+          ],
+          "relation": "/r/DerivedFrom",
+          "assertion": "/a/[/r/DerivedFrom/,/c/en/microbotics/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "microrobotics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "microrobotics"
+          ],
+          "relation": "/r/DerivedFrom",
+          "assertion": "/a/[/r/DerivedFrom/,/c/en/microrobotics/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "nanorobotics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "nanorobotics"
+          ],
+          "relation": "/r/DerivedFrom",
+          "assertion": "/a/[/r/DerivedFrom/,/c/en/nanorobotics/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "neurorobotics",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "neurorobotics"
+          ],
+          "relation": "/r/DerivedFrom",
+          "assertion": "/a/[/r/DerivedFrom/,/c/en/neurorobotics/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "robot",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "robot"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/robot/n/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "roboteer",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "roboteer"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/roboteer/n/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "robotic",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "robotic"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/robotic/a/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "roboticist",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "roboticist"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/roboticist/n/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "term": "robotry",
+      "score": 0.029294311274500613,
+      "path": [
+        {
+          "nodes": [
+            "robotics",
+            "robotry"
+          ],
+          "relation": "/r/RelatedTo",
+          "assertion": "/a/[/r/RelatedTo/,/c/en/robotry/n/,/c/en/robotics/]",
+          "weight": 1.0
+        }
+      ],
+      "algorithm": "pagerank",
+      "parameters": {
+        "damping": 0.85,
+        "iterations": 50,
+        "tolerance": 1e-10
+      }
+    }
+  ]
+}

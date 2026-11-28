@@ -1,0 +1,628 @@
+{
+  "schema_version": "graph-quality-v1",
+  "rules_version": "clean-v1",
+  "input": {
+    "file": "conceptnet_en.sqlite",
+    "sha256": "f5ed7525bb58fac05d996491305d25e4fc22ae00cb45b668bdc41d32b0993c00",
+    "kind": "sqlite"
+  },
+  "output": {
+    "file": "conceptnet_clean.sqlite",
+    "graph_id": "g-5d13ee8117eae85f",
+    "parent_graph_id": "g-82e3382c2a25fee7",
+    "content_sha256": "3811964c66382ad2e3e2f7a175fc7d901a4ca71dedaa3720d34963127d6fd18d",
+    "edges": 2460898,
+    "nodes": 989059
+  },
+  "manifest": {
+    "schema_version": 1,
+    "source_name": "ConceptNet 5.7 assertions",
+    "source_url": "https://github.com/commonsense/conceptnet5/wiki/Downloads",
+    "source_sha256": "accd65fe94038584295574ddc26e1500c1919c8c4532bf771811cafd0948af7e",
+    "source_file": "conceptnet-assertions-5.7.0.csv.gz",
+    "rows_scanned": 2653040,
+    "edges_indexed": 2460898,
+    "language": "en",
+    "relations": [
+      "/r/DerivedFrom",
+      "/r/FormOf",
+      "/r/HasA",
+      "/r/IsA",
+      "/r/PartOf",
+      "/r/RelatedTo",
+      "/r/Synonym"
+    ],
+    "min_weight": 1.0
+  },
+  "cleaning_parameters": {
+    "rules_version": "clean-v1",
+    "min_weight": 1.0,
+    "degree_cap": 500,
+    "domain_terms_sha256": "3c32ce3f49eac56873b988f7acacbeaa54d9beec21cb72f3940407e1f96218d3",
+    "extensions_sha256": null
+  },
+  "clean_parameters_sha256": "8c3e5d3eeb0841ec21b2a2d8ca99f5e8554592afa81f395d441e1a73ebee9f60",
+  "counts": {
+    "base_duplicate_edges": 79017,
+    "degree_cap_edges": 113125,
+    "degree_cap_nodes": 339,
+    "disallowed_relation": 0,
+    "domain_low_confidence": 2458945,
+    "duplicate_edges": 79017,
+    "duplicate_groups": 74557,
+    "empty_label": 0,
+    "input_edges": 2653040,
+    "input_rows": 2653040,
+    "invalid_assertion": 0,
+    "invalid_evidence": 0,
+    "invalid_metadata": 0,
+    "invalid_rows": 0,
+    "invalid_uri": 0,
+    "isolated_nodes": 1879,
+    "low_weight": 0,
+    "non_english": 0,
+    "non_finite_weight": 0,
+    "output_edges": 2460898,
+    "output_nodes": 989059,
+    "self_loop": 0
+  },
+  "rules": {
+    "invalid_rows": 0,
+    "invalid_evidence": 0,
+    "invalid_assertion": 0,
+    "invalid_uri": 0,
+    "non_english": 0,
+    "empty_label": 0,
+    "disallowed_relation": 0,
+    "self_loop": 0,
+    "non_finite_weight": 0,
+    "invalid_metadata": 0,
+    "low_weight": 0,
+    "duplicate_edges": 79017,
+    "degree_cap_edges": 113125,
+    "domain_low_confidence": 2458945
+  },
+  "relations": {
+    "/r/DerivedFrom": 300533,
+    "/r/FormOf": 360331,
+    "/r/HasA": 5520,
+    "/r/IsA": 187443,
+    "/r/PartOf": 10586,
+    "/r/RelatedTo": 1426778,
+    "/r/Synonym": 169707
+  },
+  "degrees": {
+    "nodes": 989059,
+    "min": 1,
+    "median": 2,
+    "p90": 9,
+    "max": 500
+  },
+  "duplicate_rate": 0.02978356903778307,
+  "cross_language_edges": 0,
+  "low_weight_edges": 0,
+  "domain_coverage": 0.0007936127381142982,
+  "extensions": {
+    "schema_version": "extensions-v1",
+    "rules_version": "clean-v1",
+    "source_priority": [
+      "domain_glossary",
+      "public_ontology",
+      "paper_concepts",
+      "human_review",
+      "online_api"
+    ],
+    "inputs": [],
+    "edges": 0,
+    "nodes": 0,
+    "licenses": []
+  },
+  "samples": {
+    "method": "sha256(assertion, subject, relation, object) smallest first",
+    "before": [
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/acods/n/,/c/en/acod/]",
+        "relation": "/r/RelatedTo",
+        "subject": "acods",
+        "object": "acod",
+        "subject_uri": "/c/en/acods/n",
+        "object_uri": "/c/en/acod",
+        "weight": 1.0,
+        "source_line": 18759070
+      },
+      {
+        "assertion": "/a/[/r/Synonym/,/c/en/genus_prunus/n/wn/plant/,/c/en/prunus/n/wn/plant/]",
+        "relation": "/r/Synonym",
+        "subject": "genus prunus",
+        "object": "prunus",
+        "subject_uri": "/c/en/genus_prunus/n/wn/plant",
+        "object_uri": "/c/en/prunus/n/wn/plant",
+        "weight": 2.0,
+        "source_line": 28808932
+      },
+      {
+        "assertion": "/a/[/r/DerivedFrom/,/c/en/seacock/,/c/en/sea/]",
+        "relation": "/r/DerivedFrom",
+        "subject": "seacock",
+        "object": "sea",
+        "subject_uri": "/c/en/seacock",
+        "object_uri": "/c/en/sea",
+        "weight": 1.0,
+        "source_line": 813832
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/israelite/n/wn/person/,/c/en/person/n/wn/]",
+        "relation": "/r/IsA",
+        "subject": "israelite",
+        "object": "person",
+        "subject_uri": "/c/en/israelite/n/wn/person",
+        "object_uri": "/c/en/person/n/wn",
+        "weight": 2.0,
+        "source_line": 17221058
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/hydramnic/a/,/c/en/amniotic/]",
+        "relation": "/r/RelatedTo",
+        "subject": "hydramnic",
+        "object": "amniotic",
+        "subject_uri": "/c/en/hydramnic/a",
+        "object_uri": "/c/en/amniotic",
+        "weight": 1.0,
+        "source_line": 19504876
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/châtelperronian/a/,/c/en/paleolithic/]",
+        "relation": "/r/RelatedTo",
+        "subject": "châtelperronian",
+        "object": "paleolithic",
+        "subject_uri": "/c/en/châtelperronian/a",
+        "object_uri": "/c/en/paleolithic",
+        "weight": 1.0,
+        "source_line": 19042634
+      },
+      {
+        "assertion": "/a/[/r/FormOf/,/c/en/lunar_eclipses/n/,/c/en/lunar_eclipse/]",
+        "relation": "/r/FormOf",
+        "subject": "lunar eclipses",
+        "object": "lunar eclipse",
+        "subject_uri": "/c/en/lunar_eclipses/n",
+        "object_uri": "/c/en/lunar_eclipse",
+        "weight": 1.0,
+        "source_line": 12742463
+      },
+      {
+        "assertion": "/a/[/r/DerivedFrom/,/c/en/highwire/,/c/en/wire/]",
+        "relation": "/r/DerivedFrom",
+        "subject": "highwire",
+        "object": "wire",
+        "subject_uri": "/c/en/highwire",
+        "object_uri": "/c/en/wire",
+        "weight": 1.0,
+        "source_line": 685363
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/gardner_syndrome/n/,/c/en/colon/]",
+        "relation": "/r/RelatedTo",
+        "subject": "gardner syndrome",
+        "object": "colon",
+        "subject_uri": "/c/en/gardner_syndrome/n",
+        "object_uri": "/c/en/colon",
+        "weight": 1.0,
+        "source_line": 19384105
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/apocryphalist/n/,/c/en/apocryphalism/]",
+        "relation": "/r/RelatedTo",
+        "subject": "apocryphalist",
+        "object": "apocryphalism",
+        "subject_uri": "/c/en/apocryphalist/n",
+        "object_uri": "/c/en/apocryphalism",
+        "weight": 1.0,
+        "source_line": 18822531
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/clancularly/r/,/c/en/secret/]",
+        "relation": "/r/RelatedTo",
+        "subject": "clancularly",
+        "object": "secret",
+        "subject_uri": "/c/en/clancularly/r",
+        "object_uri": "/c/en/secret",
+        "weight": 1.0,
+        "source_line": 19048831
+      },
+      {
+        "assertion": "/a/[/r/FormOf/,/c/en/premaxillas/n/,/c/en/premaxilla/]",
+        "relation": "/r/FormOf",
+        "subject": "premaxillas",
+        "object": "premaxilla",
+        "subject_uri": "/c/en/premaxillas/n",
+        "object_uri": "/c/en/premaxilla",
+        "weight": 1.0,
+        "source_line": 12809989
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/acoustic_electric_guitar/n/,/c/en/acoustic_guitar/n/]",
+        "relation": "/r/IsA",
+        "subject": "acoustic electric guitar",
+        "object": "acoustic guitar",
+        "subject_uri": "/c/en/acoustic_electric_guitar/n",
+        "object_uri": "/c/en/acoustic_guitar/n",
+        "weight": 1.0,
+        "source_line": 17113922
+      },
+      {
+        "assertion": "/a/[/r/Synonym/,/c/en/inebriacy/n/,/c/en/alcoholism/]",
+        "relation": "/r/Synonym",
+        "subject": "inebriacy",
+        "object": "alcoholism",
+        "subject_uri": "/c/en/inebriacy/n",
+        "object_uri": "/c/en/alcoholism",
+        "weight": 1.0,
+        "source_line": 28960095
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/mauritian/n/,/c/en/person_with_nationality/n/]",
+        "relation": "/r/IsA",
+        "subject": "mauritian",
+        "object": "person with nationality",
+        "subject_uri": "/c/en/mauritian/n",
+        "object_uri": "/c/en/person_with_nationality/n",
+        "weight": 1.0,
+        "source_line": 17240275
+      },
+      {
+        "assertion": "/a/[/r/FormOf/,/c/en/facebookers/n/,/c/en/facebooker/]",
+        "relation": "/r/FormOf",
+        "subject": "facebookers",
+        "object": "facebooker",
+        "subject_uri": "/c/en/facebookers/n",
+        "object_uri": "/c/en/facebooker",
+        "weight": 1.0,
+        "source_line": 12666720
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/fictionalized_tv_biography/n/,/c/en/narrative/n/]",
+        "relation": "/r/IsA",
+        "subject": "fictionalized tv biography",
+        "object": "narrative",
+        "subject_uri": "/c/en/fictionalized_tv_biography/n",
+        "object_uri": "/c/en/narrative/n",
+        "weight": 1.0,
+        "source_line": 17188716
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/british_imperial_system/n/wn/quantity/,/c/en/system_of_weights_and_measures/n/wn/quantity/]",
+        "relation": "/r/IsA",
+        "subject": "british imperial system",
+        "object": "system of weights and measures",
+        "subject_uri": "/c/en/british_imperial_system/n/wn/quantity",
+        "object_uri": "/c/en/system_of_weights_and_measures/n/wn/quantity",
+        "weight": 2.0,
+        "source_line": 17141027
+      },
+      {
+        "assertion": "/a/[/r/DerivedFrom/,/c/en/syphilize/,/c/en/syphilis/n/]",
+        "relation": "/r/DerivedFrom",
+        "subject": "syphilize",
+        "object": "syphilis",
+        "subject_uri": "/c/en/syphilize",
+        "object_uri": "/c/en/syphilis/n",
+        "weight": 1.0,
+        "source_line": 844347
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/yellowface/n/,/c/en/theatrical/]",
+        "relation": "/r/RelatedTo",
+        "subject": "yellowface",
+        "object": "theatrical",
+        "subject_uri": "/c/en/yellowface/n",
+        "object_uri": "/c/en/theatrical",
+        "weight": 1.0,
+        "source_line": 20527672
+      }
+    ],
+    "after": [
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/werewolf/n/,/c/en/mythical_being/n/]",
+        "relation": "/r/IsA",
+        "subject": "werewolf",
+        "object": "mythical being",
+        "subject_uri": "/c/en/werewolf/n",
+        "object_uri": "/c/en/mythical_being/n",
+        "weight": 1.0,
+        "source_line": 17336566,
+        "source_lines": [
+          17336566
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/fantasy_collapse/n/,/c/en/reveal/]",
+        "relation": "/r/RelatedTo",
+        "subject": "fantasy collapse",
+        "object": "reveal",
+        "subject_uri": "/c/en/fantasy_collapse/n",
+        "object_uri": "/c/en/reveal",
+        "weight": 1.0,
+        "source_line": 19310019,
+        "source_lines": [
+          19310019
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/acods/n/,/c/en/acod/]",
+        "relation": "/r/RelatedTo",
+        "subject": "acods",
+        "object": "acod",
+        "subject_uri": "/c/en/acods/n",
+        "object_uri": "/c/en/acod",
+        "weight": 1.0,
+        "source_line": 18759070,
+        "source_lines": [
+          18759070
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/Synonym/,/c/en/genus_prunus/n/wn/plant/,/c/en/prunus/n/wn/plant/]",
+        "relation": "/r/Synonym",
+        "subject": "genus prunus",
+        "object": "prunus",
+        "subject_uri": "/c/en/genus_prunus/n/wn/plant",
+        "object_uri": "/c/en/prunus/n/wn/plant",
+        "weight": 2.0,
+        "source_line": 28808932,
+        "source_lines": [
+          28808932
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/DerivedFrom/,/c/en/seacock/,/c/en/sea/]",
+        "relation": "/r/DerivedFrom",
+        "subject": "seacock",
+        "object": "sea",
+        "subject_uri": "/c/en/seacock",
+        "object_uri": "/c/en/sea",
+        "weight": 1.0,
+        "source_line": 813832,
+        "source_lines": [
+          813832
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/israelite/n/wn/person/,/c/en/person/n/wn/]",
+        "relation": "/r/IsA",
+        "subject": "israelite",
+        "object": "person",
+        "subject_uri": "/c/en/israelite/n/wn/person",
+        "object_uri": "/c/en/person/n/wn",
+        "weight": 2.0,
+        "source_line": 17221058,
+        "source_lines": [
+          17221058
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/hydramnic/a/,/c/en/amniotic/]",
+        "relation": "/r/RelatedTo",
+        "subject": "hydramnic",
+        "object": "amniotic",
+        "subject_uri": "/c/en/hydramnic/a",
+        "object_uri": "/c/en/amniotic",
+        "weight": 1.0,
+        "source_line": 19504876,
+        "source_lines": [
+          19504876
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/châtelperronian/a/,/c/en/paleolithic/]",
+        "relation": "/r/RelatedTo",
+        "subject": "châtelperronian",
+        "object": "paleolithic",
+        "subject_uri": "/c/en/châtelperronian/a",
+        "object_uri": "/c/en/paleolithic",
+        "weight": 1.0,
+        "source_line": 19042634,
+        "source_lines": [
+          19042634
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/DerivedFrom/,/c/en/highwire/,/c/en/wire/]",
+        "relation": "/r/DerivedFrom",
+        "subject": "highwire",
+        "object": "wire",
+        "subject_uri": "/c/en/highwire",
+        "object_uri": "/c/en/wire",
+        "weight": 1.0,
+        "source_line": 685363,
+        "source_lines": [
+          685363
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/gardner_syndrome/n/,/c/en/colon/]",
+        "relation": "/r/RelatedTo",
+        "subject": "gardner syndrome",
+        "object": "colon",
+        "subject_uri": "/c/en/gardner_syndrome/n",
+        "object_uri": "/c/en/colon",
+        "weight": 1.0,
+        "source_line": 19384105,
+        "source_lines": [
+          19384105
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/apocryphalist/n/,/c/en/apocryphalism/]",
+        "relation": "/r/RelatedTo",
+        "subject": "apocryphalist",
+        "object": "apocryphalism",
+        "subject_uri": "/c/en/apocryphalist/n",
+        "object_uri": "/c/en/apocryphalism",
+        "weight": 1.0,
+        "source_line": 18822531,
+        "source_lines": [
+          18822531
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/clancularly/r/,/c/en/secret/]",
+        "relation": "/r/RelatedTo",
+        "subject": "clancularly",
+        "object": "secret",
+        "subject_uri": "/c/en/clancularly/r",
+        "object_uri": "/c/en/secret",
+        "weight": 1.0,
+        "source_line": 19048831,
+        "source_lines": [
+          19048831
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/FormOf/,/c/en/premaxillas/n/,/c/en/premaxilla/]",
+        "relation": "/r/FormOf",
+        "subject": "premaxillas",
+        "object": "premaxilla",
+        "subject_uri": "/c/en/premaxillas/n",
+        "object_uri": "/c/en/premaxilla",
+        "weight": 1.0,
+        "source_line": 12809989,
+        "source_lines": [
+          12809989
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/acoustic_electric_guitar/n/,/c/en/acoustic_guitar/n/]",
+        "relation": "/r/IsA",
+        "subject": "acoustic electric guitar",
+        "object": "acoustic guitar",
+        "subject_uri": "/c/en/acoustic_electric_guitar/n",
+        "object_uri": "/c/en/acoustic_guitar/n",
+        "weight": 1.0,
+        "source_line": 17113922,
+        "source_lines": [
+          17113922
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/Synonym/,/c/en/inebriacy/n/,/c/en/alcoholism/]",
+        "relation": "/r/Synonym",
+        "subject": "inebriacy",
+        "object": "alcoholism",
+        "subject_uri": "/c/en/inebriacy/n",
+        "object_uri": "/c/en/alcoholism",
+        "weight": 1.0,
+        "source_line": 28960095,
+        "source_lines": [
+          28960095
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/mauritian/n/,/c/en/person_with_nationality/n/]",
+        "relation": "/r/IsA",
+        "subject": "mauritian",
+        "object": "person with nationality",
+        "subject_uri": "/c/en/mauritian/n",
+        "object_uri": "/c/en/person_with_nationality/n",
+        "weight": 1.0,
+        "source_line": 17240275,
+        "source_lines": [
+          17240275
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/fictionalized_tv_biography/n/,/c/en/narrative/n/]",
+        "relation": "/r/IsA",
+        "subject": "fictionalized tv biography",
+        "object": "narrative",
+        "subject_uri": "/c/en/fictionalized_tv_biography/n",
+        "object_uri": "/c/en/narrative/n",
+        "weight": 1.0,
+        "source_line": 17188716,
+        "source_lines": [
+          17188716
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/IsA/,/c/en/british_imperial_system/n/wn/quantity/,/c/en/system_of_weights_and_measures/n/wn/quantity/]",
+        "relation": "/r/IsA",
+        "subject": "british imperial system",
+        "object": "system of weights and measures",
+        "subject_uri": "/c/en/british_imperial_system/n/wn/quantity",
+        "object_uri": "/c/en/system_of_weights_and_measures/n/wn/quantity",
+        "weight": 2.0,
+        "source_line": 17141027,
+        "source_lines": [
+          17141027
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/DerivedFrom/,/c/en/syphilize/,/c/en/syphilis/n/]",
+        "relation": "/r/DerivedFrom",
+        "subject": "syphilize",
+        "object": "syphilis",
+        "subject_uri": "/c/en/syphilize",
+        "object_uri": "/c/en/syphilis/n",
+        "weight": 1.0,
+        "source_line": 844347,
+        "source_lines": [
+          844347
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      },
+      {
+        "assertion": "/a/[/r/RelatedTo/,/c/en/yellowface/n/,/c/en/theatrical/]",
+        "relation": "/r/RelatedTo",
+        "subject": "yellowface",
+        "object": "theatrical",
+        "subject_uri": "/c/en/yellowface/n",
+        "object_uri": "/c/en/theatrical",
+        "weight": 1.0,
+        "source_line": 20527672,
+        "source_lines": [
+          20527672
+        ],
+        "confidence": 0.5,
+        "domain_relevant": false
+      }
+    ],
+    "conclusion": "pending manual review"
+  }
+}

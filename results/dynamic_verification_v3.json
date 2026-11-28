@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "byte_identical": true,
+  "network_forbidden": true,
+  "ranker": "graph_rerank",
+  "ranker_version": "graph-rerank-v1",
+  "graph_version": "g-82e3382c2a25fee7",
+  "config_hash": "sha256:7d5617531664bab2ad38c03f2380401e1afba5f9589f5090bac4da94b502a22a",
+  "index_bytes": 1963692032,
+  "queries": [
+    {
+      "query": "robotics",
+      "backend": "local",
+      "matched_concept": "robotics",
+      "enhancement_applied": true,
+      "expansion_terms": [
+        "animatronics",
+        "artificial intelligence",
+        "telerobotics"
+      ],
+      "baseline_unique": 10,
+      "enhanced_unique": 40,
+      "additional_unique": 30,
+      "failed_requests": 0,
+      "diagnostics": []
+    },
+    {
+      "query": "artificial intelligence",
+      "backend": "local",
+      "matched_concept": "artificial intelligence",
+      "enhancement_applied": true,
+      "expansion_terms": [
+        "ai",
+        "computer science",
+        "computer vision"
+      ],
+      "baseline_unique": 10,
+      "enhanced_unique": 40,
+      "additional_unique": 30,
+      "failed_requests": 0,
+      "diagnostics": []
+    },
+    {
+      "query": "embodied ai",
+      "backend": "local",
+      "matched_concept": null,
+      "enhancement_applied": false,
+      "expansion_terms": [],
+      "baseline_unique": 10,
+      "enhanced_unique": 10,
+      "additional_unique": 0,
+      "failed_requests": 0,
+      "diagnostics": []
+    }
+  ],
+  "sha256": "e740614aac9a15add203a9e100c7c40ddbdec91250a06a41e42a4b0d9208a19e"
+}

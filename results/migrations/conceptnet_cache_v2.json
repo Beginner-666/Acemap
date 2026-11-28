@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "migration": "conceptnet-cache-key-v2",
+  "cache_key_schema": 2,
+  "cache_dir": "data/conceptnet_cache",
+  "actions": [
+    {
+      "old": "339d356f4db5a9ee7b2a7f4e2c3502291548cdc01868c2917b539e05e7c87fb4.json",
+      "new": "aea3d8da50cb35192935cbc508efc3aeea700842faa0dfd95527bf1154926758.json",
+      "mode": "local",
+      "source_id": "local:g-82e3382c2a25fee7",
+      "graph_id": "g-82e3382c2a25fee7",
+      "query": "robotics",
+      "backend": "local",
+      "sha256": "07746c0a2d81389685b4dc1651e201670e64ea841338cea118a1cff6a3b4e7df",
+      "status": "renamed",
+      "reason": null
+    },
+    {
+      "old": "6debc6933c5bc922574c8f6df3c227afe21967db354ec4dd8b2f99114aee19c8.json",
+      "new": "5807224559c21936d93b0b6340331e9ff3eafc8fe46a196c1854141f25452fb3.json",
+      "mode": "auto",
+      "source_id": "local:g-82e3382c2a25fee7",
+      "graph_id": "g-82e3382c2a25fee7",
+      "query": "embodied ai",
+      "backend": "local",
+      "sha256": "cf0f7e790537ddb9dd39dd8c3c1b74350e53526782eeb82862c4ebbb0931b17c",
+      "status": "renamed",
+      "reason": null
+    },
+    {
+      "old": "82a5131b6975eb968c74c6b1a0f10275ffc59f4ecc27b93ed95f051d7c803f4f.json",
+      "new": "7ba8487f6ee7583b0ef5d853fac452a4826ca894d8a43fc2e9a77ac0ce57968a.json",
+      "mode": "local",
+      "source_id": "local:g-82e3382c2a25fee7",
+      "graph_id": "g-82e3382c2a25fee7",
+      "query": "artificial intelligence",
+      "backend": "local",
+      "sha256": "9aebd3b5dc141a63a67504f2d076d736a2baec1e80dd9eab39769db6a808ae8d",
+      "status": "renamed",
+      "reason": null
+    },
+    {
+      "old": "9d9c34fedaac805018bf60dc70e7d41586f0990449e16ca411fe7c659ec943b1.json",
+      "new": "731c8ebae762613e8267c0ac04ace2250f3aefbf2c548f1955475a3811ca02c7.json",
+      "mode": "auto",
+      "source_id": "local:g-82e3382c2a25fee7",
+      "graph_id": "g-82e3382c2a25fee7",
+      "query": "artificial intelligence",
+      "backend": "local",
+      "sha256": "9aebd3b5dc141a63a67504f2d076d736a2baec1e80dd9eab39769db6a808ae8d",
+      "status": "renamed",
+      "reason": null
+    },
+    {
+      "old": "c5b38b8273106e30dcc2c51881d2ceb2e319b0ae70f495a02de63d3029aff6d0.json",
+      "new": "fa77fb78f405579df0a93dfeaa81a3a11eaca6e0e9db5aadee436ebaf0e3ac79.json",
+      "mode": "local",
+      "source_id": "local:g-82e3382c2a25fee7",
+      "graph_id": "g-82e3382c2a25fee7",
+      "query": "embodied ai",
+      "backend": "local",
+      "sha256": "cf0f7e790537ddb9dd39dd8c3c1b74350e53526782eeb82862c4ebbb0931b17c",
+      "status": "renamed",
+      "reason": null
+    },
+    {
+      "old": "c80fd06f2fee55950c255e840b77fca5ebecbec9ff4692eb08a3dfdbe838bba3.json",
+      "new": "506817ec1e0dc95e035170d2aba0cf992e2ae4662750457f1f71c1ec7fc42e1a.json",
+      "mode": "auto",
+      "source_id": "local:g-82e3382c2a25fee7",
+      "graph_id": "g-82e3382c2a25fee7",
+      "query": "robotics",
+      "backend": "local",
+      "sha256": "83a050cf8b616f92268caab85e71af3ade7b72cfe818f623495ca3fa56042d98",
+      "status": "renamed",
+      "reason": null
+    }
+  ]
+}

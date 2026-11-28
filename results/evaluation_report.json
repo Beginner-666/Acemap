@@ -1,0 +1,2262 @@
+{
+  "schema_version": "evaluation-v1",
+  "config": {
+    "k_values": [
+      5,
+      10
+    ],
+    "metrics": [
+      "precision",
+      "recall",
+      "ndcg",
+      "mrr"
+    ],
+    "relevance_threshold": 1,
+    "seed": 0,
+    "splits": {
+      "type": "time",
+      "test_after": "2025-01-01"
+    }
+  },
+  "queries": {
+    "count": 40,
+    "file": "/home/liuil235/Desktop/Lab/course/dataMining/Acemap/config/evaluation_queries.json",
+    "sha256": "ab16dc2c4589f2d86a0c1be1dd084edddd47a12252ec88a57845969972465144"
+  },
+  "qrels": {
+    "file": "/home/liuil235/Desktop/Lab/course/dataMining/Acemap/config/qrels.json",
+    "sha256": "9588471b66491640c26c4dc61d8e02a9e811a3b9927bba047ce4821bcb7f4c93",
+    "labels": 1735,
+    "queries": 40,
+    "relevance_threshold": 1,
+    "provenance": "ai-assisted rubric; human review pending"
+  },
+  "rankers": {
+    "baseline": {
+      "source": "results/eval_baseline.json",
+      "schema_version": 3,
+      "ranker": "baseline",
+      "queries": 40,
+      "metrics": {
+        "mrr@10": 1.0,
+        "mrr@5": 1.0,
+        "ndcg@10": 0.8626470212736626,
+        "ndcg@5": 0.829809613685839,
+        "precision@10": 0.9625,
+        "precision@5": 0.96,
+        "recall@10": 0.3528075265035572,
+        "recall@5": 0.17518587787628453,
+        "unjudged@10": 0.0,
+        "unjudged@5": 0.0
+      },
+      "per_query": [
+        {
+          "id": "q001",
+          "text": "robotics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.3125,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.625,
+            "ndcg@10": 0.9795527431738457,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q002",
+          "text": "artificial intelligence",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.17857142857142858,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.35714285714285715,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q003",
+          "text": "machine learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.11904761904761904,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.23809523809523808,
+            "ndcg@10": 0.9012884244108894,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q004",
+          "text": "deep learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13513513513513514,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2702702702702703,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q005",
+          "text": "neural networks",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.25,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q006",
+          "text": "computer vision",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 0.6400591967045143,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 0.8090553782164662,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q007",
+          "text": "natural language processing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1724137931034483,
+            "ndcg@5": 0.8777221344374128,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3448275862068966,
+            "ndcg@10": 0.9553827186981007,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q008",
+          "text": "data mining",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16129032258064516,
+            "ndcg@5": 0.9030970842075382,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3225806451612903,
+            "ndcg@10": 0.9693837859490733,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q009",
+          "text": "information retrieval",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.3125,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.625,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q010",
+          "text": "speech recognition",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15151515151515152,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.30303030303030304,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q011",
+          "text": "autonomous vehicles",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.25,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q012",
+          "text": "cybersecurity",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.38461538461538464,
+            "ndcg@5": 0.6477522099264775,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.7692307692307693,
+            "ndcg@10": 0.8705630866216559,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q013",
+          "text": "cloud computing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.10204081632653061,
+            "ndcg@5": 0.9165323715184533,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.20408163265306123,
+            "ndcg@10": 0.9458352203602567,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q014",
+          "text": "internet of things",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.22727272727272727,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q015",
+          "text": "blockchain",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13513513513513514,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2702702702702703,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q016",
+          "text": "quantum computing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.19230769230769232,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.38461538461538464,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q017",
+          "text": "bioinformatics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q018",
+          "text": "medical imaging",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.20833333333333334,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.4166666666666667,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q019",
+          "text": "human computer interaction",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 0.7092912526226147,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 0.8419591160854448,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q020",
+          "text": "software engineering",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13157894736842105,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2631578947368421,
+            "ndcg@10": 0.9811368677478524,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q021",
+          "text": "operating systems",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.22727272727272727,
+            "ndcg@5": 0.8165832016561192,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 0.8189885416090839,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q022",
+          "text": "programming languages",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15625,
+            "ndcg@5": 0.8747985572776802,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3125,
+            "ndcg@10": 0.9534139428394218,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q023",
+          "text": "computer graphics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.09259259259259259,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.18518518518518517,
+            "ndcg@10": 0.9679925992378581,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q024",
+          "text": "virtual reality",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15151515151515152,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.30303030303030304,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q025",
+          "text": "augmented reality",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1388888888888889,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2777777777777778,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q026",
+          "text": "pattern recognition",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 0.8747985572776802,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 0.870957753169481,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q027",
+          "text": "data science",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.08771929824561403,
+            "ndcg@5": 0.9165323715184533,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.17543859649122806,
+            "ndcg@10": 0.9732664936307878,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q028",
+          "text": "big data",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.10204081632653061,
+            "ndcg@5": 0.38052008059004133,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.20408163265306123,
+            "ndcg@10": 0.4998707799724043,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q029",
+          "text": "information security",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1111111111111111,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2222222222222222,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q030",
+          "text": "computer architecture",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.11627906976744186,
+            "ndcg@5": 0.8875385049894213,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.23255813953488372,
+            "ndcg@10": 0.9136608973222684,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q031",
+          "text": "recent research on robotics",
+          "metrics": {
+            "precision@5": 0.8,
+            "recall@5": 0.17391304347826086,
+            "ndcg@5": 0.8687949224876581,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.7,
+            "recall@10": 0.30434782608695654,
+            "ndcg@10": 0.7702043899253146,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q032",
+          "text": "recent papers on machine learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1111111111111111,
+            "ndcg@5": 0.8875385049894213,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2222222222222222,
+            "ndcg@10": 0.8598216686111747,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q033",
+          "text": "2020-2024 research on computer vision",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 0.1544358686372801,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 0.3777426246656855,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q034",
+          "text": "latest review on natural language processing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1282051282051282,
+            "ndcg@5": 0.6913817589337993,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2564102564102564,
+            "ndcg@10": 0.7382119454679287,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q035",
+          "text": "since 2022 papers on cybersecurity",
+          "metrics": {
+            "precision@5": 0.4,
+            "recall@5": 0.18181818181818182,
+            "ndcg@5": 0.07902092428687767,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.5,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 0.25423135971648764,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q036",
+          "text": "recent research on medical imaging",
+          "metrics": {
+            "precision@5": 0.8,
+            "recall@5": 0.13333333333333333,
+            "ndcg@5": 0.8687949224876581,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.7,
+            "recall@10": 0.23333333333333334,
+            "ndcg@10": 0.7272627274772844,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q037",
+          "text": "survey on data mining",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.12195121951219512,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.24390243902439024,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q038",
+          "text": "recent research on deep learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.12195121951219512,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.24390243902439024,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q039",
+          "text": "2018-2022 papers on blockchain",
+          "metrics": {
+            "precision@5": 0.4,
+            "recall@5": 0.08333333333333333,
+            "ndcg@5": 0.0693183650166175,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.6,
+            "recall@10": 0.25,
+            "ndcg@10": 0.0920480422328024,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q040",
+          "text": "recent review on human computer interaction",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1282051282051282,
+            "ndcg@5": 0.7092912526226147,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2564102564102564,
+            "ndcg@10": 0.8113499146016455,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        }
+      ]
+    },
+    "rrf": {
+      "source": "results/eval_rrf.json",
+      "schema_version": 3,
+      "ranker": "rrf",
+      "queries": 40,
+      "metrics": {
+        "mrr@10": 1.0,
+        "mrr@5": 1.0,
+        "ndcg@10": 0.857579248090045,
+        "ndcg@5": 0.8263702374016338,
+        "precision@10": 0.9574999999999999,
+        "precision@5": 0.9550000000000001,
+        "recall@10": 0.34986635003296895,
+        "recall@5": 0.17371528964099042,
+        "unjudged@10": 0.0,
+        "unjudged@5": 0.0
+      },
+      "per_query": [
+        {
+          "id": "q001",
+          "text": "robotics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.3125,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.625,
+            "ndcg@10": 0.9795527431738457,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q002",
+          "text": "artificial intelligence",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.17857142857142858,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.35714285714285715,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q003",
+          "text": "machine learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.11904761904761904,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.23809523809523808,
+            "ndcg@10": 0.9012884244108894,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 37
+        },
+        {
+          "id": "q004",
+          "text": "deep learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13513513513513514,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2702702702702703,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 37
+        },
+        {
+          "id": "q005",
+          "text": "neural networks",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.25,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q006",
+          "text": "computer vision",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 0.6400591967045143,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 0.811879070920821,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q007",
+          "text": "natural language processing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1724137931034483,
+            "ndcg@5": 0.8777221344374128,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3448275862068966,
+            "ndcg@10": 0.9553827186981007,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q008",
+          "text": "data mining",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16129032258064516,
+            "ndcg@5": 0.9030970842075382,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3225806451612903,
+            "ndcg@10": 0.9693837859490733,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q009",
+          "text": "information retrieval",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.3125,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.625,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q010",
+          "text": "speech recognition",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15151515151515152,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.30303030303030304,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 39
+        },
+        {
+          "id": "q011",
+          "text": "autonomous vehicles",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.25,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 20
+        },
+        {
+          "id": "q012",
+          "text": "cybersecurity",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.38461538461538464,
+            "ndcg@5": 0.6477522099264775,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.7692307692307693,
+            "ndcg@10": 0.8705630866216559,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q013",
+          "text": "cloud computing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.10204081632653061,
+            "ndcg@5": 0.9250256699929476,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.20408163265306123,
+            "ndcg@10": 0.9513467899190737,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 37
+        },
+        {
+          "id": "q014",
+          "text": "internet of things",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.22727272727272727,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 28
+        },
+        {
+          "id": "q015",
+          "text": "blockchain",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13513513513513514,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2702702702702703,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q016",
+          "text": "quantum computing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.19230769230769232,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.38461538461538464,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q017",
+          "text": "bioinformatics",
+          "metrics": {
+            "precision@5": 0.8,
+            "recall@5": 0.23529411764705882,
+            "ndcg@5": 0.8539316501572934,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.8,
+            "recall@10": 0.47058823529411764,
+            "ndcg@10": 0.788953810392123,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 35
+        },
+        {
+          "id": "q018",
+          "text": "medical imaging",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.20833333333333334,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.4166666666666667,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q019",
+          "text": "human computer interaction",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 0.7092912526226147,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 0.8419591160854448,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q020",
+          "text": "software engineering",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13157894736842105,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2631578947368421,
+            "ndcg@10": 0.9811368677478524,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q021",
+          "text": "operating systems",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.22727272727272727,
+            "ndcg@5": 0.8165832016561192,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 0.8189885416090839,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q022",
+          "text": "programming languages",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15625,
+            "ndcg@5": 0.8747985572776802,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3125,
+            "ndcg@10": 0.9534139428394218,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q023",
+          "text": "computer graphics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.09259259259259259,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.18518518518518517,
+            "ndcg@10": 0.9679925992378581,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 37
+        },
+        {
+          "id": "q024",
+          "text": "virtual reality",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15151515151515152,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.30303030303030304,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 36
+        },
+        {
+          "id": "q025",
+          "text": "augmented reality",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1388888888888889,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2777777777777778,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q026",
+          "text": "pattern recognition",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 0.8747985572776802,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 0.870957753169481,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q027",
+          "text": "data science",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.08771929824561403,
+            "ndcg@5": 0.9165323715184533,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.17543859649122806,
+            "ndcg@10": 0.9732664936307878,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 39
+        },
+        {
+          "id": "q028",
+          "text": "big data",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.10204081632653061,
+            "ndcg@5": 0.38052008059004133,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.20408163265306123,
+            "ndcg@10": 0.4998707799724043,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q029",
+          "text": "information security",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1111111111111111,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2222222222222222,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 39
+        },
+        {
+          "id": "q030",
+          "text": "computer architecture",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.11627906976744186,
+            "ndcg@5": 0.8875385049894213,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.23255813953488372,
+            "ndcg@10": 0.9136608973222684,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q031",
+          "text": "recent research on robotics",
+          "metrics": {
+            "precision@5": 0.8,
+            "recall@5": 0.17391304347826086,
+            "ndcg@5": 0.8687949224876581,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.7,
+            "recall@10": 0.30434782608695654,
+            "ndcg@10": 0.7702043899253146,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q032",
+          "text": "recent papers on machine learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1111111111111111,
+            "ndcg@5": 0.8875385049894213,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2222222222222222,
+            "ndcg@10": 0.8598216686111747,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q033",
+          "text": "2020-2024 research on computer vision",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 0.1544358686372801,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 0.3777426246656855,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q034",
+          "text": "latest review on natural language processing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1282051282051282,
+            "ndcg@5": 0.6913817589337993,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2564102564102564,
+            "ndcg@10": 0.7382119454679287,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q035",
+          "text": "since 2022 papers on cybersecurity",
+          "metrics": {
+            "precision@5": 0.4,
+            "recall@5": 0.18181818181818182,
+            "ndcg@5": 0.07902092428687767,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.5,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 0.25423135971648764,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q036",
+          "text": "recent research on medical imaging",
+          "metrics": {
+            "precision@5": 0.8,
+            "recall@5": 0.13333333333333333,
+            "ndcg@5": 0.8687949224876581,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.7,
+            "recall@10": 0.23333333333333334,
+            "ndcg@10": 0.7272627274772844,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q037",
+          "text": "survey on data mining",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.12195121951219512,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.24390243902439024,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q038",
+          "text": "recent research on deep learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.12195121951219512,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.24390243902439024,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q039",
+          "text": "2018-2022 papers on blockchain",
+          "metrics": {
+            "precision@5": 0.4,
+            "recall@5": 0.08333333333333333,
+            "ndcg@5": 0.0693183650166175,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.6,
+            "recall@10": 0.25,
+            "ndcg@10": 0.0920480422328024,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q040",
+          "text": "recent review on human computer interaction",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1282051282051282,
+            "ndcg@5": 0.7092912526226147,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2564102564102564,
+            "ndcg@10": 0.8113499146016455,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        }
+      ]
+    },
+    "graph_rerank": {
+      "source": "results/eval_graph_rerank.json",
+      "schema_version": 3,
+      "ranker": "graph_rerank",
+      "queries": 40,
+      "metrics": {
+        "mrr@10": 1.0,
+        "mrr@5": 1.0,
+        "ndcg@10": 0.8879479204805417,
+        "ndcg@5": 0.8670062285836565,
+        "precision@10": 0.9824999999999999,
+        "precision@5": 1.0,
+        "recall@10": 0.3605960253022862,
+        "recall@5": 0.1870493495495388,
+        "unjudged@10": 0.0,
+        "unjudged@5": 0.0
+      },
+      "per_query": [
+        {
+          "id": "q001",
+          "text": "robotics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.3125,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.625,
+            "ndcg@10": 0.9795527431738457,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q002",
+          "text": "artificial intelligence",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.17857142857142858,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.35714285714285715,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q003",
+          "text": "machine learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.11904761904761904,
+            "ndcg@5": 0.9165323715184533,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.23809523809523808,
+            "ndcg@10": 0.8863227444144477,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q004",
+          "text": "deep learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13513513513513514,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2702702702702703,
+            "ndcg@10": 0.9636452638863133,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 39
+        },
+        {
+          "id": "q005",
+          "text": "neural networks",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.25,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 20
+        },
+        {
+          "id": "q006",
+          "text": "computer vision",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 0.49757592734887585,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 0.7038367860298562,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q007",
+          "text": "natural language processing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1724137931034483,
+            "ndcg@5": 0.9030970842075382,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3448275862068966,
+            "ndcg@10": 0.9724705483646786,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q008",
+          "text": "data mining",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16129032258064516,
+            "ndcg@5": 0.9030970842075382,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3225806451612903,
+            "ndcg@10": 0.9693837859490733,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q009",
+          "text": "information retrieval",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.3125,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.625,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q010",
+          "text": "speech recognition",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15151515151515152,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.30303030303030304,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q011",
+          "text": "autonomous vehicles",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.25,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 10
+        },
+        {
+          "id": "q012",
+          "text": "cybersecurity",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.38461538461538464,
+            "ndcg@5": 0.6477522099264775,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.7692307692307693,
+            "ndcg@10": 0.8705630866216559,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q013",
+          "text": "cloud computing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.10204081632653061,
+            "ndcg@5": 0.8061941684150765,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.20408163265306123,
+            "ndcg@10": 0.874233276401097,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q014",
+          "text": "internet of things",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.22727272727272727,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 33
+        },
+        {
+          "id": "q015",
+          "text": "blockchain",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13513513513513514,
+            "ndcg@5": 0.9250256699929476,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2702702702702703,
+            "ndcg@10": 0.9513467899190737,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q016",
+          "text": "quantum computing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.19230769230769232,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.38461538461538464,
+            "ndcg@10": 0.9980390411201359,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q017",
+          "text": "bioinformatics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 35
+        },
+        {
+          "id": "q018",
+          "text": "medical imaging",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.20833333333333334,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.4166666666666667,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q019",
+          "text": "human computer interaction",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 0.8546456263113074,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 0.9398426902948701,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q020",
+          "text": "software engineering",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.13157894736842105,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2631578947368421,
+            "ndcg@10": 0.9787944806646189,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q021",
+          "text": "operating systems",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.22727272727272727,
+            "ndcg@5": 0.7041217066455405,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.45454545454545453,
+            "ndcg@10": 0.8070285900915285,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 20
+        },
+        {
+          "id": "q022",
+          "text": "programming languages",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15625,
+            "ndcg@5": 0.8546456263113074,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3125,
+            "ndcg@10": 0.9398426902948701,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q023",
+          "text": "computer graphics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.09259259259259259,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.18518518518518517,
+            "ndcg@10": 0.9679925992378581,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q024",
+          "text": "virtual reality",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.15151515151515152,
+            "ndcg@5": 0.9165323715184533,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.30303030303030304,
+            "ndcg@10": 0.9458352203602567,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q025",
+          "text": "augmented reality",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1388888888888889,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2777777777777778,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q026",
+          "text": "pattern recognition",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 0.8546456263113074,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.5882352941176471,
+            "ndcg@10": 0.8613656992235939,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        },
+        {
+          "id": "q027",
+          "text": "data science",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.08771929824561403,
+            "ndcg@5": 0.72272653993353,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.17543859649122806,
+            "ndcg@10": 0.885808119530896,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q028",
+          "text": "big data",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.10204081632653061,
+            "ndcg@5": 0.26805858557946266,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.20408163265306123,
+            "ndcg@10": 0.4795714360969766,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 39
+        },
+        {
+          "id": "q029",
+          "text": "information security",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1111111111111111,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2222222222222222,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q030",
+          "text": "computer architecture",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.11627906976744186,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.23255813953488372,
+            "ndcg@10": 0.921442040586339,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q031",
+          "text": "recent research on robotics",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.21739130434782608,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.43478260869565216,
+            "ndcg@10": 0.9041327879405043,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q032",
+          "text": "recent papers on machine learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1111111111111111,
+            "ndcg@5": 0.9030970842075382,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2222222222222222,
+            "ndcg@10": 0.8803273038110723,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q033",
+          "text": "2020-2024 research on computer vision",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.29411764705882354,
+            "ndcg@5": 0.7002532264119935,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.7,
+            "recall@10": 0.4117647058823529,
+            "ndcg@10": 0.6507955889912505,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 7
+        },
+        {
+          "id": "q034",
+          "text": "latest review on natural language processing",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1282051282051282,
+            "ndcg@5": 0.5508492941340157,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2564102564102564,
+            "ndcg@10": 0.5970284513908531,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q035",
+          "text": "since 2022 papers on cybersecurity",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.45454545454545453,
+            "ndcg@5": 0.7092912526226147,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 0.6,
+            "recall@10": 0.5454545454545454,
+            "ndcg@10": 0.6478974148949649,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 13
+        },
+        {
+          "id": "q036",
+          "text": "recent research on medical imaging",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.16666666666666666,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.3333333333333333,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q037",
+          "text": "survey on data mining",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.12195121951219512,
+            "ndcg@5": 0.5870133870600276,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.24390243902439024,
+            "ndcg@10": 0.5313894182920982,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 40
+        },
+        {
+          "id": "q038",
+          "text": "recent research on deep learning",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.12195121951219512,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.24390243902439024,
+            "ndcg@10": 0.9636452638863133,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 39
+        },
+        {
+          "id": "q039",
+          "text": "2018-2022 papers on blockchain",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.20833333333333334,
+            "ndcg@5": 1.0,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.4166666666666667,
+            "ndcg@10": 1.0,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 28
+        },
+        {
+          "id": "q040",
+          "text": "recent review on human computer interaction",
+          "metrics": {
+            "precision@5": 1.0,
+            "recall@5": 0.1282051282051282,
+            "ndcg@5": 0.4550943006822501,
+            "mrr@5": 1.0,
+            "unjudged@5": 0,
+            "precision@10": 1.0,
+            "recall@10": 0.2564102564102564,
+            "ndcg@10": 0.44578295775262916,
+            "mrr@10": 1.0,
+            "unjudged@10": 0
+          },
+          "results": 30
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "rrf": {
+      "mrr@10": {
+        "baseline": 1.0,
+        "ranker": 1.0,
+        "delta": 0.0,
+        "relative": 0.0
+      },
+      "mrr@5": {
+        "baseline": 1.0,
+        "ranker": 1.0,
+        "delta": 0.0,
+        "relative": 0.0
+      },
+      "ndcg@10": {
+        "baseline": 0.8626470212736626,
+        "ranker": 0.857579248090045,
+        "delta": -0.005067773183617508,
+        "relative": -0.005874677659160233
+      },
+      "ndcg@5": {
+        "baseline": 0.829809613685839,
+        "ranker": 0.8263702374016338,
+        "delta": -0.003439376284205209,
+        "relative": -0.004144777582086843
+      },
+      "precision@10": {
+        "baseline": 0.9625,
+        "ranker": 0.9574999999999999,
+        "delta": -0.0050000000000001155,
+        "relative": -0.0051948051948053145
+      },
+      "precision@5": {
+        "baseline": 0.96,
+        "ranker": 0.9550000000000001,
+        "delta": -0.004999999999999893,
+        "relative": -0.005208333333333223
+      },
+      "recall@10": {
+        "baseline": 0.3528075265035572,
+        "ranker": 0.34986635003296895,
+        "delta": -0.002941176470588225,
+        "relative": -0.008336490152963248
+      },
+      "recall@5": {
+        "baseline": 0.17518587787628453,
+        "ranker": 0.17371528964099042,
+        "delta": -0.0014705882352941124,
+        "relative": -0.008394445106657713
+      },
+      "unjudged@10": {
+        "baseline": 0.0,
+        "ranker": 0.0,
+        "delta": 0.0,
+        "relative": null
+      },
+      "unjudged@5": {
+        "baseline": 0.0,
+        "ranker": 0.0,
+        "delta": 0.0,
+        "relative": null
+      }
+    },
+    "graph_rerank": {
+      "mrr@10": {
+        "baseline": 1.0,
+        "ranker": 1.0,
+        "delta": 0.0,
+        "relative": 0.0
+      },
+      "mrr@5": {
+        "baseline": 1.0,
+        "ranker": 1.0,
+        "delta": 0.0,
+        "relative": 0.0
+      },
+      "ndcg@10": {
+        "baseline": 0.8626470212736626,
+        "ranker": 0.8879479204805417,
+        "delta": 0.02530089920687917,
+        "relative": 0.02932937642272669
+      },
+      "ndcg@5": {
+        "baseline": 0.829809613685839,
+        "ranker": 0.8670062285836565,
+        "delta": 0.03719661489781745,
+        "relative": 0.0448254807902236
+      },
+      "precision@10": {
+        "baseline": 0.9625,
+        "ranker": 0.9824999999999999,
+        "delta": 0.019999999999999907,
+        "relative": 0.020779220779220682
+      },
+      "precision@5": {
+        "baseline": 0.96,
+        "ranker": 1.0,
+        "delta": 0.040000000000000036,
+        "relative": 0.041666666666666706
+      },
+      "recall@10": {
+        "baseline": 0.3528075265035572,
+        "ranker": 0.3605960253022862,
+        "delta": 0.007788498798729004,
+        "relative": 0.022075772804270026
+      },
+      "recall@5": {
+        "baseline": 0.17518587787628453,
+        "ranker": 0.1870493495495388,
+        "delta": 0.011863471673254272,
+        "relative": 0.067719337980155
+      },
+      "unjudged@10": {
+        "baseline": 0.0,
+        "ranker": 0.0,
+        "delta": 0.0,
+        "relative": null
+      },
+      "unjudged@5": {
+        "baseline": 0.0,
+        "ranker": 0.0,
+        "delta": 0.0,
+        "relative": null
+      }
+    }
+  }
+}

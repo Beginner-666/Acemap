@@ -1,0 +1,31 @@
+{
+  "schema_version": "api-config-v1",
+  "mode": "offline",
+  "providers": {
+    "openalex": {
+      "enabled": false,
+      "base_url": "https://api.openalex.org",
+      "mailto": "",
+      "timeout_seconds": 20,
+      "retries": 1,
+      "api_key_env": ""
+    },
+    "deepseek": {
+      "enabled": false,
+      "base_url": "https://api.deepseek.com",
+      "chat_path": "/chat/completions",
+      "model": "deepseek-chat",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "temperature": 0,
+      "timeout_seconds": 30,
+      "retries": 1
+    },
+    "proxy": {
+      "enabled": false,
+      "base_url": "",
+      "api_key_env": "",
+      "timeout_seconds": 20,
+      "retries": 1
+    }
+  }
+}

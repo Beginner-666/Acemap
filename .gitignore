@@ -20,6 +20,7 @@ venv/
 .env
 .env.*
 !.env.example
+config/api.local.json
 .vscode/
 .idea/
 .DS_Store
@@ -32,4 +33,8 @@ Thumbs.db
 /results/search_results.json
 /results/replay.json
 /results/dynamic_queries_replay.json
+/results/dynamic_queries_v3_replay.json
 /results/dynamic_validation.md
+
+/data/conceptnet_cache
+/data/acemap_cache/

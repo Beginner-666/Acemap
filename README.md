@@ -1,68 +1,225 @@
-# Acemap：基于 ConceptNet 的搜索增强
+# ScholarLink
 
-本项目实现基于 ConceptNet 的动态查询扩展。输入关键词后，程序查找相关概念，调用 Acemap 搜索接口，再合并、去重并排序。包含人工智能领域的三组真实查询及离线响应快照，可在不下载完整图谱的情况下复现实验。
+**Personalized Scholarly Search and Retrieval-Augmented Question Answering via Knowledge Graph Curation and Mining**
 
-## 目录
+ScholarLink 是一个面向学术检索的可复现原型。系统以 Acemap 论文搜索为基础，用 ConceptNet 做查询概念扩展，再通过多种排序器、图数据挖掘、证据约束的 RAG 和显式授权的研究画像，把一次检索组织成一条可以解释的流程：
 
-- `acemap_search.py`：命令入口、Acemap 请求、响应缓存、去重和加权倒数排名融合。
-- `conceptnet_dynamic.py`：通用英文 SQLite 索引构建、在线图谱查询与本地回退。
-- `verify_results.py`：核对正式结果及图谱依据，禁止联网后重放并逐字节比较。
-- `config/dynamic_queries.txt`：三组人工智能领域示例查询。
-- `data/raw/`：自行下载的 ConceptNet 原始文件，不纳入版本控制。
-- `data/conceptnet_en.sqlite`：本地构建的可复用索引，不纳入版本控制。
-- `data/conceptnet_cache/`：正式查询实际使用的图谱关系与来源快照。
-- `data/acemap_cache/`：正式实验引用的 Acemap 请求参数和原始响应。
-- `results/dynamic_queries.json`：真实示例结果。
-- `results/dynamic_verification.json`：保存的核验统计。
-- `tests/`：十项回归测试，包含跨平台 JSON 换行一致性检查。
+```text
+研究问题
+  → 查询理解
+  → ConceptNet 概念扩展
+  → Acemap 论文召回
+  → baseline / RRF / graph rerank
+  → 作者、机构、主题和图关系探索
+  → 带引用的研究总结
+  → 可选的个性化排序
+```
 
-## 快速验证（无需完整图谱、无需联网）
+## 1. 项目能做什么
 
-需要 Python 3.10+，无第三方依赖。
+- 输入关键词或自然语言研究问题，解析主题、领域、时间等查询意图。
+- 从 ConceptNet 读取一跳邻居，扩展同义词和相关概念，并保留扩展来源。
+- 调用或读取 Acemap/OpenAlex 风格的论文结果，按 DOI、论文 ID 和规范化标题去重。
+- 对比原始顺序、RRF 融合和 `graph_rerank`，解释某篇论文为什么排名变化。
+- 在局部图上运行 PageRank、加权路径、Common Neighbors、Adamic-Adar、社区和元路径分析。
+- 根据论文和知识图谱证据生成带引用的抽取式回答；可选接入 DeepSeek，失败时自动回退到证据摘要。
+- 只有在用户显式授权并提供历史记录时才启用研究画像和个性化排序。
+- 提供中英双语可视化页面，以及供页面调用的本地 API 网关。
+
+## 2. 五个拓展阶段
+
+### 阶段一：查询理解与检索重排
+
+`src/query_understanding.py` 将查询拆为原词、领域词、时间约束和候选扩展；`src/rankers.py` 提供 `baseline`、`rrf` 和 `graph_rerank`。阶段一保留原始 v2 输出，v3 同时利用文本、图谱和时间新鲜度特征，便于做消融实验。
+
+### 阶段二：知识图谱清洗与扩充
+
+`clean-graph` 会过滤非英文和低权重边、合并重复三元组、限制高阶节点度数，并写出 `graph-quality-v1` 质量报告。扩展边默认写入独立表，只有显式传入 `--merge-extensions` 才会进入查询边集合。
+
+### 阶段三：图数据挖掘
+
+`graph-analyze` 在局部快照上运行 PageRank、加权路径、邻居相似度、社区和元路径算法。输出包含算法参数、候选节点、分数和可追溯路径，可用于解释概念为什么被扩展。
+
+### 阶段四：知识图谱增强 RAG
+
+`src/rag.py` 将图谱事实和论文元数据整理为带来源的证据上下文。默认使用确定性的抽取式回答，并检查引用是否来自输入证据；配置 DeepSeek 后可切换生成式回答，模型不可用或输出缺少引用时自动回退。
+
+### 阶段五：个性化学术搜索
+
+`src/profile.py` 从用户主动提供的历史记录中构建作者、机构、主题和关键词画像，并使用时间衰减调整排序。没有 `--consent` 时画像权重为零；空历史示例只用于展示协议和关闭状态。
+
+## 3. 后续拓展方向
+
+1. 接入 OpenAlex 的完整作者、机构、主题和引用网络，并用 Semantic Scholar/Crossref 做可选补充和 DOI 校验。
+2. 在本地 API 网关后接入 DeepSeek 或其他兼容 `/chat/completions` 的模型，增加流式回答、模型选择和 token 用量记录。
+3. 将当前局部图分析扩展为按领域预计算的图索引，并增加人工审核的 qrels、时间切分和误差分析。
+4. 让可视化支持任意研究问题的实时查询，展示“问题 → 意图 → 概念 → 论文 → 排名解释 → 关系图 → 引用回答 → 画像切换”的完整链路。
+5. 增加用户可删除的研究历史、画像导出和多用户隔离，并把隐私同意状态写入审计日志。
+
+## 4. 环境要求
+
+- Python 3.10 或更高版本
+- Windows PowerShell、Linux 或 macOS 均可
+- 核心离线流程只使用 Python 标准库
+- 在线论文、ConceptNet 或 DeepSeek 功能需要网络和相应配置
 
 ```powershell
 git clone https://github.com/Beginner-666/Acemap.git
 cd Acemap
+```
+
+## 5. 最快复现：不联网验证
+
+仓库中的正式结果是冻结快照。验证脚本不会请求 ConceptNet、Acemap 或 LLM，也不会修改正式结果：
+
+```powershell
 python -B verify_results.py
 python -B -m unittest discover -s tests -v
 ```
 
-核验脚本使用仓库中的两类真实快照，禁止 ConceptNet 和 Acemap 网络调用，生成 `results/dynamic_queries_replay.json` 并与原始结果逐字节比较。该重放文件由程序生成，不纳入版本控制。
+验证内容包括输出协议、查询覆盖、图谱证据、去重、失败回退、排序器、RAG、画像和图清洗规则。`results/*_replay.json` 属于临时重放文件，不纳入版本控制。
 
-## 运行
+## 6. 从原始数据重建本地索引
 
-搜索程序需要 Python 3.10+，仅用标准库。已提供索引时直接搜索：
-
-```powershell
-python .\acemap_search.py search --query "artificial intelligence"
-python .\acemap_search.py search --queries .\config\dynamic_queries.txt --output .\results\new_search.json
-```
-
-默认 `--knowledge auto` 优先查询 ConceptNet 在线 API，不可用时回退本地索引。`--knowledge local` 只用本地索引，`--knowledge online` 只用在线服务。`--cache-only` 禁止联网并要求已有图谱和论文缓存；`--refresh` 会覆盖对应查询缓存，保留正式实验时应使用另一缓存目录。
-
-索引不存在时，从原始文件一次构建：
+从 ConceptNet 官方下载页面获取 `conceptnet-assertions-5.7.0.csv.gz`，放入 `data/raw/`。原始压缩包、SQLite 数据库和缓存都可重建，因此默认不提交 GitHub。
 
 ```powershell
-python .\acemap_search.py build-index --assertions .\data\raw\conceptnet-assertions-5.7.0.csv.gz
+python .\acemap_search.py build-index `
+  --assertions .\data\raw\conceptnet-assertions-5.7.0.csv.gz `
+  --output .\data\conceptnet_en.sqlite
+
+python -m src clean-graph `
+  --input .\data\conceptnet_en.sqlite `
+  --output .\data\conceptnet_clean.sqlite `
+  --quality-report .\results\graph_quality.json `
+  --degree-cap 500 --min-weight 1
 ```
 
-原始数据：ConceptNet 5.7.0 assertions，获取说明为 <https://github.com/commonsense/conceptnet5/wiki/Downloads>。原始文件为 gzip 压缩的制表符分隔文本。索引保留七类允许关系、英语两端及权重至少 1 的边，共 2,653,040 条；文件约 1.83 GiB。各边保留数据来源和许可，索引 metadata 记录源文件 SHA256。搜索时每个方向最多读取 1000 条邻边。
+本项目已生成过一份 `clean-v1` 快照：输入边约 265 万条，清洗后约 246 万条，节点约 99 万个；具体计数、规则和 `graph_id` 以 [`results/graph_quality.json`](results/graph_quality.json) 为准。默认搜索仍使用原始索引，只有显式传入 `--index data/conceptnet_clean.sqlite` 才使用清洗图。
 
-名称按规范化结果精确匹配，支持 `ai → artificial intelligence` 缩写展开。不存在完整概念时不会把单个泛化词冒充原概念，输出明确标记未增强。默认选取最多三个不同邻居，按权重及 URI 排序。原始词与扩展词各取第一页十条，按 DOI、ID、规范化标题依次确定去重键；融合分数为各路 `w/(60+rank)` 之和，原词权重 1，扩展词 0.5。
+## 7. 生成搜索、图算法和 RAG 结果
 
-代码保留可选的自定义图谱工具：`build-graph` 必须显式传入 `--config` 和 `--output`；`--knowledge graph` 必须显式传入 `--graph`。示例实验不依赖该模式。
-
-## 复现与验证
+下面的命令可以使用已有缓存离线运行；第一次处理新查询时需要在线访问 ConceptNet 和论文服务。
 
 ```powershell
-python .\verify_results.py
-python -B -m unittest discover -s tests -v
+# 阶段一：v3 查询理解与 graph rerank
+python .\acemap_search.py search `
+  --queries .\config\dynamic_queries.txt `
+  --schema-version 3 --ranker graph_rerank `
+  --knowledge local --index .\data\conceptnet_en.sqlite `
+  --cache-only --output .\results\dynamic_queries_v3.json
+
+# 一跳作者/机构扩展
+python .\acemap_search.py multihop `
+  --results .\results\dynamic_queries_v3.json `
+  --output .\results\dynamic_queries_multihop.json --cache-only
+
+# 阶段三：对 ConceptNet 局部快照运行图算法
+python .\acemap_search.py graph-analyze `
+  --edges .\data\conceptnet_cache\<snapshot>.json `
+  --seeds robotics --algorithm pagerank `
+  --output .\results\graph_analysis.json
+
+# 阶段四：生成带证据的离线回答
+python .\acemap_search.py rag --query robotics `
+  --results .\results\dynamic_queries_v3.json `
+  --output .\results\rag.json
+
+# 阶段五：显式授权后构建画像并应用个性化排序
+python .\acemap_search.py profile `
+  --history .\config\history.json --consent `
+  --output .\results\profile.json
+python .\acemap_search.py personalize `
+  --results .\results\dynamic_queries_v3.json `
+  --history .\config\history.json --consent `
+  --output .\results\personalized.json
 ```
 
-核验脚本检查查询覆盖、图谱证据、实际扩展词、请求状态和去重键，并禁止两个网络入口执行重放。不能匹配到概念是可记录的覆盖限制，不会被错误计作增强成功。
+`--cache-only` 会禁止网络请求；`--knowledge local` 只读取本地 ConceptNet 索引；`--knowledge auto` 会优先在线、失败后回退本地；`--knowledge online` 强制使用在线服务。
 
-2026-11-16 的真实结果：`robotics` 和 `artificial intelligence` 分别由 10 条增加至 40 条候选；`embodied ai` 及缩写展开形式未匹配到可用关系，仍为 10 条。三组请求成功，离线重放逐字节一致。当前十项测试通过。JSON 输出统一为 LF 换行，使 Git 下载后的文件与 Windows 上的重放输出也能逐字节比较。候选数量增加不代表精确率或召回率提高，结果中可能包含较宽泛的期刊或会议条目。
+## 8. 启动可视化和本地 API
 
-## 数据来源
+直接双击 HTML 只能查看离线快照。要启用任意研究问题查询、论文详情、图谱查询和可选 LLM，应在项目根目录启动本地网关：
 
-ConceptNet 关系来自官方公开 assertions 文件，各边原始来源与许可随 `metadata` 保留；动态索引的源文件哈希保存在图谱快照的 `source` 中。Acemap 文献元数据和摘要来自上述搜索接口，仓库中的快照记录了请求参数、采集时间和原始响应，仅作为可复现实验数据保留，不改变原数据的权利归属。
+```powershell
+python -m src serve --host 127.0.0.1 --port 8000
+```
+
+浏览器打开 <http://127.0.0.1:8000/docs/visualization/>。网关提供：
+
+```text
+GET  /api/health
+GET  /api/status
+GET  /api/search?q=robotics&ranker=graph_rerank
+GET  /api/search?q=formal+verification&live=1
+GET  /api/works/{openalex_id}
+GET  /api/graph/{concept}
+POST /api/rag
+```
+
+浏览器只访问本地网关，第三方密钥留在 Python 进程中。完整接口和数据流见 [`docs/online_and_data_pipeline.md`](docs/online_and_data_pipeline.md)。
+
+网页提供 40 个计算机科学快捷主题。选择主题或提交自定义问题时，页面优先调用 Acemap 实时检索，失败时尝试对应的演示或评估快照。研究画像支持多选预设职业和研究方向。选项直接映射到统一术语，页面结合 40 个方向的中英文名称、缩写及相关论文术语，根据标题、摘要、主题、概念和关键词计算画像相关性。职业与兴趣同时命中时优先排序，同分时使用当前排序器的分数。启用职业画像进行实时搜索时，后端额外检索原问题与各职业方向的组合，合并并去重候选论文。画像在当前页面会话内生效。
+
+## 9. 配置可选 API
+
+复制模板并填写自己的配置：
+
+```powershell
+Copy-Item config/api.example.json config/api.local.json -Force
+$env:DEEPSEEK_API_KEY = "填写自己的密钥"
+python -m src check-api --config config/api.local.json
+```
+
+`config/api.local.json`、`.env` 和密钥均已加入忽略规则，不要提交到仓库。DeepSeek 的 `base_url` 应指向兼容 `/chat/completions` 的服务地址。API 配置检查不会发起网络请求，也不会打印密钥；页面选择 DeepSeek 模式后，服务不可用会自动回退到带引用的抽取式回答。
+
+## 10. 结果文件
+
+以下结果适合提交到 GitHub，既能展示功能，也能支持离线复现：
+
+| 文件 | 用途 |
+| --- | --- |
+| `dynamic_queries*.json` | v2/v3 查询、概念扩展和多跳结果 |
+| `eval_baseline.json` / `eval_rrf.json` / `eval_graph_rerank.json` | 三种排序器在固定查询集上的结果 |
+| `evaluation_report.json` | Precision、Recall、nDCG、MRR 等对比报告 |
+| `qrels_review.json` | qrels 候选和人工复核信息 |
+| `dynamic_verification*.json` | 正式结果校验统计 |
+| `graph_quality.json` | 清洗规则、图规模和质量统计 |
+| `graph_analysis.json` | PageRank 等图算法的可追溯候选 |
+| `rag.json` | 带图谱/论文引用的 RAG 示例 |
+| `results/migrations/` | 缓存键和图版本迁移清单 |
+
+`profile.json` 和 `personalized.json` 是空历史、未授权状态的协议示例；它们可以保留用于说明隐私开关，但不代表真实用户个性化效果。原始数据、SQLite、API 缓存和临时 replay 文件不提交。
+
+## 11. 目录结构
+
+```text
+Acemap/
+├─ src/                         核心搜索、图算法、RAG、画像和 API 网关
+├─ config/                      排序、评估、查询和 API 模板
+├─ data/raw/                    用户下载的原始 ConceptNet 文件
+├─ data/*sqlite                 本地可重建索引（被 gitignore 忽略）
+├─ data/*cache                  论文/图谱请求缓存（被 gitignore 忽略）
+├─ results/                     冻结结果和质量报告
+├─ docs/visualization/          双语可视化页面
+├─ docs/                       协议、实现和数据处理文档
+├─ tests/                       回归测试
+└─ verify_results.py            离线结果校验入口
+```
+
+## 12. 数据、许可和当前限制
+
+ConceptNet assertions 来自官方公开数据，边的来源和许可信息随索引保留；论文元数据来自 Acemap/OpenAlex 风格接口。使用和再分发数据时请遵守对应数据源的许可条款。
+
+当前 qrels 仍包含规则辅助和人工复核待办项，评估数字用于比较排序器，不能单独视为绝对质量结论。完整 ConceptNet 和任意新研究问题需要本地数据或在线服务；GitHub 版本只包含代码、文档、轻量结果和可验证快照，不包含约 1.96 GB/3.76 GB 的 SQLite 数据库。
+
+## 13. 相关文档
+
+- [`docs/objective.md`](docs/objective.md)：原始任务目标
+- [`docs/followup_implementation.md`](docs/followup_implementation.md)：五个阶段的实现路线
+- [`docs/further_implementation.md`](docs/further_implementation.md)：`further` 分支方案、API 开关和可视化链路
+- [`docs/interface_protocol.md`](docs/interface_protocol.md)：输出协议和版本约束
+- [`docs/online_and_data_pipeline.md`](docs/online_and_data_pipeline.md)：在线 API 与完整数据处理
+- [`docs/project_overview_and_extensions.md`](docs/project_overview_and_extensions.md)：项目介绍和拓展点
+
+本次只整理文档和版本控制规则，未执行 `git push`。

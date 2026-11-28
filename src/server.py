@@ -11,6 +11,7 @@ import json
 import os
 import re
 from functools import partial
+from concurrent.futures import ThreadPoolExecutor
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -21,13 +22,13 @@ from .api_clients import (ApiConfigurationError, DeepSeekClient,
                            OpenAlexClient, build_deepseek_messages,
                            load_api_config, provider_status)
 from .acemap_client import AcemapClient
-from .conceptnet_provider import ConceptNet
+from .conceptnet_provider import ConceptNet, SNAPSHOT_SCOPE
 from .jsonio import digest, read_json
+from .records import identity
 from .query_understanding import parse_intent, select_expansions
 from .rag import build_context, build_document, generate
 from .rankers import get_ranker
-from .search import _document_graph_version, search_one_v3
-from .edges import rank_neighbors
+from .search import _collect_term_results, _document_graph_version
 
 
 def _config_path() -> Path:
@@ -62,48 +63,65 @@ def _snapshot_response(query: str) -> dict | None:
         "rrf": "eval_rrf.json",
         "graphRank": "eval_graph_rerank.json",
     }
-    documents = {}
     rows = {}
     for key, filename in files.items():
         path = constants.ROOT / "results" / filename
         if not path.exists():
             continue
         document = read_json(path)
-        documents[key] = document
         rows[key] = _find_row(document, query)
-    if not rows.get("v3"):
+    representative = rows.get("v3") or rows.get("graphRank") or rows.get("baseline")
+    if not representative:
         return None
     return {"schema_version": "api-response-v1", "source": "offline-snapshot",
             "query": query, "live": False,
-            "v3": {"searches": [rows["v3"]]},
-            "baseline": {"searches": [rows.get("baseline") or rows["v3"]]},
-            "rrf": {"searches": [rows.get("rrf") or rows["v3"]]},
-            "graphRank": {"searches": [rows.get("graphRank") or rows["v3"]]}}
+            "v3": {"searches": [representative]},
+            "baseline": {"searches": [rows.get("baseline") or representative]},
+            "rrf": {"searches": [rows.get("rrf") or representative]},
+            "graphRank": {"searches": [rows.get("graphRank") or representative]}}
 
 
-def _live_search(query: str, ranker_name: str = "graph_rerank",
-                 size: int = 10) -> dict:
-    """Run one online query through the existing v3 pipeline."""
+def _live_search(query: str, size: int = 25, retrieval_query: str = "", focus: list[str] | None = None) -> dict:
+    """Retrieve online once and compute all three rankings from the candidates."""
     query = " ".join(query.split())
-    if not query:
-        raise ValueError("query must be non-empty")
-    if ranker_name not in {"baseline", "rrf", "graph_rerank"}:
-        raise ValueError("unknown ranker")
     ranking = ranking_config.load_ranking_config(constants.ROOT / "config" / "ranking.json")
-    resolved = ranking_config.resolve_for_ranker(ranking, ranker_name)
-    ranker = get_ranker(ranker_name, config=resolved)
-    timeout = 20.0
+    resolved = ranking_config.resolve_for_ranker(ranking, "graph_rerank")
     provider = ConceptNet(
         knowledge="auto", index=constants.DEFAULT_INDEX,
-        cache_dir=constants.DEFAULT_CONCEPTNET_CACHE, timeout=timeout)
-    client = AcemapClient(constants.DEFAULT_ACEAMP_CACHE, timeout, 1, False, False)
-    intent = parse_intent(query)
-    search_term = (intent["topic"] or query) if ranker_name == "graph_rerank" else query
-    snapshot = provider.neighbors(search_term)
+        cache_dir=constants.DEFAULT_CONCEPTNET_CACHE, timeout=4)
+    client = AcemapClient(constants.DEFAULT_ACEAMP_CACHE, 8, 0, False, True, persist=False)
+    intent = parse_intent(retrieval_query or query)
+    search_term = intent["topic"] or retrieval_query or query
+    size = max(1, min(int(size), 40))
+    originals, requests = _collect_term_results(client, query, size, [], search_term=search_term)
+    if originals[0]["status"] == "failed":
+        raise ValueError("Acemap live search failed")
+    focused_terms = [f"{search_term} {topic}" for topic in (focus or [])]
+    focus_requests = []
+    if focused_terms:
+        def fetch_focus(term):
+            return _collect_term_results(client, query, size, [], search_term=term)
+
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            focused_results = list(pool.map(fetch_focus, focused_terms))
+        seen = {identity(record) for record in originals[0]["records"]}
+        for focused, calls in focused_results:
+            focus_requests.extend(calls)
+            for record in focused[0]["records"]:
+                key = identity(record)
+                if key not in seen:
+                    originals[0]["records"].append(record)
+                    seen.add(key)
+    requests.extend(focus_requests)
+    try:
+        snapshot = provider.neighbors(search_term)
+    except (OSError, ValueError) as exc:
+        snapshot = {"query": search_term, "matched_concept": None, "backend": "none",
+                    "source": None, "edges": [], "scope": SNAPSHOT_SCOPE,
+                    "diagnostics": [str(exc)]}
     matched = snapshot.get("matched_concept")
-    if ranker_name == "baseline":
-        expansion = []
-    elif matched and ranker_name == "graph_rerank":
+    expansion = []
+    if matched:
         labels = {e["subject"] for e in snapshot.get("edges", [])}
         labels.update(e["object"] for e in snapshot.get("edges", []))
         degrees = graph_index.node_degrees(constants.DEFAULT_INDEX, labels)
@@ -113,10 +131,6 @@ def _live_search(query: str, ranker_name: str = "graph_rerank",
             degree_cap=resolved["graph"]["degree_cap"],
             relation_whitelist=resolved["graph"]["relation_whitelist"],
             degrees=degrees)
-    elif matched:
-        expansion = rank_neighbors(snapshot["edges"], matched, 3)
-    else:
-        expansion = []
     expansion = [x for x in expansion if x["term"] not in (query, search_term)]
     graph_context = {
         "graph_version": _document_graph_version(
@@ -125,15 +139,29 @@ def _live_search(query: str, ranker_name: str = "graph_rerank",
         "topic": intent.get("topic"), "time_filter": intent.get("time_filter"),
         "search_term": search_term,
     }
-    row = search_one_v3(
-        client, query, max(1, min(int(size), 40)), expansion, ranker,
-        graph_context, search_term=search_term, baseline_only=ranker_name == "baseline")
-    row["conceptnet"] = snapshot
-    row["source"] = "live-api"
+    # Fetch just the expansion terms, then mark them as secondary inputs.
+    term_results = list(originals)
+    if expansion:
+        extra, extra_requests = _collect_term_results(
+            client, query, size, expansion[1:], search_term=expansion[0]["term"])
+        for entry in extra:
+            entry["is_original"] = False
+        term_results.extend(extra)
+        requests.extend(extra_requests)
     response = {"schema_version": "api-response-v1", "source": "live-api",
-                "query": query, "live": True}
-    one = {"searches": [row]}
-    response.update({"v3": one, "baseline": one, "rrf": one, "graphRank": one})
+                "query": query, "live": True, "provider": "Acemap",
+                "search_term": search_term, "profile_focus": focus or []}
+    for key, name in (("baseline", "baseline"), ("rrf", "rrf"), ("graphRank", "graph_rerank")):
+        config = ranking_config.resolve_for_ranker(ranking, name)
+        ranker = get_ranker(name, config=config)
+        baseline = name == "baseline"
+        ranked = ranker.rank(query, originals if baseline else term_results, graph_context)
+        row = {"query": query, "source": "live-api", "conceptnet": snapshot,
+               "status": "partial" if any(call["status"] == "failed" for call in requests) else "ok",
+               "expansions": [] if baseline else expansion,
+               "requests": requests[:1 + len(focus_requests)] if baseline else requests, **ranked}
+        response[key] = {"searches": [row]}
+    response["v3"] = response["graphRank"]
     return response
 
 
@@ -209,9 +237,21 @@ class Handler(SimpleHTTPRequestHandler):
                                              "providers": provider_status(config)})
             if parsed.path == "/api/search":
                 values = parse_qs(parsed.query)
-                query = values.get("q", values.get("query", [""]))[0]
-                ranker = values.get("ranker", ["graph_rerank"])[0]
-                response = _snapshot_response(query) or _live_search(query, ranker)
+                query = " ".join(values.get("q", values.get("query", [""]))[0].split())
+                term = " ".join(values.get("term", [""])[0].split())
+                focus = list(dict.fromkeys(values.get("focus", [])))[:7]
+                if not query or len(query) > 300 or len(term) > 300 or any(len(item) > 100 for item in focus):
+                    return self._send_json(400, {"ok": False, "error": "Query must contain 1–300 characters"})
+                live_first = values.get("live") == ["1"]
+                response = None if live_first else _snapshot_response(query)
+                if response is None:
+                    try:
+                        response = _live_search(query, retrieval_query=term, focus=focus)
+                    except (ValueError, OSError):
+                        response = _snapshot_response(query) or (term and _snapshot_response(term))
+                        if not response:
+                            return self._send_json(502, {"ok": False, "error": "Acemap live search unavailable"})
+                        response["fallback_reason"] = "acemap-unavailable"
                 return self._send_json(200, response)
             if parsed.path.startswith("/api/works/"):
                 config = _api_config()

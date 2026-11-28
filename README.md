@@ -151,12 +151,15 @@ python -m src serve --host 127.0.0.1 --port 8000
 GET  /api/health
 GET  /api/status
 GET  /api/search?q=robotics&ranker=graph_rerank
+GET  /api/search?q=formal+verification&live=1
 GET  /api/works/{openalex_id}
 GET  /api/graph/{concept}
 POST /api/rag
 ```
 
 浏览器只访问本地网关，第三方密钥留在 Python 进程中。完整接口和数据流见 [`docs/online_and_data_pipeline.md`](docs/online_and_data_pipeline.md)。
+
+网页提供 40 个计算机科学快捷主题。选择主题或提交自定义问题时，页面优先调用 Acemap 实时检索，失败时尝试对应的演示或评估快照。研究画像支持多选预设职业和研究方向。选项直接映射到统一术语，页面结合 40 个方向的中英文名称、缩写及相关论文术语，根据标题、摘要、主题、概念和关键词计算画像相关性。职业与兴趣同时命中时优先排序，同分时使用当前排序器的分数。启用职业画像进行实时搜索时，后端额外检索原问题与各职业方向的组合，合并并去重候选论文。画像在当前页面会话内生效。
 
 ## 9. 配置可选 API
 

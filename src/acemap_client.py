@@ -16,12 +16,13 @@ from .records import extract_records
 
 
 class AcemapClient:
-    def __init__(self, cache_dir, timeout, retries, cache_only, refresh):
+    def __init__(self, cache_dir, timeout, retries, cache_only, refresh, *, persist=True):
         self.cache_dir = Path(cache_dir)
         self.timeout = timeout
         self.retries = retries
         self.cache_only = cache_only
         self.refresh = refresh
+        self.persist = persist
 
     def search(self, keyword, size):
         return self._search_params(
@@ -57,9 +58,10 @@ class AcemapClient:
                         "retrieved_at": datetime.now(timezone.utc).isoformat(),
                         "raw_response": raw}
             # Save the original body before decoding or adapting its schema.
-            write_json(path, snapshot)
+            if self.persist:
+                write_json(path, snapshot)
         payload = json.loads(snapshot["raw_response"])
-        return extract_records(payload), path.name
+        return extract_records(payload), path.name if self.persist else None
 
     def fetch(self, url):
         for attempt in range(self.retries + 1):
